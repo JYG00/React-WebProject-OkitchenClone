@@ -1,0 +1,43 @@
+.issue {
+  width: 100%;
+  height: 280px;
+  background-color: aqua;
+}
+/* 인기레시피 메뉴바 */
+.issue_bar {
+  width: 100%;
+  height: 280px;
+  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hash {
+  padding-top: 4%;
+}
+.hash li {
+  float: left;
+  width: auto;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50px;
+  border: 1px solid #c1c1c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px 0 15px;
+  margin-right: 10px;
+}
+.hash li:hover {
+  background-color: #f64646;
+}
+.hash li:hover > a {
+  background-color: #f64646;
+  color: #fff;
+}
+.hash li a {
+  font-size: 20px;
+  color: #666;
+  font-weight: 500;
+}

@@ -1,0 +1,83 @@
+/* 밥숟가락 계량 */
+.tip_middle {
+  width: 100%;
+  height: 850px;
+  background-color: rgb(0, 99, 99);
+  display: flex;
+  justify-content: center;
+}
+.tip_middle > div {
+  width: 1350px;
+  height: 730px;
+  background-color: rgb(154, 247, 247);
+}
+/* 테이블스푼과 티스푼은... */
+.spoon_exp_in {
+  width: 1350px;
+  height: 250px;
+  background-color: chocolate;
+  text-align: center;
+}
+.spoon_exp_in {
+  /* padding-top: 2%; */
+}
+.spoon_exp_in img {
+  padding-top: 2%;
+}
+.spoon_exp_in > h2 {
+  font-size: 30px;
+  margin-bottom: 2%;
+}
+.spoon_exp_in > h4 {
+  font-size: 24px;
+}
+.spoon_exp_in > p {
+  font-size: 20px;
+}
+.spoon_exp_in img {
+  width: 70px;
+  height: 55px;
+}
+/* 종이컵 사진 파트 */
+.spoon_img_part {
+  width: 1350px;
+  height: 600px;
+  background-color: rgb(228, 228, 250);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.spoon_table {
+  width: 590px;
+  height: 500px;
+  background-color: #888;
+}
+.spoon_tea {
+  width: 590px;
+  height: 500px;
+  background-color: #555;
+}
+/* 사진 */
+.spoon_img {
+  width: 590px;
+  height: 400px;
+}
+.spoon_img img {
+  width: 100%;
+  height: 100%;
+}
+/* 사진에 대한 설명 */
+.spoon_img_exp {
+  width: 590px;
+  height: 100px;
+  background-color: rgb(238, 238, 212);
+  display: flex;
+  align-items: center;
+}
+.spoon_img_exp h4 {
+  font-size: 20px;
+  color: #333;
+}
+.spoon_img_exp p {
+  font-size: 16px;
+}

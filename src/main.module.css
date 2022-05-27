@@ -1,0 +1,207 @@
+.main {
+  width: 100%;
+  height: 5000px;
+  background-color: chocolate;
+}
+/* 메인이미지 */
+.mainImg {
+  width: 100%;
+  height: 725px;
+  overflow: hidden;
+  background-color: burlywood;
+}
+/* 인기 */
+.popular {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 715px;
+  background-color: greenyellow;
+}
+
+.popular ul {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 500px;
+  background-color: gold;
+}
+.popular ul li {
+  float: left;
+  margin-right: 45px;
+  width: 280px;
+  height: 500px;
+  background-color: chartreuse;
+}
+.popular ul li a {
+}
+/* 메뉴바 */
+.menubar {
+  width: 100%;
+  height: 405px;
+  background-color: rgb(224, 224, 77);
+}
+/* 추천레시피 */
+.recommend {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 1200px;
+  background-color: purple;
+}
+.recommend > ul {
+  width: 1280px;
+  height: 1200px;
+  background-color: violet;
+}
+.recommend ul li {
+}
+.recommend_header {
+  text-align: center;
+  width: 1280px;
+  height: 200px;
+  background-color: white;
+}
+.recommend_header li {
+  padding-bottom: 15px;
+}
+.recommend_header li:first-child {
+  padding-top: 50px;
+}
+.recommend_header li:first-child:after {
+  display: block;
+  content: "";
+  width: 20px;
+  border-bottom: 1px solid #000;
+  height: 10px;
+  margin: 0 auto;
+}
+.recommend_content {
+  width: 1280px;
+  height: 1000px;
+  background-color: brown;
+}
+.recommend_content li {
+  float: left;
+}
+.recommend_content_left {
+  width: 620px;
+  margin-right: 20px;
+  height: 1000px;
+  background-color: coral;
+}
+.recommend_content_left > li:first-child {
+  width: 620px;
+  height: 565px;
+  background-color: yellow;
+}
+.recommend_content_left > li:last-child {
+  width: 620px;
+  height: 435px;
+  background-color: antiquewhite;
+}
+.recommend_content_right {
+  width: 620px;
+  margin-left: 20px;
+  height: 1000px;
+  background-color: gray;
+}
+.recommend_content_right > li:first-child {
+  width: 620px;
+  height: 435px;
+  background-color: antiquewhite;
+}
+.recommend_content_right > li:last-child {
+  width: 620px;
+  height: 565px;
+  background-color: yellow;
+}
+/* 쉐프의 팁 */
+.chef {
+  width: 100%;
+  height: 800px;
+  background-color: aqua;
+}
+.chef_header {
+  text-align: center;
+  width: 100%;
+  height: 200px;
+  background-color: white;
+}
+.chef_header li {
+  padding-bottom: 15px;
+}
+.chef_header li:first-child {
+  padding-top: 50px;
+}
+.chef_header li:first-child:after {
+  display: block;
+  content: "";
+  width: 20px;
+  border-bottom: 1px solid #000;
+  height: 10px;
+  margin: 0 auto;
+}
+.chef_img {
+  width: 100%;
+  height: 600px;
+  background-color: lemonchiffon;
+}
+/* 인기 레시피 */
+.popularRecipe {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 810px;
+  background-color: skyblue;
+}
+.popularRecipe > div {
+}
+.popularRecipe_header {
+  width: 1280px;
+  height: 200px;
+  background-color: blueviolet;
+}
+.popularRecipe_header {
+  text-align: center;
+  width: 100%;
+  height: 200px;
+  background-color: white;
+}
+.popularRecipe_header li {
+  padding-bottom: 15px;
+}
+.popularRecipe_header li:first-child {
+  padding-top: 50px;
+}
+.popularRecipe_header li:first-child:after {
+  display: block;
+  content: "";
+  width: 20px;
+  border-bottom: 1px solid #000;
+  height: 10px;
+  margin: 0 auto;
+}
+.popularRecipe_img {
+  width: 1280px;
+  height: 610px;
+  background-color: pink;
+}
+.popularRecipe_img ul {
+  margin: 0 auto;
+  width: 1240px;
+  height: 610px;
+  /* background-color: blue; */
+}
+.popularRecipe_img ul li {
+  float: left;
+  width: 290px;
+  height: 290px;
+  background-color: tomato;
+  margin: 5px 10px 5px 10px;
+}
+.menubar_bottom {
+  width: 100%;
+  height: 300px;
+  background-color: brown;
+}

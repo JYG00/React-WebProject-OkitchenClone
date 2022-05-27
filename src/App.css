@@ -1,38 +1,164 @@
-.App {
+.header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 170px;
+  background-color: #bf132b;
+}
+.header_in {
+  width: 1350px;
+  height: 170px;
+  background-color: antiquewhite;
+}
+/* 헤더상단 */
+.header_in_top {
+  display: flex;
+  align-items: center;
+  width: 1350px;
+  height: 105px;
+  background-color: coral;
+}
+.header_in_top .logo {
+  width: 240px;
+  height: 105px;
+  background-color: #bf132b;
+  display: flex;
+  align-items: center;
+}
+.header_in_top .logo img {
+  width: 240px;
+  height: 66px;
+}
+/* 검색창 */
+.header_in_top .search {
+  width: 1110px;
+  height: 105px;
+  background-color: chartreuse;
+  display: flex;
+  align-items: flex-end;
+}
+.header_in_top .search_bar {
+  width: 860px;
+  height: 66px;
+  background-color: chocolate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 1%;
+}
+.header_in_top .search_bar input {
+  background: transparent;
+  width: 578px;
+  height: 45px;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  padding-top: 10px;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+  color: #fff;
+}
+input::placeholder {
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -1.5px;
+  color: #fff;
+}
+.header_in_top .search_bar label {
+  width: 37px;
+  height: 39px;
+  margin-left: -7%;
+  margin-top: -1.5%;
+  cursor: pointer;
+}
+
+.header_in_top .search .hash {
+  width: 250px;
+  height: 105px;
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+}
+.header_in_top .search .hash ul {
+  width: 250px;
+  height: 66px;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.header_in_top .search .hash ul li {
+  margin-left: 10%;
+}
+.header_in_top .search .hash ul li a {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+}
+.header_in_top .search .hash ul li a:hover {
+  text-decoration: underline;
+}
+/* 헤더하단 */
+.header_in_bottom {
+  display: flex;
+  width: 1350px;
+  height: 65px;
+  background-color: orange;
+}
+.header_in_bottom .nav {
+  width: 600px;
+  height: 65px;
+  background-color: blue;
+}
+.header_in_bottom .nav ul {
+}
+.header_in_bottom .nav ul li:first-child {
+  padding-top: 3%;
+  margin-right: 1%;
+}
+.header_in_bottom .nav ul li {
+  float: left;
+  margin-right: 5%;
+  padding-top: 3.5%;
+}
+.header_in_bottom .nav ul li a {
+  font-weight: bold;
+  color: #222;
+  letter-spacing: -1.5px;
+  font-size: 22px;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header_in_bottom .nav ul li a:hover {
+  color: #f64646;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header_in_bottom .nav2 {
+  width: 750px;
+  height: 65px;
+  background-color: skyblue;
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+}
+.header_in_bottom .nav2 ul {
+  width: 350px;
+  height: 65px;
+  background-color: pink;
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.header_in_bottom .nav2 ul li {
+  float: left;
+  width: auto;
+  height: 50px;
+  margin-left: 5%;
+  margin-top: 8%;
 }
 
-.App-link {
-  color: #61dafb;
+.header_in_bottom .nav2 ul li a {
+  font-size: 20px;
+  color: #666;
+  font-weight: 700;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header_in_bottom .nav2 ul li a:hover {
+  color: #f64646;
 }
