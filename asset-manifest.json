@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/JYG00/React-WebProject-okitchenClone-block/static/css/main.8d22e10a.css",
+    "main.js": "/JYG00/React-WebProject-okitchenClone-block/static/js/main.5f50da38.js",
+    "static/js/787.24866016.chunk.js": "/JYG00/React-WebProject-okitchenClone-block/static/js/787.24866016.chunk.js",
+    "index.html": "/JYG00/React-WebProject-okitchenClone-block/index.html",
+    "main.8d22e10a.css.map": "/JYG00/React-WebProject-okitchenClone-block/static/css/main.8d22e10a.css.map",
+    "main.5f50da38.js.map": "/JYG00/React-WebProject-okitchenClone-block/static/js/main.5f50da38.js.map",
+    "787.24866016.chunk.js.map": "/JYG00/React-WebProject-okitchenClone-block/static/js/787.24866016.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8d22e10a.css",
+    "static/js/main.5f50da38.js"
+  ]
+}
