@@ -8,6 +8,8 @@ import New from "./new/new";
 import Issue from "./issue/issue";
 import { CgMenuRound } from "react-icons/cg";
 import { RiShoppingBasket2Line, RiFileCopyFill } from "react-icons/ri";
+import logo from "./img/logo.png";
+import top_sch from "./img/top_sch.png";
 function App() {
   return (
     <div>
@@ -18,7 +20,7 @@ function App() {
             {/* 로고 */}
             <div className="logo">
               <Link to="/">
-                <img src="/img/logo.png"></img>
+                <img src={logo} alt="로고"></img>
               </Link>
             </div>
             {/* 서치 */}
@@ -30,7 +32,7 @@ function App() {
                   placeholder="오뚜기 제품, 요리명 등 다양하게 검색해보세요! (예: 카레)"
                 />
                 <label>
-                  <img src="/img/top_sch.png"></img>
+                  <img src={top_sch} alt="검색 이미지"></img>
                 </label>
               </div>
               {/* 서치 옆 해쉬태그 */}

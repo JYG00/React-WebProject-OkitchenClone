@@ -1,5 +1,8 @@
 import React from "react";
 import style from "./tipmiddle.module.css";
+import tip_icon from "../img/tip_icon01.gif";
+import tip01 from "../img/tip01.jpg";
+import tip02 from "../img/tip02.jpg";
 function TipMiddle() {
   return (
     <div>
@@ -10,7 +13,7 @@ function TipMiddle() {
           <div className={style.spoon_exp}>
             <div className={style.spoon_exp_in}>
               <p>
-                <img src="/img/tip_icon01.gif" alt="spoonImage" />
+                <img src={tip_icon} alt="spoonImage" />
               </p>
               <h2>종이컵 계량</h2>
               <h4>밥숟가락 단위보다 더 많은 양은 어떻게 계량해야 할까요?</h4>
@@ -25,7 +28,7 @@ function TipMiddle() {
               <div className={style.spoon_table}>
                 {/* 사진 */}
                 <div className={style.spoon_img}>
-                  <img src="/img/tip01.jpg" alt="tableSpoon" />
+                  <img src={tip01} alt="tableSpoon" />
                 </div>
                 {/* 사진에 대한 설명 */}
                 <div className={style.spoon_img_exp}>
@@ -38,7 +41,7 @@ function TipMiddle() {
               <div className={style.spoon_tea}>
                 {/* 사진 */}
                 <div className={style.spoon_img}>
-                  <img src="/img/tip02.jpg" alt="teaSpoon" />
+                  <img src={tip02} alt="teaSpoon" />
                 </div>
                 {/* 사진에 대한 설명 */}
                 <div className={style.spoon_img_exp}>
