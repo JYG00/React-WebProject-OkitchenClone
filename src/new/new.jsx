@@ -1,6 +1,9 @@
 import React from "react";
 import style from "./new.module.css";
 import Footer from "../footer";
+import foodList from "./foodList";
+import Food from "./food.jsx";
+
 function Tip() {
   return (
     <div>
@@ -11,24 +14,18 @@ function Tip() {
         </div>
         {/* 신규레시피 내용,사진 */}
         <div className={style.content}>
-          <div className={style.content_in}>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div>10</div>
-            <div>11</div>
-            <div>12</div>
-            <div>13</div>
-            <div>14</div>
-            <div>15</div>
-            <div>16</div>
-          </div>
+          <ul className={style.content_in}>
+            {foodList.map((food) => (
+              <li>
+                <Food
+                  id={food.id}
+                  src={food.src}
+                  hash={food.hash}
+                  name={food.name}
+                ></Food>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <Footer></Footer>

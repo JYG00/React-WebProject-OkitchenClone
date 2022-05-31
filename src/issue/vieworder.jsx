@@ -43,7 +43,9 @@ function Page3() {
         <div className={style.content_in}>
           <div className={style.content_switch}>
             <div>
-              <p>검색결과 조회</p>
+              <p>
+                검색결과 <strong>{foodList.length}</strong>건 조회
+              </p>
               <ul>
                 <li>
                   <Link
@@ -148,7 +150,9 @@ function Page4() {
         <div className={style.content_in}>
           <div className={style.content_switch}>
             <div>
-              <p>검색결과 조회</p>
+              <p>
+                검색결과 <strong>{foodList.length}</strong>건 조회
+              </p>
               <ul>
                 <li>
                   <Link

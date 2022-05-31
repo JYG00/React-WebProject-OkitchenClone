@@ -1,19 +1,19 @@
 import React from "react";
 import style from "./tipmiddle.module.css";
-import tip_icon from "../img/tip_icon01.gif";
-import tip01 from "../img/tip01.jpg";
-import tip02 from "../img/tip02.jpg";
+import tip_icon02 from "./img/tip_icon02.gif";
+import tip03 from "./img/tip03.jpg";
+import tip04 from "./img/tip04.jpg";
 function TipMiddle() {
   return (
     <div>
-      {/* 밥숟가락 계량 */}
+      {/* 종이컵 계량 */}
       <div className={style.tip_middle}>
         <div>
-          {/* 테이블스푼과 티스푼은... */}
-          <div className={style.spoon_exp}>
-            <div className={style.spoon_exp_in}>
+          {/* 밥숟가락 단위보다... */}
+          <div className={style.cup_exp}>
+            <div className={style.cup_exp_in}>
               <p>
-                <img src={tip_icon} alt="spoonImage" />
+                <img src={tip_icon02} alt="spoonImage" />
               </p>
               <h2>종이컵 계량</h2>
               <h4>밥숟가락 단위보다 더 많은 양은 어떻게 계량해야 할까요?</h4>
@@ -22,29 +22,29 @@ function TipMiddle() {
                 있어요.
               </p>
             </div>
-            {/* 숟가락 사진 */}
-            <div className={style.spoon_img_part}>
-              {/* 사진1.테이블스푼 */}
-              <div className={style.spoon_table}>
+            {/* 종이컵 사진 */}
+            <div className={style.cup_img_part}>
+              {/* 종이컵 사진1 */}
+              <div className={style.cup_table}>
                 {/* 사진 */}
-                <div className={style.spoon_img}>
-                  <img src={tip01} alt="tableSpoon" />
+                <div className={style.cup_img}>
+                  <img src={tip03} alt="tableSpoon" />
                 </div>
                 {/* 사진에 대한 설명 */}
-                <div className={style.spoon_img_exp}>
+                <div className={style.cup_img_exp}>
                   <div>
                     <h4>액체 가득 1컵 = 약 180ml</h4>
                   </div>
                 </div>
               </div>
-              {/* 사진2.티스푼 */}
-              <div className={style.spoon_tea}>
+              {/* 종이컵 사진2 */}
+              <div className={style.cup_tea}>
                 {/* 사진 */}
-                <div className={style.spoon_img}>
-                  <img src={tip02} alt="teaSpoon" />
+                <div className={style.cup_img}>
+                  <img src={tip04} alt="teaSpoon" />
                 </div>
                 {/* 사진에 대한 설명 */}
-                <div className={style.spoon_img_exp}>
+                <div className={style.cup_img_exp}>
                   <div>
                     <h4>윗면을 깎아낸 밀가루 1컵 = 약 100g</h4>
                   </div>
