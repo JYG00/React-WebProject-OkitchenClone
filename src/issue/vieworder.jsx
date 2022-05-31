@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { Route, Link } from "react-router-dom";
 import style from "./vieworder.module.css";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import Food from "./food";
+import foodList from "./dataList";
 
 function ViewOrder() {
   return (
@@ -12,6 +14,8 @@ function ViewOrder() {
 }
 
 function Page3() {
+  // 푸드리스트 복사
+  const foodListClone = [...foodList];
   // 상단 리스트 버튼 DOM
   const recently_btn = useRef();
   const view_btn = useRef();
@@ -31,6 +35,7 @@ function Page3() {
     list2.current.className = "";
     e.target.className = `${style.on}`;
   };
+
   return (
     <div>
       {/* 인기레시피 내용,사진 */}
@@ -63,26 +68,26 @@ function Page3() {
             </div>
           </div>
           <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-            <li>7</li>
-            <li>8</li>
-            <li>9</li>
-            <li>10</li>
-            <li>11</li>
-            <li>12</li>
-            <li>13</li>
-            <li>14</li>
-            <li>15</li>
-            <li>16</li>
-            <li>17</li>
-            <li>18</li>
-            <li>19</li>
-            <li>20</li>
+            {/* map 함수로 foodList에서 데이터 가져오기 */}
+            {foodListClone
+              // 조회순서로 정렬
+              .sort((a, b) => {
+                return b.view - a.view;
+              })
+              // 20개까지 출력
+              .filter((food, index, foodListClone) => {
+                return index < 20;
+              })
+              .map((food) => (
+                <li>
+                  <Food
+                    id={food.id}
+                    src={food.src}
+                    hash={food.hash}
+                    name={food.name}
+                  ></Food>
+                </li>
+              ))}
           </ul>
           {/* 하단 리스트 버튼 */}
           <div className={style.content_list}>
@@ -115,6 +120,8 @@ function Page3() {
 }
 
 function Page4() {
+  // 푸드리스트 복사
+  const foodListClone = [...foodList];
   // 상단 리스트 버튼 DOM
   const recently_btn = useRef();
   const view_btn = useRef();
@@ -166,26 +173,26 @@ function Page4() {
             </div>
           </div>
           <ul>
-            <li>21</li>
-            <li>22</li>
-            <li>23</li>
-            <li>24</li>
-            <li>25</li>
-            <li>26</li>
-            <li>27</li>
-            <li>28</li>
-            <li>29</li>
-            <li>30</li>
-            <li>31</li>
-            <li>32</li>
-            <li>33</li>
-            <li>34</li>
-            <li>35</li>
-            <li>36</li>
-            <li>37</li>
-            <li>38</li>
-            <li>39</li>
-            <li>40</li>
+            {/* map 함수로 foodList에서 데이터 가져오기 */}
+            {foodListClone
+              // 조회순서로 정렬
+              .sort((a, b) => {
+                return b.view - a.view;
+              })
+              // 나머지 인덱스도 출력
+              .filter((food, index, foodListClone) => {
+                return index > 20;
+              })
+              .map((food) => (
+                <li>
+                  <Food
+                    id={food.id}
+                    src={food.src}
+                    hash={food.hash}
+                    name={food.name}
+                  ></Food>
+                </li>
+              ))}
           </ul>
           {/* 하단 리스트 버튼 */}
           <div className={style.content_list}>

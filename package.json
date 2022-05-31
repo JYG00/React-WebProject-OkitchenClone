@@ -23,7 +23,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "http://JYG00.github.io/React-WebProject-okitchenClone-block/index.html",
+  "homepage": "http://JYG00.github.io/React-WebProject-okitchenClone-block",
   "eslintConfig": {
     "extends": [
       "react-app",

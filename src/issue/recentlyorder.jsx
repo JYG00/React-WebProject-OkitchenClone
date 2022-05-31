@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { Route, Link } from "react-router-dom";
 import style from "./recentlyorder.module.css";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import foodList from "./dataList";
+import Food from "./food";
 
 function RecentlyOrder() {
   return (
@@ -63,26 +65,19 @@ function Page1() {
             </div>
           </div>
           <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-            <li>7</li>
-            <li>8</li>
-            <li>9</li>
-            <li>10</li>
-            <li>11</li>
-            <li>12</li>
-            <li>13</li>
-            <li>14</li>
-            <li>15</li>
-            <li>16</li>
-            <li>17</li>
-            <li>18</li>
-            <li>19</li>
-            <li>20</li>
+            {/* map 함수로 foodList에서 데이터 가져오기 */}
+            {foodList
+              .filter((food) => food.id < 21)
+              .map((food) => (
+                <li>
+                  <Food
+                    id={food.id}
+                    src={food.src}
+                    hash={food.hash}
+                    name={food.name}
+                  ></Food>
+                </li>
+              ))}
           </ul>
           {/* 하단 리스트 버튼 */}
           <div className={style.content_list}>
@@ -170,26 +165,19 @@ function Page2() {
             </div>
           </div>
           <ul>
-            <li>21</li>
-            <li>22</li>
-            <li>23</li>
-            <li>24</li>
-            <li>25</li>
-            <li>26</li>
-            <li>27</li>
-            <li>28</li>
-            <li>29</li>
-            <li>30</li>
-            <li>31</li>
-            <li>32</li>
-            <li>33</li>
-            <li>34</li>
-            <li>35</li>
-            <li>36</li>
-            <li>37</li>
-            <li>38</li>
-            <li>39</li>
-            <li>40</li>
+            {/* map 함수로 foodList에서 데이터 가져오기 */}
+            {foodList
+              .filter((food) => food.id > 20)
+              .map((food) => (
+                <li>
+                  <Food
+                    id={food.id}
+                    src={food.src}
+                    hash={food.hash}
+                    name={food.name}
+                  ></Food>
+                </li>
+              ))}
           </ul>
           {/* 하단 리스트 버튼 */}
           <div className={style.content_list}>
