@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./tipmiddle.module.css";
-import tip_icon02 from "./img/tip_icon02.gif";
-import tip03 from "./img/tip03.jpg";
-import tip04 from "./img/tip04.jpg";
+import tip_icon02 from "../img/tip_icon02.gif";
+import tip03 from "../img/tip03.jpg";
+import tip04 from "../img/tip04.jpg";
 function TipMiddle() {
   return (
     <div>

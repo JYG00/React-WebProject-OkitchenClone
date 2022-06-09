@@ -1,8 +1,8 @@
 import React from "react";
 import style from "./tiptop.module.css";
-import tip_icon from "./img/tip_icon01.gif";
-import tip01 from "./img/tip01.jpg";
-import tip02 from "./img/tip02.jpg";
+import tip_icon from "../img/tip_icon01.gif";
+import tip01 from "../img/tip01.jpg";
+import tip02 from "../img/tip02.jpg";
 function TipTop() {
   return (
     <div>

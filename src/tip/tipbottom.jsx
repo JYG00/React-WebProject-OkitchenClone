@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./tipbottom.module.css";
-import tip_icon03 from "./img/tip_icon03.gif";
+import tip_icon03 from "../img/tip_icon03.gif";
 import ingredientList from "./ingredientList.js";
 import Ingredient from "./ingredient";
 function TipBottom() {

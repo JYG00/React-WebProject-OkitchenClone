@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Route, Link } from "react-router-dom";
 // yarn add react-router-dom@5
 import "./App.css";
@@ -10,7 +10,28 @@ import { CgMenuRound } from "react-icons/cg";
 import { RiShoppingBasket2Line, RiFileCopyFill } from "react-icons/ri";
 import logo from "./img/logo.png";
 import top_sch from "./img/top_sch.png";
+import Search from "./search/search";
+import { useHistory } from "react-router-dom";
+
 function App() {
+  const [state, setState] = useState({ isTrue: false, sch_content: "없음" });
+  // input 객체
+  const inputRef = useRef();
+  const formRef = useRef();
+
+  const history = useHistory();
+
+  // form 태그 내용을 받아서 state 에 저장
+  const onSubmit = useCallback((e) => {
+    e.preventDefault();
+    // setState({ isTrue: true, sch_content: inputRef.current.value });
+    history.push({
+      pathname: "/search",
+      state: { props: inputRef.current.value },
+    });
+    inputRef.current.value = "";
+  });
+
   return (
     <div>
       {/* 헤더*/}
@@ -26,14 +47,19 @@ function App() {
             {/* 서치 */}
             <div className="search">
               <div className="search_bar">
-                <input
-                  type="text"
-                  maxLength="30"
-                  placeholder="오뚜기 제품, 요리명 등 다양하게 검색해보세요! (예: 카레)"
-                />
-                <label>
-                  <img src={top_sch} alt="검색 이미지"></img>
-                </label>
+                <form onSubmit={onSubmit} ref={formRef}>
+                  <input
+                    type="text"
+                    maxLength="30"
+                    ref={inputRef}
+                    placeholder="오뚜기 제품, 요리명 등 다양하게 검색해보세요! (예: 카레)"
+                  />
+                  <label htmlFor="search">
+                    <button className="sch_btn" type="submit">
+                      <img src={top_sch} alt="검색 이미지"></img>
+                    </button>
+                  </label>
+                </form>
               </div>
               {/* 서치 옆 해쉬태그 */}
               <div className="hash">
@@ -90,18 +116,12 @@ function App() {
             {/* 네브 오른쪽 영역*/}
             <div className="nav2">
               <ul>
-                {/* <li style={{ marginLeft: "3%", paddingTop: "6%" }}>
-                  
-                </li> */}
                 <li>
-                  <a href="" target="_blank">
+                  <a href="/" target="_blank">
                     <RiShoppingBasket2Line />
                     오뚜기몰
                   </a>
                 </li>
-                {/* <li style={{ marginLeft: "3%", paddingTop: "6%" }}>
-                  
-                </li> */}
                 <li>
                   <Link to="/recently">
                     <RiFileCopyFill />
@@ -115,9 +135,15 @@ function App() {
       </div>
       <div style={{ width: "100%", height: "auto", background: "#ccc" }}>
         <Route path="/" exact={true} component={Main}></Route>
+        {/* {state.isTrue === false ? (
+          <Route path="/" exact={true} component={Main}></Route>
+        ) : (
+          <Search props={state.sch_content}></Search>
+        )} */}
         <Route path="/issue" component={Issue}></Route>
         <Route path="/new" component={New}></Route>
         <Route path="/tip" component={Tip}></Route>
+        <Route path="/search" component={Search}></Route>
       </div>
     </div>
   );

@@ -58,6 +58,11 @@
   letter-spacing: -1.5px;
   color: #fff;
 }
+.header_in_top .search_bar .sch_btn {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
 input::placeholder {
   font-size: 22px;
   font-weight: 500;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import style from "./footer.module.css";
 import { Route, Link } from "react-router-dom";
 // yarn add react-router-dom@5;
@@ -6,6 +6,8 @@ import { Route, Link } from "react-router-dom";
 import { FaFacebookF } from "react-icons/fa";
 import { BsInstagram, BsYoutube } from "react-icons/bs";
 function Footer() {
+  const ref = useRef();
+
   return (
     <div className={style.footer}>
       <div>
@@ -48,11 +50,7 @@ function Footer() {
                 <ul>
                   {/* 리스트 */}
                   <li className={style.list}>
-                    <select
-                      name
-                      id="family site"
-                      onChange="if(this.value){window.open(this.value);}"
-                    >
+                    <select>
                       <option value="0">FAMILY SITE</option>
                       <option value="http://www.naver.com">(주)오뚜기</option>
                       <option value="http://www.google.com">오뚜기몰</option>
