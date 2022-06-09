@@ -36,6 +36,18 @@
   background-color: #f64646;
   color: #fff;
 }
+.hash li input {
+  border: 0;
+  background: transparent;
+  font-size: 20px;
+  color: #666;
+  font-weight: 500;
+  cursor: pointer;
+}
+.hash li:hover > input {
+  background-color: #f64646;
+  color: #fff;
+}
 .hash li a {
   font-size: 20px;
   color: #666;

@@ -15,7 +15,7 @@ function Footer() {
         <div className={style.footer_top}>
           <ul>
             <li>
-              <Link to="/issue/recentlyorder">인기 레시피</Link>
+              <Link to="/issue">인기 레시피</Link>
             </li>
             <li>
               <Link to="/chef">셰프의 팁</Link>

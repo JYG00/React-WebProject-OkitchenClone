@@ -42,6 +42,7 @@
   font-size: 20px;
   color: #666;
   font-weight: 500;
+  cursor: pointer;
 }
 .hash li:hover > input {
   background-color: #f64646;

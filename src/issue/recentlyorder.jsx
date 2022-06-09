@@ -1,38 +1,64 @@
-import React, { useRef } from "react";
-import { Route, Link } from "react-router-dom";
+import React, { useState } from "react";
 import style from "./recentlyorder.module.css";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import foodList from "./dataList";
+import { BsCheck } from "react-icons/bs";
+import allDataList from "../search/allDataList";
 import Food from "./food";
 
 function RecentlyOrder() {
-  return (
-    <div>
-      <Route path="/issue/recentlyorder" component={Page1}></Route>
-    </div>
-  );
-}
+  // 최신순, 조회순 버튼에 따라서 해당 내용 출력
+  const [recentlyViewOrder, setRecentlyViewOrder] = useState(true);
 
-function Page1() {
-  // 상단 리스트 버튼 DOM
-  const recently_btn = useRef();
-  const view_btn = useRef();
-  // 하단 리스트 버튼 DOM
-  const list1 = useRef();
-  const list2 = useRef();
-
-  // 상단 리스트를 버튼을 클릭할 때 스타일 적용
+  //페이지 목록 버튼을 클릭시 이벤트 발생
   const onClick_top = (e) => {
-    recently_btn.current.className = "";
-    view_btn.current.className = "";
-    e.target.className = `${style.check}`;
+    switch (e.target.value) {
+      case "최신순":
+        setRecentlyViewOrder(true);
+        setBtn(true);
+        break;
+      case "조회순":
+        setRecentlyViewOrder(false);
+        setBtn(true);
+        break;
+      default:
+        break;
+    }
   };
-  // 하단 리스트 버튼을 클릭할 때 스타일 적용
-  const onClick_bottom = (e) => {
-    list1.current.className = "";
-    list2.current.className = "";
-    e.target.className = `${style.on}`;
+
+  // 페이지 목록 버튼
+  const [btn, setBtn] = useState(true);
+
+  //페이지 목록 버튼을 클릭시 이벤트 발생
+  const onClick = (e) => {
+    switch (e.target.value) {
+      case "1":
+        setBtn(true);
+        break;
+      case "2":
+        setBtn(false);
+        break;
+      default:
+        setBtn(!btn);
+        break;
+    }
   };
+
+  // 최신 날짜순으로 34종류 정렬
+  let recently_order = [];
+  allDataList
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .filter((food) => allDataList.indexOf(food) < 34)
+    .map((food) => recently_order.push(food));
+  // console.log(recently_order);
+
+  // 조회순으로 34종류 정렬
+  let view_order = [];
+  allDataList
+    .sort((a, b) => b.view - a.view)
+    .filter((food) => allDataList.indexOf(food) < 34)
+    .map((food) => view_order.push(food));
+  // console.log(view_order);
+
   return (
     <div>
       {/* 인기레시피 내용,사진 */}
@@ -40,177 +66,162 @@ function Page1() {
         <div className={style.content_in}>
           <div className={style.content_switch}>
             <div>
-              <p>
-                검색결과 <strong>{foodList.length}</strong>건 조회
-              </p>
-              <ul>
-                <li>
-                  <Link
-                    to="/issue/recentlyorder"
-                    className={style.check}
-                    ref={recently_btn}
-                    onClick={onClick_top}
-                  >
-                    최신순
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/issue/vieworder"
-                    ref={view_btn}
-                    onClick={onClick_top}
-                  >
-                    조회순
-                  </Link>
-                </li>
-              </ul>
+              {recentlyViewOrder === true ? (
+                <>
+                  <p>
+                    검색결과 <strong>{recently_order.length}</strong>건 조회
+                  </p>
+                  <ul>
+                    <li>
+                      <BsCheck />
+                      <input
+                        type="button"
+                        value="최신순"
+                        className={style.check}
+                        onClick={onClick_top}
+                      />
+                    </li>
+                    <li>
+                      <input
+                        type="button"
+                        value="조회순"
+                        onClick={onClick_top}
+                      />
+                    </li>
+                  </ul>
+                </>
+              ) : (
+                <>
+                  <p>
+                    검색결과 <strong>{view_order.length}</strong>건 조회
+                  </p>
+                  <ul>
+                    <li style={{ marginRight: "12px" }}>
+                      <input
+                        type="button"
+                        value="최신순"
+                        onClick={onClick_top}
+                      />
+                    </li>
+                    <li>
+                      <BsCheck />
+                      <input
+                        type="button"
+                        value="조회순"
+                        className={style.check}
+                        onClick={onClick_top}
+                      />
+                    </li>
+                  </ul>
+                </>
+              )}
             </div>
           </div>
           <ul>
-            {/* map 함수로 foodList에서 데이터 가져오기 */}
-            {foodList
-              .filter((food) => food.id < 21)
-              .map((food) => (
-                <li>
-                  <Food
-                    id={food.id}
-                    src={food.src}
-                    hash={food.hash}
-                    name={food.name}
-                  ></Food>
-                </li>
-              ))}
+            {/* 기준1. 조회순? 최신순? 따라서 렌더링*/}
+            {/* 기준2. 페이지 리스트에 따라서 렌더링*/}
+            {recentlyViewOrder === true
+              ? btn === true
+                ? recently_order
+                    .filter((food) => recently_order.indexOf(food) < 20)
+                    .map((food) => (
+                      <li>
+                        <Food
+                          id={food.id}
+                          src={food.src}
+                          hash={food.hash}
+                          name={food.name}
+                        ></Food>
+                      </li>
+                    ))
+                : recently_order
+                    .filter((food) => recently_order.indexOf(food) > 19)
+                    .map((food) => (
+                      <li>
+                        <Food
+                          id={food.id}
+                          src={food.src}
+                          hash={food.hash}
+                          name={food.name}
+                        ></Food>
+                      </li>
+                    ))
+              : btn === true
+              ? view_order
+                  .filter((food) => view_order.indexOf(food) < 20)
+                  .map((food) => (
+                    <li>
+                      <Food
+                        id={food.id}
+                        src={food.src}
+                        hash={food.hash}
+                        name={food.name}
+                      ></Food>
+                    </li>
+                  ))
+              : view_order
+                  .filter((food) => view_order.indexOf(food) > 19)
+                  .map((food) => (
+                    <li>
+                      <Food
+                        id={food.id}
+                        src={food.src}
+                        hash={food.hash}
+                        name={food.name}
+                      ></Food>
+                    </li>
+                  ))}
           </ul>
           {/* 하단 리스트 버튼 */}
           <div className={style.content_list}>
             <div>
-              <Link
-                to="/issue/recentlyorder"
-                className={style.on}
-                onClick={onClick_bottom}
-                ref={list1}
-              >
-                1
-              </Link>
-
-              <Link
-                to="/issue/recentlyorder2"
-                onClick={onClick_bottom}
-                ref={list2}
-              >
-                2
-              </Link>
-
-              <Link to="/issue/recentlyorder2" className={style.arrow_btn}>
-                <IoIosArrowForward />
-              </Link>
+              {/* 페이지의 번호에 따라 렌더링 */}
+              {btn === true ? (
+                <div>
+                  <input
+                    type="button"
+                    className={style.on}
+                    value="1"
+                    onClick={onClick}
+                  />
+                  <input type="button" value="2" onClick={onClick} />
+                  <label>
+                    <button
+                      type="button"
+                      onClick={onClick}
+                      className={style.arrow_btn}
+                    >
+                      <IoIosArrowForward />
+                    </button>
+                  </label>
+                </div>
+              ) : (
+                <div>
+                  <label>
+                    <button
+                      type="button"
+                      onClick={onClick}
+                      className={style.arrow_btn_back}
+                    >
+                      <IoIosArrowBack />
+                    </button>
+                  </label>
+                  <input type="button" value="1" onClick={onClick} />
+                  <input
+                    type="button"
+                    className={style.on}
+                    value="2"
+                    onClick={onClick}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
-      <div>
-        <Route path="/issue/recentlyorder2" component={Page2}></Route>
-      </div>
+      <div></div>
     </div>
   );
 }
 
-function Page2() {
-  // 상단 리스트 버튼 DOM
-  const recently_btn = useRef();
-  const view_btn = useRef();
-  // 하단 리스트 버튼 DOM
-  const list1 = useRef();
-  const list2 = useRef();
-
-  // 상단 리스트를 버튼을 클릭할 때 스타일 적용
-  const onClick_top = (e) => {
-    recently_btn.current.className = "";
-    view_btn.current.className = "";
-    e.target.className = `${style.check}`;
-  };
-  // 하단 리스트 버튼을 클릭할 때 스타일 적용
-  const onClick_bottom = (e) => {
-    list1.current.className = "";
-    list2.current.className = "";
-    e.target.className = `${style.on}`;
-  };
-  return (
-    <div>
-      {/* 인기레시피 내용,사진 */}
-      <div className={style.issue_content}>
-        <div className={style.content_in}>
-          <div className={style.content_switch}>
-            <div>
-              <p>
-                검색결과 <strong>{foodList.length}</strong>건 조회
-              </p>
-              <ul>
-                <li>
-                  <Link
-                    to="/issue/recentlyorder"
-                    className={style.check}
-                    ref={recently_btn}
-                    onClick={onClick_top}
-                  >
-                    최신순
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/issue/vieworder"
-                    ref={view_btn}
-                    onClick={onClick_top}
-                  >
-                    조회순
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <ul>
-            {/* map 함수로 foodList에서 데이터 가져오기 */}
-            {foodList
-              .filter((food) => food.id > 20)
-              .map((food) => (
-                <li>
-                  <Food
-                    id={food.id}
-                    src={food.src}
-                    hash={food.hash}
-                    name={food.name}
-                  ></Food>
-                </li>
-              ))}
-          </ul>
-          {/* 하단 리스트 버튼 */}
-          <div className={style.content_list}>
-            <div style={{ paddingRight: "2%" }}>
-              <Link to="/issue/recentlyorder" className={style.arrow_btn_back}>
-                <IoIosArrowBack />
-              </Link>
-              <Link
-                to="/issue/recentlyorder1"
-                onClick={onClick_bottom}
-                ref={list1}
-              >
-                1
-              </Link>
-
-              <Link
-                to="/issue/recentlyorder2"
-                className={style.on}
-                onClick={onClick_bottom}
-                ref={list2}
-              >
-                2
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export { RecentlyOrder, Page1, Page2 };
+export default RecentlyOrder;

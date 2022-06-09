@@ -1,11 +1,24 @@
-import React, { useRef } from "react";
+import React from "react";
 import style from "./issue.module.css";
-import { Route, Link } from "react-router-dom";
 import Footer from "../footer";
-import { RecentlyOrder, Page1, Page2 } from "./recentlyorder";
-import { ViewOrder, Page3, Page4 } from "./vieworder";
+import RecentlyOrder from "./recentlyorder";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function Issue() {
+  const history = useHistory();
+
+  const onClick = (e) => {
+    const btn_value = e.target.value;
+
+    const value = btn_value.replace("#", "");
+    // console.log(value);
+
+    history.push({
+      pathname: "/search",
+      state: { props: value },
+    });
+  };
+
   return (
     <div>
       <div className={style.issue}>
@@ -14,41 +27,34 @@ function Issue() {
             <h2 style={{ fontSize: "45px", color: "#333" }}>인기레시피</h2>
             <ul className={style.hash}>
               <li>
-                <Link to="">#카레</Link>
+                <input type="button" value="#카레" onClick={onClick} />
               </li>
               <li>
-                <Link to="">#마요네스</Link>
+                <input type="button" value="#마요네스" onClick={onClick} />
               </li>
               <li>
-                <Link to="">#분식</Link>
+                <input type="button" value="#분식" onClick={onClick} />
               </li>
               <li>
-                <Link to="">#브런치</Link>
+                <input type="button" value="#브런치" onClick={onClick} />
               </li>
               <li>
-                <Link to="">#집밥</Link>
+                <input type="button" value="#집밥" onClick={onClick} />
               </li>
               <li>
-                <Link to="">#치즈듬뿍</Link>
+                <input type="button" value="#치즈듬뿍" onClick={onClick} />
               </li>
               <li>
-                <Link to="">#캠핑</Link>
+                <input type="button" value="#캠핑" onClick={onClick} />
               </li>
               <li>
-                <Link to="">#간단 꿀조합</Link>
+                <input type="button" value="#간단 꿀조합" onClick={onClick} />
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div>
-        <Route path="/issue/recentlyorder" component={RecentlyOrder}></Route>
-        <Route path="/issue/vieworder" component={ViewOrder}></Route>
-        <Route path="/issue/recentlyorder1" component={Page1}></Route>
-        <Route path="/issue/recentlyorder2" component={Page2}></Route>
-        <Route path="/issue/vieworder1" component={Page3}></Route>
-        <Route path="/issue/vieworder2" component={Page4}></Route>
-      </div>
+      <RecentlyOrder />
       <Footer></Footer>
     </div>
   );

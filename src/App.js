@@ -32,6 +32,19 @@ function App() {
     inputRef.current.value = "";
   });
 
+  // 해쉬태그 클릭시 해당 내용을 /search 로 전송
+  const onClick = (e) => {
+    const btn_value = e.target.value;
+
+    const value = btn_value.replace("#", "");
+    // console.log(value);
+
+    history.push({
+      pathname: "/search",
+      state: { props: value },
+    });
+  };
+
   return (
     <div>
       {/* 헤더*/}
@@ -65,10 +78,10 @@ function App() {
               <div className="hash">
                 <ul>
                   <li>
-                    <Link to="/ramen">#라면맛집</Link>
+                    <input type="button" value="#라면맛집" onClick={onClick} />
                   </li>
                   <li>
-                    <Link to="/xo">#XO만두</Link>
+                    <input type="button" value="#XO만두" onClick={onClick} />
                   </li>
                 </ul>
               </div>
@@ -93,7 +106,7 @@ function App() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/issue/recentlyorder">인기 레시피</Link>
+                  <Link to="/issue">인기 레시피</Link>
                 </li>
                 <li style={{ marginRight: "3%" }}>
                   <Link

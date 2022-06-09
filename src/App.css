@@ -95,10 +95,13 @@ input::placeholder {
 .header_in_top .search .hash ul li {
   margin-left: 10%;
 }
-.header_in_top .search .hash ul li a {
+.header_in_top .search .hash ul li input {
+  border: 0;
+  background: transparent;
   color: #fff;
   font-size: 20px;
   font-weight: 600;
+  cursor: pointer;
 }
 .header_in_top .search .hash ul li a:hover {
   text-decoration: underline;
