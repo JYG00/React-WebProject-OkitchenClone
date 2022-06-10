@@ -10,9 +10,11 @@ function Search() {
   // History로 보낸 객체를 props에 받습니다
   const location = useLocation();
   const [props, setProps] = useState("");
+  const [CloneProps, setCloneProps] = useState("");
 
   useEffect(() => {
     setProps(location.state.props);
+    setCloneProps(location.state.props);
     console.log(props);
   }, [location]);
 
@@ -22,6 +24,7 @@ function Search() {
     // 버튼 앞에 #을 공백으로 대체
     const value = s_value.replace("#", "");
     setProps(value);
+    setCloneProps(value);
   };
 
   // 검색결과가 있는지 없는지 확인
@@ -60,16 +63,29 @@ function Search() {
   allDataList
     .sort((a, b) => b.view - a.view)
     .filter((food) => food.hash.toString().includes(props))
-    .map((food) => view_order.push(food));
+    .map((food) => view_order.push(food));    
 
-  const placeholderStr = `${props}`;
+
+    // 두번째 검색란 input 객체
+    const inputRef = useRef();
+    
+    const onChange = (e) => {
+      setCloneProps(e.target.value);
+    }
+
+    const onSubmit = (e) => {
+      e.preventDefault();
+      setProps(inputRef.current.value);
+    }
 
   return (
     <div>
       <div className={style.issue}>
         <div className={style.issue_bar}>
           <div>
-            <input type="text" placeholder={placeholderStr} />
+            <form onSubmit={onSubmit}>
+            <input type="text" value={CloneProps} onChange={onChange} ref={inputRef}/>
+            </form>
             <h2>{props} 에 대한 검색결과</h2>
             <ul className={style.hash}>
               <li>
