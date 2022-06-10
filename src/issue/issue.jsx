@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./issue.module.css";
 import Footer from "../footer";
-import RecentlyOrder from "./recentlyorder";
+import IssuePage from "./issuePage";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function Issue() {
@@ -54,7 +54,7 @@ function Issue() {
           </div>
         </div>
       </div>
-      <RecentlyOrder />
+      <IssuePage />
       <Footer></Footer>
     </div>
   );

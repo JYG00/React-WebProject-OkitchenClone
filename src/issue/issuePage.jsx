@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import style from "./recentlyorder.module.css";
+import style from "./issuePage.module.css";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { BsCheck } from "react-icons/bs";
 import allDataList from "../search/allDataList";
 import Food from "./food";
 
-function RecentlyOrder() {
+function IssuePage() {
   // 최신순, 조회순 버튼에 따라서 해당 내용 출력
   const [recentlyViewOrder, setRecentlyViewOrder] = useState(true);
 
@@ -43,19 +43,19 @@ function RecentlyOrder() {
     }
   };
 
-  // 최신 날짜순으로 34종류 정렬
+  // 최신 날짜순으로 인기 종목 34종류 정렬
   let recently_order = [];
   allDataList
     .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .filter((food) => allDataList.indexOf(food) < 34)
+    .filter((food) => food.view > 300)
     .map((food) => recently_order.push(food));
   // console.log(recently_order);
 
-  // 조회순으로 34종류 정렬
+  // 조회순으로 인기 종목 34종류 정렬
   let view_order = [];
   allDataList
     .sort((a, b) => b.view - a.view)
-    .filter((food) => allDataList.indexOf(food) < 34)
+    .filter((food) => food.view > 300)
     .map((food) => view_order.push(food));
   // console.log(view_order);
 
@@ -219,9 +219,8 @@ function RecentlyOrder() {
           </div>
         </div>
       </div>
-      <div></div>
     </div>
   );
 }
 
-export default RecentlyOrder;
+export default IssuePage;

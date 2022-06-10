@@ -1,10 +1,17 @@
 import React from "react";
 import style from "./new.module.css";
+import allDataList from "../search/allDataList";
 import Footer from "../footer";
-import foodList from "./foodList";
 import Food from "./food.jsx";
 
 function Tip() {
+  // 날짜순으로 15개 정렬
+  let recently_order = [];
+  allDataList
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .filter((food) => allDataList.indexOf(food) < 15)
+    .map((food) => recently_order.push(food));
+
   return (
     <div>
       <div className={style.new}>
@@ -15,7 +22,7 @@ function Tip() {
         {/* 신규레시피 내용,사진 */}
         <div className={style.content}>
           <ul className={style.content_in}>
-            {foodList.map((food) => (
+            {recently_order.map((food) => (
               <li>
                 <Food
                   id={food.id}

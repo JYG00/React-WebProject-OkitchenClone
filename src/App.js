@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
-import { Route, Link } from "react-router-dom";
+import React, { useRef } from "react";
+import { Route, Link, useHistory } from "react-router-dom";
 // yarn add react-router-dom@5
 import "./App.css";
 import Main from "./main";
@@ -11,18 +11,15 @@ import { RiShoppingBasket2Line, RiFileCopyFill } from "react-icons/ri";
 import logo from "./img/logo.png";
 import top_sch from "./img/top_sch.png";
 import Search from "./search/search";
-import { useHistory } from "react-router-dom";
 
 function App() {
-  const [state, setState] = useState({ isTrue: false, sch_content: "없음" });
-  // input 객체
+  // input 객체 (검색창)
   const inputRef = useRef();
-  const formRef = useRef();
 
   const history = useHistory();
 
   // form 태그 내용을 받아서 state 에 저장
-  const onSubmit = useCallback((e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     // setState({ isTrue: true, sch_content: inputRef.current.value });
     history.push({
@@ -30,13 +27,24 @@ function App() {
       state: { props: inputRef.current.value },
     });
     inputRef.current.value = "";
-  });
+  };
 
   // 해쉬태그 클릭시 해당 내용을 /search 로 전송
   const onClick = (e) => {
     const btn_value = e.target.value;
+    let value = "";
 
-    const value = btn_value.replace("#", "");
+    switch (btn_value) {
+      case "#라면맛집":
+        value = "라면";
+        break;
+      case "#XO만두":
+        value = "만두";
+        break;
+      default:
+        break;
+    }
+
     // console.log(value);
 
     history.push({
@@ -60,7 +68,7 @@ function App() {
             {/* 서치 */}
             <div className="search">
               <div className="search_bar">
-                <form onSubmit={onSubmit} ref={formRef}>
+                <form onSubmit={onSubmit}>
                   <input
                     type="text"
                     maxLength="30"
