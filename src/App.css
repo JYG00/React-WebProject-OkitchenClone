@@ -124,7 +124,7 @@ input::placeholder {
   padding-top: 3%;
   margin-right: 1%;
 }
-.header_in_bottom .nav ul li {
+.header_in_bottom .nav > ul > li {
   float: left;
   margin-right: 5%;
   padding-top: 3.5%;
@@ -139,6 +139,58 @@ input::placeholder {
 .header_in_bottom .nav ul li a:hover {
   color: #f64646;
 }
+/* 카테고리 마우스 커서 올렸을때 */
+.ctg_hover {
+  position: absolute;
+  margin: 14px -40px;
+  /* display: none; */
+  width: 360px;
+  height: 450px;
+  /* display: flex; */
+  box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
+}
+.ctg_hover .ctg_list {
+  display: flex;
+  width: 360px;
+  height: 400px;
+  background-color: #bf132b;
+}
+/* 테마별 */
+.ctg_list > .theme {
+  width: 150px;
+  height: 450px;
+  background-color: #fff;
+}
+.theme li {
+  font-size: 20px;
+  color: #454545;
+  font-weight: bold;
+  padding: 8px 20px;
+}
+.theme li:first-child {
+  margin-top: 20px;
+}
+/* 검색태그 */
+.ctg_list > .hash_sch {
+  width: 230px;
+  height: 450px;
+  background-color: gray;
+}
+.hash_sch li {
+  font-size: 20px;
+  color: #454545;
+  font-weight: bold;
+  padding: 8px 20px;
+}
+.hash_sch li:first-child {
+  margin-top: 20px;
+}
+.ctg_all {
+  font-size: 14px;
+  color: #666;
+  font-weight: bold;
+}
+
 .header_in_bottom .nav2 {
   width: 750px;
   height: 65px;

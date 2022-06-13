@@ -112,6 +112,30 @@ function App() {
                   >
                     카테고리
                   </Link>
+                  {/* 카테고리에 마우스를 올렸을때 */}
+                  <div className="ctg_hover">
+                    <div className="ctg_list">
+                      <ul className="theme">
+                        <li>종류</li>
+                        <li>재료</li>
+                        <li>방법</li>
+                        <li>테마</li>
+                        <li>기념일</li>
+                        <li>도구</li>
+                      </ul>
+                      <ul className="hash_sch">
+                        <li>#카레</li>
+                        <li>#마요네스</li>
+                        <li>#분식</li>
+                        <li>#브런치</li>
+                        <li>#집밥</li>
+                        <li>#치즈듬뿍</li>
+                        <li>#캠핑</li>
+                        <li>#간단꿀조합</li>
+                      </ul>
+                    </div>
+                    <div className="ctg_all">카테고리 전체보기</div>
+                  </div>
                 </li>
                 <li>
                   <Link to="/issue">인기 레시피</Link>

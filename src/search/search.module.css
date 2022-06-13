@@ -7,13 +7,32 @@
 .issue_bar {
   width: 100%;
   height: 280px;
-  background-color: gray;
+  background-color: #f3f3f3;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
-
+.second_sch {
+  display: flex;
+  width: 740px;
+  height: 70px;
+  justify-content: flex-end;
+}
+.second_sch > input {
+  width: 600px;
+  background: transparent;
+  font-size: 28px;
+  color: #333;
+  font-weight: bolder;
+  border: 0;
+  border-bottom: 2px solid #888;
+  padding-left: 3%;
+}
+.second_sch > button {
+  border: 0;
+  cursor: pointer;
+}
 .hash {
   padding-top: 4%;
 }
@@ -29,6 +48,7 @@
   align-items: center;
   padding: 0 15px 0 15px;
   margin-right: 10px;
+  margin-bottom: 8px;
 }
 .hash li:hover {
   background-color: #f64646;
@@ -49,11 +69,7 @@
   background-color: #f64646;
   color: #fff;
 }
-.hash li a {
-  font-size: 20px;
-  color: #666;
-  font-weight: 500;
-}
+/* 검색내용 */
 .content {
   width: 100%;
   height: auto;
@@ -63,11 +79,35 @@
   align-items: center;
 }
 .content_in {
-  padding-top: 2%;
+  /* padding-top: 2%; */
   width: 1340px;
   height: auto;
   background-color: wheat;
 }
+.sch_result {
+  width: 1340px;
+  height: 117px;
+  background-color: pink;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.sch_result h2::before {
+  display: inline-block;
+  content: "";
+  width: 1340px;
+  border-top: 2px solid #f64646;
+  padding-bottom: 3%;
+}
+.sch_result h2 {
+  text-align: center;
+  font-size: 30px;
+  color: #f64646;
+}
+.sch_result span {
+  color: #333;
+}
+
 .content_in > ul > div {
   float: left;
   width: 305px;
@@ -121,9 +161,26 @@
   height: auto;
   background-color: rgb(247, 145, 20);
 }
-
+/* 검색결과가 없을 경우 */
 .none {
   width: 1340px;
-  height: 500px;
+  height: 350px;
   background-color: #c1c1c1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.none > div {
+  padding-top: 2%;
+  text-align: center;
+}
+.none img {
+  width: 88px;
+  height: 69px;
+  background: transparent;
+}
+.none p {
+  padding-top: 7%;
+  font-size: 18px;
+  color: #333;
 }

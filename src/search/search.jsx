@@ -5,6 +5,8 @@ import allDataList from "./allDataList";
 import Food from "./food";
 import { useLocation } from "react-router";
 import { BsCheck } from "react-icons/bs";
+import sch_btn from "../img/sch_btn.png";
+import item_no from "../img/item_no.gif";
 
 function Search() {
   // History로 보낸 객체를 props에 받습니다
@@ -63,30 +65,36 @@ function Search() {
   allDataList
     .sort((a, b) => b.view - a.view)
     .filter((food) => food.hash.toString().includes(props))
-    .map((food) => view_order.push(food));    
+    .map((food) => view_order.push(food));
 
+  // 두번째 검색란 input 객체
+  const inputRef = useRef();
 
-    // 두번째 검색란 input 객체
-    const inputRef = useRef();
-    
-    const onChange = (e) => {
-      setCloneProps(e.target.value);
-    }
+  const onChange = (e) => {
+    setCloneProps(e.target.value);
+  };
 
-    const onSubmit = (e) => {
-      e.preventDefault();
-      setProps(inputRef.current.value);
-    }
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setProps(inputRef.current.value);
+  };
 
   return (
     <div>
       <div className={style.issue}>
         <div className={style.issue_bar}>
           <div>
-            <form onSubmit={onSubmit}>
-            <input type="text" value={CloneProps} onChange={onChange} ref={inputRef}/>
+            <form onSubmit={onSubmit} className={style.second_sch}>
+              <input
+                type="text"
+                value={CloneProps}
+                onChange={onChange}
+                ref={inputRef}
+              />
+              <button type="submit">
+                <img src={sch_btn} alt="검색 버튼" />
+              </button>
             </form>
-            <h2>{props} 에 대한 검색결과</h2>
             <ul className={style.hash}>
               <li>
                 <input type="button" value="#카레" onClick={onClick} />
@@ -118,6 +126,11 @@ function Search() {
       </div>
       <div className={style.content}>
         <div className={style.content_in}>
+          <div className={style.sch_result}>
+            <h2>
+              {props} <span>검색결과</span>
+            </h2>
+          </div>
           <div className={style.content_switch}>
             <div>
               {recentlyViewOrder === true ? (
@@ -199,7 +212,10 @@ function Search() {
           {}
           {result.length === 0 && (
             <div className={style.none}>
-              <h2>일치하는 검색 결과가 없습니다</h2>
+              <div>
+                <img src={item_no} alt="검색결과가 없습니다" />
+                <p>검색결과가 없습니다</p>
+              </div>
             </div>
           )}
         </div>
