@@ -2,13 +2,13 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 170px;
-  background-color: #bf132b;
+  height: 105px;
+  background: linear-gradient(to right, #bf132b, #f64646);
 }
 .header_in {
   width: 1350px;
   height: 170px;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
 }
 /* 헤더상단 */
 .header_in_top {
@@ -16,12 +16,12 @@
   align-items: center;
   width: 1350px;
   height: 105px;
-  background-color: coral;
+  /* background-color: coral; */
 }
 .header_in_top .logo {
   width: 240px;
   height: 105px;
-  background-color: #bf132b;
+  background:transparent;
   display: flex;
   align-items: center;
 }
@@ -33,14 +33,14 @@
 .header_in_top .search {
   width: 1110px;
   height: 105px;
-  background-color: chartreuse;
+  /* background-color: chartreuse; */
   display: flex;
   align-items: flex-end;
 }
 .header_in_top .search_bar {
   width: 860px;
   height: 66px;
-  background-color: chocolate;
+  /* background-color: chocolate; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,14 +80,14 @@ input::placeholder {
 .header_in_top .search .hash {
   width: 250px;
   height: 105px;
-  background-color: aqua;
+  /* background-color: aqua; */
   display: flex;
   align-items: center;
 }
 .header_in_top .search .hash ul {
   width: 250px;
   height: 66px;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -107,16 +107,24 @@ input::placeholder {
   text-decoration: underline;
 }
 /* 헤더하단 */
-.header_in_bottom {
+.header_b{
   display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 65px;
+  background-color: #fff;
+}
+.header_in_bottom {
   width: 1350px;
   height: 65px;
-  background-color: orange;
+  display: flex;
+  /* background-color: orange; */
+  background-color: #fff;
 }
 .header_in_bottom .nav {
   width: 600px;
   height: 65px;
-  background-color: blue;
+  /* background-color: blue; */
 }
 .header_in_bottom .nav ul {
 }
@@ -128,6 +136,7 @@ input::placeholder {
   float: left;
   margin-right: 5%;
   padding-top: 3.5%;
+  padding-bottom: 3.5%;
 }
 .header_in_bottom .nav ul li a {
   font-weight: bold;
@@ -140,68 +149,104 @@ input::placeholder {
   color: #f64646;
 }
 /* 카테고리 마우스 커서 올렸을때 */
+.header_in_bottom .nav ul li:nth-child(2):hover > .ctg_hover{
+  display: block;
+}
 .ctg_hover {
   position: absolute;
   margin: 14px -40px;
-  /* display: none; */
+  display: none;
   width: 360px;
-  height: 450px;
-  /* display: flex; */
+  height: 470px;
   box-shadow: 0 6px 12px rgb(0 0 0 / 18%);
 }
 .ctg_hover .ctg_list {
   display: flex;
   width: 360px;
   height: 400px;
-  background-color: #bf132b;
+  /* background-color: #bf132b; */
 }
-/* 테마별 */
+/* 카테고리 테마별 */
 .ctg_list > .theme {
   width: 150px;
-  height: 450px;
+  height: 470px;
   background-color: #fff;
 }
+.theme::after{
+  position: relative;
+  top: -265px;
+  display: block;
+  content: "";
+  height: 340px;
+  border-right: 1px solid #888;
+}
 .theme li {
-  font-size: 20px;
-  color: #454545;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  font-size: 17px;
+  width: 50px;
+  color: #888;
   font-weight: bold;
-  padding: 8px 20px;
+  margin: 0px 0px 15px 40px;
+  padding: 2px;
+}
+.theme li:hover{
+  background-color: rgb(235, 235, 235);
 }
 .theme li:first-child {
-  margin-top: 20px;
+  margin-top: 40px;
 }
-/* 검색태그 */
+/* 카테고리 검색태그 */
 .ctg_list > .hash_sch {
   width: 230px;
-  height: 450px;
-  background-color: gray;
+  height: 470px;
+  background-color: #fff;
 }
 .hash_sch li {
-  font-size: 20px;
-  color: #454545;
+  cursor: pointer;
+  font-size: 17px;
+  color: #888;
   font-weight: bold;
-  padding: 8px 20px;
+  width: 100px;
+  margin: 0px 0px 15px 40px;
+  padding: 2px;
+}
+.hash_sch li:hover{
+  background-color: rgb(235, 235, 235);
 }
 .hash_sch li:first-child {
-  margin-top: 20px;
+  margin-top: 40px;
 }
-.ctg_all {
+.ctg_all a{
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  padding-left: 10%;
+  display: flex;
+  
+  align-items: center;
+  height: 30px;
+}
+.ctg_all a:hover > span{
+  color: #f64646;
+}
+.ctg_all span{
   font-size: 14px;
-  color: #666;
-  font-weight: bold;
 }
+
 
 .header_in_bottom .nav2 {
   width: 750px;
   height: 65px;
-  background-color: skyblue;
+  /* background-color: skyblue; */
   display: flex;
   justify-content: flex-end;
 }
 .header_in_bottom .nav2 ul {
   width: 350px;
   height: 65px;
-  background-color: pink;
+  /* background-color: pink; */
   display: flex;
   justify-content: flex-end;
   align-items: center;
