@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React-WebProject-okitchenClone-block/static/css/main.39fa61d4.css",
-    "main.js": "/React-WebProject-okitchenClone-block/static/js/main.1d7c4d1c.js",
+    "main.css": "/React-WebProject-okitchenClone-block/static/css/main.0725de0c.css",
+    "main.js": "/React-WebProject-okitchenClone-block/static/js/main.c702102f.js",
     "static/js/787.24866016.chunk.js": "/React-WebProject-okitchenClone-block/static/js/787.24866016.chunk.js",
     "static/media/초콜릿피자.jpg": "/React-WebProject-okitchenClone-block/static/media/초콜릿피자.33f9d83ee30b334a0649.jpg",
     "static/media/단호박시나몬그라탕.jpg": "/React-WebProject-okitchenClone-block/static/media/단호박시나몬그라탕.ade8b3ec23ee000846ae.jpg",
@@ -68,6 +68,7 @@
     "static/media/진저라떼.jpg": "/React-WebProject-okitchenClone-block/static/media/진저라떼.f15b0ea4ca3f0faf6188.jpg",
     "static/media/흑임자 크림스프.jpg": "/React-WebProject-okitchenClone-block/static/media/흑임자 크림스프.be6d9cccd1b1831c1ac5.jpg",
     "static/media/tip02.jpg": "/React-WebProject-okitchenClone-block/static/media/tip02.de59a1074c7e8b1f7a15.jpg",
+    "static/media/ctg_icon.png": "/React-WebProject-okitchenClone-block/static/media/ctg_icon.493caa3ceb0e8415275b.png",
     "static/media/tip01.jpg": "/React-WebProject-okitchenClone-block/static/media/tip01.b113f462c052953dcd00.jpg",
     "static/media/tip04.jpg": "/React-WebProject-okitchenClone-block/static/media/tip04.89857b4f250d8424384c.jpg",
     "static/media/돼지고기.jpg": "/React-WebProject-okitchenClone-block/static/media/돼지고기.4f3ad4f0199bfb3f83ce.jpg",
@@ -80,12 +81,12 @@
     "static/media/양파.jpg": "/React-WebProject-okitchenClone-block/static/media/양파.af76079f58623b3ca284.jpg",
     "static/media/애호박.jpg": "/React-WebProject-okitchenClone-block/static/media/애호박.92491fe08f46b85f2037.jpg",
     "index.html": "/React-WebProject-okitchenClone-block/index.html",
-    "main.39fa61d4.css.map": "/React-WebProject-okitchenClone-block/static/css/main.39fa61d4.css.map",
-    "main.1d7c4d1c.js.map": "/React-WebProject-okitchenClone-block/static/js/main.1d7c4d1c.js.map",
+    "main.0725de0c.css.map": "/React-WebProject-okitchenClone-block/static/css/main.0725de0c.css.map",
+    "main.c702102f.js.map": "/React-WebProject-okitchenClone-block/static/js/main.c702102f.js.map",
     "787.24866016.chunk.js.map": "/React-WebProject-okitchenClone-block/static/js/787.24866016.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.39fa61d4.css",
-    "static/js/main.1d7c4d1c.js"
+    "static/css/main.0725de0c.css",
+    "static/js/main.c702102f.js"
   ]
 }
