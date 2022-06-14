@@ -188,7 +188,7 @@ function App() {
             <ul>
               <li>
                 <a href="/" target="_blank">
-                  <div style={{ fontSize: "25px" }}>
+                  <div>
                     <RiShoppingBasket2Line />
                   </div>
                   <div>

@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    min-width: 530px;
   }
   .ctg_bar h2{
     padding: 20px;

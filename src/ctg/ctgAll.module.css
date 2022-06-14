@@ -7,7 +7,7 @@
 .content{
     width: 1350px;
     height: 900px;
-    background-color: aqua;
+    background-color: #fff;
 }
 
 .ctg_list{
@@ -26,11 +26,25 @@
     background-color: white;
     display: flex;
     align-items: center;
+    padding-bottom: 20px;
 }
 .ctg_list ul li{
-    width: 100px;
-    height: 100px;
+    width: 98px;
+    height: 98px;
     background-color: bisque;
     border-radius: 50px;
     margin-right: 93px;
+}
+.ctg_list ul li a{
+    background-position-y: top;
+}   
+.ctg_list ul li .active{
+    background-position-y: bottom;
+}
+.ctg_list ul li span{
+    display: block;
+    position: relative;
+    width: 98px;
+    text-align: center;
+    top: 10px;
 }
