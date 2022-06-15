@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React-WebProject-okitchenClone-block/static/css/main.0725de0c.css",
-    "main.js": "/React-WebProject-okitchenClone-block/static/js/main.c702102f.js",
+    "main.css": "/React-WebProject-okitchenClone-block/static/css/main.288a3c69.css",
+    "main.js": "/React-WebProject-okitchenClone-block/static/js/main.0f95fdc9.js",
     "static/js/787.24866016.chunk.js": "/React-WebProject-okitchenClone-block/static/js/787.24866016.chunk.js",
     "static/media/초콜릿피자.jpg": "/React-WebProject-okitchenClone-block/static/media/초콜릿피자.33f9d83ee30b334a0649.jpg",
     "static/media/단호박시나몬그라탕.jpg": "/React-WebProject-okitchenClone-block/static/media/단호박시나몬그라탕.ade8b3ec23ee000846ae.jpg",
@@ -81,12 +81,12 @@
     "static/media/양파.jpg": "/React-WebProject-okitchenClone-block/static/media/양파.af76079f58623b3ca284.jpg",
     "static/media/애호박.jpg": "/React-WebProject-okitchenClone-block/static/media/애호박.92491fe08f46b85f2037.jpg",
     "index.html": "/React-WebProject-okitchenClone-block/index.html",
-    "main.0725de0c.css.map": "/React-WebProject-okitchenClone-block/static/css/main.0725de0c.css.map",
-    "main.c702102f.js.map": "/React-WebProject-okitchenClone-block/static/js/main.c702102f.js.map",
+    "main.288a3c69.css.map": "/React-WebProject-okitchenClone-block/static/css/main.288a3c69.css.map",
+    "main.0f95fdc9.js.map": "/React-WebProject-okitchenClone-block/static/js/main.0f95fdc9.js.map",
     "787.24866016.chunk.js.map": "/React-WebProject-okitchenClone-block/static/js/787.24866016.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0725de0c.css",
-    "static/js/main.c702102f.js"
+    "static/css/main.288a3c69.css",
+    "static/js/main.0f95fdc9.js"
   ]
 }
