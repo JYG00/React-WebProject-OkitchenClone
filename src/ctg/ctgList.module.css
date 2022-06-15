@@ -1,0 +1,53 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 1350px;
+  height: auto;
+  background-color: #fff;
+}
+
+.ctg_list {
+  width: 1350px;
+  height: 200px;
+  background-color: pink;
+  display: flex;
+  align-items: center;
+}
+.ctg_list ul {
+  display: flex;
+  padding-left: 3%;
+  overflow: hidden;
+  width: 1350px;
+  height: 140px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.ctg_list ul li {
+  width: 98px;
+  height: 98px;
+  background-color: bisque;
+  border-radius: 50px;
+  margin-right: 93px;
+}
+.ctg_list ul li a {
+  background-position-y: top;
+}
+.ctg_list ul li a:hover {
+  background-position-y: bottom;
+}
+.ctg_list ul li .active {
+  background-position-y: bottom;
+}
+.ctg_list ul li span {
+  display: block;
+  position: relative;
+  width: 98px;
+  text-align: center;
+  top: 10px;
+}

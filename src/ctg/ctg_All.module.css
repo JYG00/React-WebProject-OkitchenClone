@@ -1,57 +1,58 @@
-.container{
-    display: flex;
-    justify-content: center;
-    width: 100%;
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
 }
 
-.container table{
-    width: 1300px;
-    height: 450px;
-    border-top: 2px solid #f64646;
-    border-spacing: 0px;
-    
+.container table {
+  width: 1300px;
+  height: auto;
+  border-top: 2px solid #f64646;
+  border-spacing: 0px;
 }
-.container table tr{
-    width: 1350px;
-    height: 70px;
-    /* background-color: white; */
+.container table tr {
+  width: 1350px;
+  height: 70px;
+  /* background-color: white; */
 }
-.container table th{
-    font-size: 19px;
-    color: #666;
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #bbbbbb;
-    width: 140px;
-    height: 70px;
-    /* background-color: rgb(212, 140, 140); */
+.container table th {
+  font-size: 19px;
+  color: #666;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #bbbbbb;
+  width: 140px;
+  height: 70px;
+  /* background-color: rgb(212, 140, 140); */
 }
-.container table td{
-    padding: 10px 10px;
-    width: 1210px;
-    border-bottom: 1px solid #bbbbbb;
-    height: 70px;
-    /* background-color: burlywood; */
+.container table td {
+  padding: 10px 10px;
+  width: 1210px;
+  border-bottom: 1px solid #bbbbbb;
+  height: 70px;
+  /* background-color: burlywood; */
 }
-.container table td a{
-    font-size: 19px;
-    color: #666;
-    font-weight: 500;
-    
+.container table td button {
+  font-size: 19px;
+  color: #666;
+  font-weight: 500;
+  border: 0;
+  background: transparent;
 }
-.container table td a:hover{
-    color: #f64646;
+.container table td button:hover {
+  color: #f64646;
 }
 
-.container table td a::after{
-    border-right: 1px solid #888;
-    margin: 0 20px;
-    height: 20px;
-    content: '';
+.container table td button::after {
+  border-right: 1px solid #888;
+  margin: 0 20px;
+  height: 20px;
+  content: "";
 }
-.container table td a:last-child::after{
-    display: none;
+.container table td button:last-child::after {
+  display: none;
 }
-.container table tr:nth-child(4){
-    width: 1350px;
-    height: 100px;
+.container table tr:nth-child(4) {
+  width: 1350px;
+  height: 100px;
 }

@@ -8,7 +8,6 @@ import New from "./new/new";
 import Issue from "./issue/issue";
 import Search from "./search/search";
 import Ctg from "./ctg/ctg";
-import { CgMenuRound } from "react-icons/cg";
 import { RiShoppingBasket2Line, RiFileCopyFill } from "react-icons/ri";
 import logo from "./img/logo.png";
 import top_sch from "./img/top_sch.png";
@@ -54,6 +53,17 @@ function App() {
       pathname: "/search",
       state: { props: value },
     });
+  };
+
+  // 카테고리 리스트 클릭시
+  const onClickCtg = (e) => {
+    console.log(e.currentTarget.id);
+    const type = e.currentTarget.id;
+    history.push({
+      pathname: "/ctg",
+      state: { type: type },
+    });
+    console.log("app.js" + type);
   };
 
   return (
@@ -154,11 +164,9 @@ function App() {
                       <li>#간단꿀조합</li>
                     </ul>
                   </div>
-                  <div className="ctg_all">
-                    <Link to="/ctg/all">
-                      <HiPlusCircle style={{ color: "#f64646" }} />
-                      <span>카테고리 전체보기</span>
-                    </Link>
+                  <div className="ctg_all" onClick={onClickCtg} id="all">
+                    <HiPlusCircle style={{ color: "#f64646" }} />
+                    <span>카테고리 전체보기</span>
                   </div>
                 </div>
               </li>
