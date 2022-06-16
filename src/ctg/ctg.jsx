@@ -14,15 +14,20 @@ export default function Ctg() {
 
   const [props, setProps] = useState("");
 
+  const set = (param) => {
+    setProps(param);
+  };
+
   useEffect(() => {
-    console.log("hello");
-    setProps(location.state.type);
-    console.log("ctg.jsx" + props);
+    console.log("props:" + props);
+  }, [set]);
+
+  useEffect(() => {
+    set(location.state.type);
   }, [location]);
 
   const onClick = (e) => {
     const btn_value = e.target.value;
-
     const value = btn_value.replace("#", "");
     // console.log(value);
 

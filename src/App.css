@@ -66,9 +66,9 @@
 input::placeholder {
   font-size: 22px;
   font-weight: 500;
-  letter-spacing: -1.0px;
+  letter-spacing: -1px;
   color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 .header_in_top .search_bar label {
   width: 37px;
@@ -225,21 +225,22 @@ input::placeholder {
 .hash_sch li:first-child {
   margin-top: 40px;
 }
-.ctg_all a {
+.ctg_all {
   position: relative;
   z-index: 2;
   cursor: pointer;
   padding-left: 10%;
   display: flex;
-
   align-items: center;
   height: 30px;
 }
-.ctg_all a:hover > span {
+.ctg_all:hover > span {
   color: #f64646;
 }
 .ctg_all span {
   font-size: 14px;
+  font-weight: 600;
+  color: #777;
 }
 
 .header_in_bottom .nav2 {
@@ -257,7 +258,7 @@ input::placeholder {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-} 
+}
 .header_in_bottom .nav2 ul li {
   width: 150px;
   height: 30px;

@@ -5,9 +5,19 @@ import { Route, Link } from "react-router-dom";
 // yarn add react-icons;
 import { FaFacebookF } from "react-icons/fa";
 import { BsInstagram, BsYoutube } from "react-icons/bs";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 function Footer() {
-  const ref = useRef();
+  const history = useHistory();
 
+  // 카테고리 리스트 클릭시
+  const onClickChef = (e) => {
+    console.log(e.currentTarget.id);
+    const type = e.currentTarget.id;
+    history.push({
+      pathname: "/ctg",
+      state: { type: type },
+    });
+  };
   return (
     <div className={style.footer}>
       <div>
@@ -18,7 +28,9 @@ function Footer() {
               <Link to="/issue">인기 레시피</Link>
             </li>
             <li>
-              <Link to="/chef">셰프의 팁</Link>
+              <button onClick={onClickChef} id="theme">
+                셰프의 팁
+              </button>
             </li>
             <li>
               <Link to="/new">신규 레시피</Link>

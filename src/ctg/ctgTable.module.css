@@ -33,6 +33,7 @@
   /* background-color: burlywood; */
 }
 .container table td button {
+  margin: 5px 0;
   font-size: 19px;
   color: #666;
   font-weight: 500;

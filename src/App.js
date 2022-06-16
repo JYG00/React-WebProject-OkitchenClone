@@ -33,7 +33,7 @@ function App() {
 
   // 해쉬태그 클릭시 해당 내용을 /search 로 전송
   const onClick = (e) => {
-    const btn_value = e.target.value;
+    let btn_value = e.target.value;
     let value = "";
 
     switch (btn_value) {
@@ -44,6 +44,7 @@ function App() {
         value = "만두";
         break;
       default:
+        value = e.currentTarget.getAttribute("value");
         break;
     }
 
@@ -63,7 +64,6 @@ function App() {
       pathname: "/ctg",
       state: { type: type },
     });
-    console.log("app.js" + type);
   };
 
   return (
@@ -146,22 +146,50 @@ function App() {
                 <div className="ctg_hover">
                   <div className="ctg_list">
                     <ul className="theme">
-                      <li>종류</li>
-                      <li>재료</li>
-                      <li>방법</li>
-                      <li>테마</li>
-                      <li>기념일</li>
-                      <li>도구</li>
+                      <li onClick={onClickCtg} id="kind">
+                        종류
+                      </li>
+                      <li onClick={onClickCtg} id="material">
+                        재료
+                      </li>
+                      <li onClick={onClickCtg} id="way">
+                        방법
+                      </li>
+                      <li onClick={onClickCtg} id="theme">
+                        테마
+                      </li>
+                      <li onClick={onClickCtg} id="anniversary">
+                        기념일
+                      </li>
+                      <li onClick={onClickCtg} id="tool">
+                        도구
+                      </li>
                     </ul>
                     <ul className="hash_sch">
-                      <li>#카레</li>
-                      <li>#마요네스</li>
-                      <li>#분식</li>
-                      <li>#브런치</li>
-                      <li>#집밥</li>
-                      <li>#치즈듬뿍</li>
-                      <li>#캠핑</li>
-                      <li>#간단꿀조합</li>
+                      <li onClick={onClick} value="카레">
+                        #카레
+                      </li>
+                      <li onClick={onClick} value="마요네스">
+                        #마요네스
+                      </li>
+                      <li onClick={onClick} value="분식">
+                        #분식
+                      </li>
+                      <li onClick={onClick} value="브런치">
+                        #브런치
+                      </li>
+                      <li onClick={onClick} value="집밥">
+                        #집밥
+                      </li>
+                      <li onClick={onClick} value="치즈듬뿍">
+                        #치즈듬뿍
+                      </li>
+                      <li onClick={onClick} value="캠핑">
+                        #캠핑
+                      </li>
+                      <li onClick={onClick} value="간단꿀조합">
+                        #간단꿀조합
+                      </li>
                     </ul>
                   </div>
                   <div className="ctg_all" onClick={onClickCtg} id="all">

@@ -6,10 +6,12 @@ import Food from "./food.jsx";
 
 function Tip() {
   // 날짜순으로 15개 정렬
+  const foodArray = [...allDataList];
+
   let recently_order = [];
-  allDataList
+  foodArray
     .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .filter((food) => allDataList.indexOf(food) < 15)
+    .filter((food) => foodArray.indexOf(food) < 15)
     .map((food) => recently_order.push(food));
 
   return (

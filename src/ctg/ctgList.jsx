@@ -1,21 +1,42 @@
 import { useState, useEffect } from "react";
 import style from "./ctgList.module.css";
 import ctg_icon from "../img/ctg_icon.png";
-import { Route, Link } from "react-router-dom";
-import Ctg_All from "./ctg_All";
+import { Route, Link, useLocation } from "react-router-dom";
+import CtgTable from "./ctgTable";
 import { useRef } from "react";
 
 export default function CtgList({ type }) {
-  const [ctg, setCtg] = useState(type);
-
+  const [ctg, setCtg] = useState();
+  const location = useLocation();
+  // 카테고리 리스트를 DOM을 담는 배열
   const ref = useRef([]);
 
   // ref.current.map((ref) => {
   //   ref.value === type && console.log("good");
   // });
 
+  // setState를 동기적으로 처리하기 위함
+  const set = (param) => {
+    setCtg(param);
+  };
+
+  useEffect(() => {
+    ref.current.map((ref) => (ref.className = ""));
+    console.log("props2:" + ctg);
+    ref.current
+      .filter((ref) => ref.getAttribute("value") === ctg)
+      .map((ref) => (ref.className = `${style.active}`));
+  }, [set]);
+
   // 헤더에서 선택한 카테고리에 active 클래스 부여
   useEffect(() => {
+    ref.current.map((ref) => (ref.className = ""));
+    console.log("useEffect 실행");
+    set(type);
+  }, [type]);
+
+  useEffect(() => {
+    ref.current.map((ref) => (ref.className = ""));
     console.log("useEffect 실행");
     ref.current
       .filter((ref) => ref.getAttribute("value") === type)
@@ -23,10 +44,7 @@ export default function CtgList({ type }) {
   }, []);
 
   const onClick = (e) => {
-    ref.current.map((ref) => (ref.className = ""));
-    setCtg(e.currentTarget.getAttribute("value"));
-
-    e.currentTarget.className = `${style.active}`;
+    set(e.currentTarget.getAttribute("value"));
   };
 
   return (
@@ -143,7 +161,7 @@ export default function CtgList({ type }) {
           </ul>
         </div>
         <div>
-          <Ctg_All type={ctg} />
+          <CtgTable type={ctg} />
         </div>
       </div>
     </div>
