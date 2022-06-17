@@ -16,7 +16,7 @@ export default function Ctg() {
 
   useEffect(() => {
     set(location.state.type);
-  }, [location]);
+  }, []);
 
   const set = (param) => {
     setProps(param);

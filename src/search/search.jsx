@@ -189,7 +189,7 @@ function Search() {
             {/* 기준2. 페이지 리스트에 따라서 렌더링*/}
             {recentlyViewOrder === true
               ? recently_order.map((food) => (
-                  <div>
+                  <div key={food.id}>
                     <Food
                       id={food.id}
                       src={food.src}
@@ -199,7 +199,7 @@ function Search() {
                   </div>
                 ))
               : view_order.map((food) => (
-                  <div>
+                  <div key={food.id}>
                     <Food
                       id={food.id}
                       src={food.src}

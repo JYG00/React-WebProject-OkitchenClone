@@ -25,7 +25,7 @@ function Tip() {
         <div className={style.content}>
           <ul className={style.content_in}>
             {recently_order.map((food) => (
-              <li>
+              <li key={food.id}>
                 <Food
                   id={food.id}
                   src={food.src}

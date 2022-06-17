@@ -125,7 +125,7 @@ function IssuePage() {
                 ? recently_order
                     .filter((food) => recently_order.indexOf(food) < 20)
                     .map((food) => (
-                      <li>
+                      <li key={food.id}>
                         <Food
                           id={food.id}
                           src={food.src}
@@ -137,7 +137,7 @@ function IssuePage() {
                 : recently_order
                     .filter((food) => recently_order.indexOf(food) > 19)
                     .map((food) => (
-                      <li>
+                      <li key={food.id}>
                         <Food
                           id={food.id}
                           src={food.src}
@@ -150,7 +150,7 @@ function IssuePage() {
               ? view_order
                   .filter((food) => view_order.indexOf(food) < 20)
                   .map((food) => (
-                    <li>
+                    <li key={food.id}>
                       <Food
                         id={food.id}
                         src={food.src}
@@ -162,7 +162,7 @@ function IssuePage() {
               : view_order
                   .filter((food) => view_order.indexOf(food) > 19)
                   .map((food) => (
-                    <li>
+                    <li key={food.id}>
                       <Food
                         id={food.id}
                         src={food.src}

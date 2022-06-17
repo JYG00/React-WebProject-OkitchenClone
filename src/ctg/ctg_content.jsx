@@ -66,7 +66,7 @@ export default function Ctg_content({ props }) {
   };
   // useEffect는 동기적 코드처럼 작동하기 위함
   useEffect(() => {
-    console.log("effect 실행");
+    console.log("effect 실행!!");
     console.log(btn);
     listRef.current.map((ref) => (ref.className = ""));
     listRef.current
@@ -93,7 +93,7 @@ export default function Ctg_content({ props }) {
         console.log("error");
         break;
     }
-  }, [set]);
+  }, [btn]);
 
   const settingIndex = (key) => {
     switch (key) {
@@ -149,17 +149,16 @@ export default function Ctg_content({ props }) {
       // props 의 해당되는 내용의 갯수에 따라서 페이지 버튼 스타일 적용
       switch (Math.ceil(arr.length / 20)) {
         case 1:
-          console.log("카테고리 내용이 20개 미만입니다");
           listRef.current.map((ref) => (ref.style = "display:none"));
           break;
         case 2:
-          console.log("카테고리 내용이 40개 미만입니다");
+          listRef.current[3].style = "display:none";
+          listRef.current[4].style = "display:none";
           break;
         case 3:
-          console.log("카테고리 내용이 60개 미만입니다");
+          listRef.current[4].style = "display:none";
           break;
         case 4:
-          console.log("카테고리 내용이 80개 미만입니다");
           break;
         default:
           break;
@@ -242,7 +241,7 @@ export default function Ctg_content({ props }) {
                       dateOrder.indexOf(food) < index[1]
                   )
                   .map((food) => (
-                    <li>
+                    <li key={food.id}>
                       <Food
                         id={food.id}
                         src={food.src}
@@ -258,7 +257,7 @@ export default function Ctg_content({ props }) {
                       viewOrder.indexOf(food) < index[1]
                   )
                   .map((food) => (
-                    <li>
+                    <li key={food.id}>
                       <Food
                         id={food.id}
                         src={food.src}

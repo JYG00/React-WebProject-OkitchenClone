@@ -2,7 +2,7 @@ import style from "./food.module.css";
 
 export default function Food({ id, src, hash, name }) {
   return (
-    <div className={style.container}>
+    <div className={style.container} id={id}>
       <img src={src} alt="foodImg" />
       <div>
         <p>

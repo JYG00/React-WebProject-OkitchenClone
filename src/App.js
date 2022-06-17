@@ -134,14 +134,15 @@ function App() {
                 </p>
               </li>
               <li>
-                <Link
+                <div
+                  className="ctg"
                   style={{
                     borderRight: "1px solid #666",
                     paddingRight: "20px",
                   }}
                 >
                   카테고리
-                </Link>
+                </div>
                 {/* 카테고리에 마우스를 올렸을때 */}
                 <div className="ctg_hover">
                   <div className="ctg_list">

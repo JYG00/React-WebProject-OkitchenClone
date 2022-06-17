@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import style from "./ctgList.module.css";
 import ctg_icon from "../img/ctg_icon.png";
-import { Route, Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import CtgTable from "./ctgTable";
-import { useRef } from "react";
 
 export default function CtgList({ type }) {
   const [ctg, setCtg] = useState();
@@ -55,7 +54,7 @@ export default function CtgList({ type }) {
         <div className={style.ctg_list}>
           <ul>
             <li>
-              <Link
+              <button
                 style={{
                   display: "block",
                   width: "100%",
@@ -66,11 +65,11 @@ export default function CtgList({ type }) {
                 onClick={onClick}
                 value="all"
                 ref={(elem) => (ref.current[0] = elem)}
-              ></Link>
+              ></button>
               <span>전체</span>
             </li>
             <li>
-              <Link
+              <button
                 style={{
                   display: "block",
                   width: "100%",
@@ -81,11 +80,11 @@ export default function CtgList({ type }) {
                 onClick={onClick}
                 value="kind"
                 ref={(elem) => (ref.current[1] = elem)}
-              ></Link>
+              ></button>
               <span>종류</span>
             </li>
             <li>
-              <Link
+              <button
                 style={{
                   display: "block",
                   width: "100%",
@@ -96,11 +95,11 @@ export default function CtgList({ type }) {
                 onClick={onClick}
                 value="material"
                 ref={(elem) => (ref.current[2] = elem)}
-              ></Link>
+              ></button>
               <span>재료</span>
             </li>
             <li>
-              <Link
+              <button
                 style={{
                   display: "block",
                   width: "100%",
@@ -111,11 +110,11 @@ export default function CtgList({ type }) {
                 onClick={onClick}
                 value="way"
                 ref={(elem) => (ref.current[3] = elem)}
-              ></Link>
+              ></button>
               <span>방법</span>
             </li>
             <li>
-              <Link
+              <button
                 style={{
                   display: "block",
                   width: "100%",
@@ -126,11 +125,11 @@ export default function CtgList({ type }) {
                 onClick={onClick}
                 value="theme"
                 ref={(elem) => (ref.current[4] = elem)}
-              ></Link>
+              ></button>
               <span>테마</span>
             </li>
             <li>
-              <Link
+              <button
                 style={{
                   display: "block",
                   width: "100%",
@@ -141,11 +140,11 @@ export default function CtgList({ type }) {
                 onClick={onClick}
                 value="anniversary"
                 ref={(elem) => (ref.current[5] = elem)}
-              ></Link>
+              ></button>
               <span>기념일</span>
             </li>
             <li>
-              <Link
+              <button
                 style={{
                   display: "block",
                   width: "100%",
@@ -156,7 +155,7 @@ export default function CtgList({ type }) {
                 onClick={onClick}
                 value="tool"
                 ref={(elem) => (ref.current[6] = elem)}
-              ></Link>
+              ></button>
               <span>도구</span>
             </li>
           </ul>

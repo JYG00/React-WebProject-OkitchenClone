@@ -144,6 +144,13 @@ input::placeholder {
   padding-top: 3.5%;
   padding-bottom: 3.5%;
 }
+.header_in_bottom .nav ul li .ctg {
+  font-weight: bold;
+  color: #222;
+  letter-spacing: -1.5px;
+  font-size: 22px;
+  text-align: center;
+}
 .header_in_bottom .nav ul li a {
   font-weight: bold;
   color: #222;

@@ -26,6 +26,7 @@ function TipBottom() {
               <div>
                 {ingredientList.map((ingredient) => (
                   <Ingredient
+                    key={ingredient.id}
                     id={ingredient.id}
                     src={ingredient.src}
                     text={ingredient.text}

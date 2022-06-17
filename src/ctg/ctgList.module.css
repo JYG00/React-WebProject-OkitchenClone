@@ -35,10 +35,14 @@
   border-radius: 50px;
   margin-right: 93px;
 }
-.ctg_list ul li a {
+.ctg_list ul li button {
+  border: 0;
+  background: transparent;
+}
+.ctg_list ul li button {
   background-position-y: top;
 }
-.ctg_list ul li a:hover {
+.ctg_list ul li button:hover {
   background-position-y: bottom;
 }
 .ctg_list ul li .active {
