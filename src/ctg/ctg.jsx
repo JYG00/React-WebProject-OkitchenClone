@@ -14,6 +14,10 @@ export default function Ctg() {
 
   const [props, setProps] = useState("");
 
+  useEffect(() => {
+    set(location.state.type);
+  }, [location]);
+
   const set = (param) => {
     setProps(param);
   };
@@ -21,10 +25,6 @@ export default function Ctg() {
   useEffect(() => {
     console.log("props:" + props);
   }, [set]);
-
-  useEffect(() => {
-    set(location.state.type);
-  }, [location]);
 
   const onClick = (e) => {
     const btn_value = e.target.value;

@@ -9,46 +9,39 @@ import { useEffect } from "react";
 
 export default function Ctg_content({ props }) {
   // 최신순, 조회순 버튼에 따라서 해당 내용 출력
-  const [recentlyViewOrder, setRecentlyViewOrder] = useState(true);
+  const [dateOrView, setDateOrView] = useState(true);
 
-  //페이지 목록 버튼을 클릭시 이벤트 발생
-  const onClick_top = (e) => {
-    switch (e.target.value) {
-      case "최신순":
-        setRecentlyViewOrder(true);
-        break;
-      case "조회순":
-        setRecentlyViewOrder(false);
-        break;
-      default:
-        break;
-    }
-  };
-
+  // 음식 내용이 담긴 배열을 복사
   const foodArray = [...allDataList];
-
-  // // 최신 날짜순으로 검색 단어를 정렬
-  // let recently_order = [];
-  // foodArray
-  //   .sort((a, b) => new Date(b.date) - new Date(a.date))
-  //   .map((food) => recently_order.push(food));
-
-  // // 조회순으로 검색 단어를 정렬
-  // let view_order = [];
-  // foodArray
-  //   .sort((a, b) => b.view - a.view)
-  //   .map((food) => view_order.push(food));
+  const [dateOrder, setDateOrder] = useState([...foodArray]);
+  const [viewOrder, setViewOrder] = useState([...foodArray]);
 
   // 하단 리스트 버튼 DOM
   const listRef = useRef([]);
   const [btn, setBtn] = useState(1);
   const [index, setIndex] = useState([-1, 20]);
 
-  // 하단 버튼 클릭시 setBtn으로 리스트 바꿈
+  //페이지 목록 버튼을 클릭시 이벤트 발생
+  const onClick_top = (e) => {
+    switch (e.target.value) {
+      case "최신순":
+        setDateOrView(true);
+        break;
+      case "조회순":
+        setDateOrView(false);
+        break;
+      default:
+        break;
+    }
+  };
+
+  // 하단 버튼 클릭시 setBtn으로 리스트 스타일 변경
   const onClick = (e) => {
     console.log("onclick 실행");
+    console.log("value??");
     set(e.currentTarget.getAttribute("value"));
   };
+
   const set = (params) => {
     console.log("set 실행");
     console.log("set : " + params);
@@ -71,6 +64,7 @@ export default function Ctg_content({ props }) {
         break;
     }
   };
+  // useEffect는 동기적 코드처럼 작동하기 위함
   useEffect(() => {
     console.log("effect 실행");
     console.log(btn);
@@ -82,23 +76,18 @@ export default function Ctg_content({ props }) {
       case 1:
         listRef.current[0].style = "display:none";
         listRef.current[5].style = "display:inlineBlock";
-        // setIndex([-1, 20]);
-        // console.log(index);
         break;
       case 2:
         listRef.current[0].style = "display:inlineBlock";
         listRef.current[5].style = "display:inlineBlock";
-        // setIndex([20, 40]);
         break;
       case 3:
         listRef.current[0].style = "display:inlineBlock";
         listRef.current[5].style = "display:inlineBlock";
-        // setIndex([40, 60]);
         break;
       case 4:
         listRef.current[0].style = "display:inlineBlock";
         listRef.current[5].style = "display:none";
-        // setIndex([60, 80]);
         break;
       default:
         console.log("error");
@@ -128,34 +117,62 @@ export default function Ctg_content({ props }) {
         break;
     }
   };
-  // 동기적 코드로 처리하기 위함
+
+  // 처음 렌더링 될때는 모든 배열을 렌더링
   useEffect(() => {
-    console.log("result");
-    console.log(index);
-  }, [settingIndex]);
+    setArray();
+  }, []);
 
-  // 최신 날짜순으로 검색 단어를 정렬
-  let recently_order = [];
-  // 조회순으로 검색 단어를 정렬
-  let view_order = [];
+  // props를 넘겨받은 경우라면 조건에 따라서 렌더링
+  useEffect(() => {
+    setArray();
+  }, [props]);
 
-  if (props) {
-    // props 를 전달 받았으면 필터링해서 보여줌
-    foodArray
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .filter((food) => food.hash.toString().includes(props))
-      .map((food) => recently_order.push(food));
-    foodArray
-      .sort((a, b) => b.view - a.view)
-      .map((food) => view_order.push(food));
-  } else {
-    foodArray
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .map((food) => recently_order.push(food));
-    foodArray
-      .sort((a, b) => b.view - a.view)
-      .map((food) => view_order.push(food));
-  }
+  const setArray = () => {
+    let arr = [];
+    let arr2 = [];
+    if (props) {
+      // 최신날짜순으로 정렬
+      foodArray
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .filter((food) => food.hash.toString().includes(props))
+        .map((food) => arr.push(food));
+      setDateOrder(arr);
+
+      // 조회순으로 정렬
+      foodArray
+        .sort((a, b) => b.view - a.view)
+        .filter((food) => food.hash.toString().includes(props))
+        .map((food) => arr2.push(food));
+      setViewOrder(arr2);
+
+      // props 의 해당되는 내용의 갯수에 따라서 페이지 버튼 스타일 적용
+      switch (Math.ceil(arr.length / 20)) {
+        case 1:
+          console.log("카테고리 내용이 20개 미만입니다");
+          listRef.current.map((ref) => (ref.style = "display:none"));
+          break;
+        case 2:
+          console.log("카테고리 내용이 40개 미만입니다");
+          break;
+        case 3:
+          console.log("카테고리 내용이 60개 미만입니다");
+          break;
+        case 4:
+          console.log("카테고리 내용이 80개 미만입니다");
+          break;
+        default:
+          break;
+      }
+    } else {
+      foodArray
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .map((food) => arr.push(food));
+      setDateOrder(arr);
+      foodArray.sort((a, b) => b.view - a.view).map((food) => arr2.push(food));
+      setViewOrder(arr2);
+    }
+  };
 
   return (
     <div style={style.container}>
@@ -163,10 +180,10 @@ export default function Ctg_content({ props }) {
         <div className={style.content_in}>
           <div className={style.content_switch}>
             <div>
-              {recentlyViewOrder === true ? (
+              {dateOrView === true ? (
                 <>
                   <p>
-                    검색결과 <strong>{recently_order.length}</strong>건 조회
+                    검색결과 <strong>{dateOrder.length}</strong>건 조회
                   </p>
                   <ul>
                     <li>
@@ -190,7 +207,7 @@ export default function Ctg_content({ props }) {
               ) : (
                 <>
                   <p>
-                    검색결과 <strong>{view_order.length}</strong>건 조회
+                    검색결과 <strong>{viewOrder.length}</strong>건 조회
                   </p>
                   <ul>
                     <li style={{ marginRight: "12px" }}>
@@ -217,12 +234,12 @@ export default function Ctg_content({ props }) {
           <ul>
             {/* 기준1. 조회순? 최신순? 따라서 렌더링*/}
             {/* 기준2. 페이지 리스트에 따라서 렌더링*/}
-            {recentlyViewOrder === true
-              ? recently_order
+            {dateOrView === true
+              ? dateOrder
                   .filter(
                     (food) =>
-                      recently_order.indexOf(food) > index[0] &&
-                      recently_order.indexOf(food) < index[1]
+                      dateOrder.indexOf(food) > index[0] &&
+                      dateOrder.indexOf(food) < index[1]
                   )
                   .map((food) => (
                     <li>
@@ -234,11 +251,11 @@ export default function Ctg_content({ props }) {
                       ></Food>
                     </li>
                   ))
-              : view_order
+              : viewOrder
                   .filter(
                     (food) =>
-                      view_order.indexOf(food) > index[0] &&
-                      view_order.indexOf(food) < index[1]
+                      viewOrder.indexOf(food) > index[0] &&
+                      viewOrder.indexOf(food) < index[1]
                   )
                   .map((food) => (
                     <li>

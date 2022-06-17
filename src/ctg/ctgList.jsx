@@ -15,19 +15,6 @@ export default function CtgList({ type }) {
   //   ref.value === type && console.log("good");
   // });
 
-  // setState를 동기적으로 처리하기 위함
-  const set = (param) => {
-    setCtg(param);
-  };
-
-  useEffect(() => {
-    ref.current.map((ref) => (ref.className = ""));
-    console.log("props2:" + ctg);
-    ref.current
-      .filter((ref) => ref.getAttribute("value") === ctg)
-      .map((ref) => (ref.className = `${style.active}`));
-  }, [set]);
-
   // 헤더에서 선택한 카테고리에 active 클래스 부여
   useEffect(() => {
     ref.current.map((ref) => (ref.className = ""));
@@ -35,17 +22,31 @@ export default function CtgList({ type }) {
     set(type);
   }, [type]);
 
-  useEffect(() => {
-    ref.current.map((ref) => (ref.className = ""));
-    console.log("useEffect 실행");
-    ref.current
-      .filter((ref) => ref.getAttribute("value") === type)
-      .map((ref) => (ref.className = `${style.active}`));
-  }, []);
+  // useEffect(() => {
+  //   ref.current.map((ref) => (ref.className = ""));
+  //   console.log("useEffect 실행");
+  //   ref.current
+  //     .filter((ref) => ref.getAttribute("value") === type)
+  //     .map((ref) => (ref.className = `${style.active}`));
+  // }, []);
 
+  // 클릭 시 해당 DOM에 스타일 적용
   const onClick = (e) => {
     set(e.currentTarget.getAttribute("value"));
   };
+
+  const set = (param) => {
+    setCtg(param);
+  };
+
+  // useEffect는 동기적 코드처럼 처리하기 위함
+  useEffect(() => {
+    ref.current.map((ref) => (ref.className = ""));
+    console.log("props2:" + ctg);
+    ref.current
+      .filter((ref) => ref.getAttribute("value") === ctg)
+      .map((ref) => (ref.className = `${style.active}`));
+  }, [set]);
 
   return (
     <div className={style.container}>
