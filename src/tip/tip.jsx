@@ -1,10 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import style from "./tip.module.css";
-import TipTop from "./tiptop";
-import TipMiddle from "./tipmiddle";
-import TipBottom from "./tipbottom";
-import Footer from "../footer";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import style from './tip.module.css';
+import TipTop from './tiptop';
+import TipMiddle from './tipmiddle';
+import TipBottom from './tipbottom';
+import Footer from '../footer';
 
 function Tip() {
   return (
@@ -24,10 +24,7 @@ function Tip() {
                 <h2>계량 팁</h2>
                 <p>한 눈으로 살펴보는 간단한 계량팁을 준비했어요~</p>
                 <p>요리를 하려는데 계량 기구가 없다면</p>
-                <p>
-                  다른 도구를 사용하거나 사진 속 분량을 보고 눈대중으로 헤아려서
-                  할 수 있어요!
-                </p>
+                <p>다른 도구를 사용하거나 사진 속 분량을 보고 눈대중으로 헤아려서 할 수 있어요!</p>
               </div>
             </div>
           </div>

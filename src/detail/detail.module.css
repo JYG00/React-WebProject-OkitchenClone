@@ -1,0 +1,53 @@
+.container {
+  width: 100%;
+  height: 2500px;
+  background-color: #fff;
+}
+/* 상단 이미지 부분 */
+.detail_top {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #f3f3f3;
+}
+.imageBox {
+  width: 1500px;
+  height: 800px;
+}
+.imageBox img {
+  width: 1500px;
+  height: 800px;
+  min-width: 1500px;
+  min-height: 800px;
+}
+/* 중간 내용 부분 */
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.content_in {
+  width: 1350px;
+  height: 1700px;
+}
+.content_in h2 {
+  font-size: 45px;
+  color: #333;
+  margin-top: 80px;
+}
+.content_in .button_area {
+  margin-top: 20px;
+}
+.content_in input {
+  border: 1px solid #c1c1c1;
+  padding: 5px 20px 7px;
+  border-radius: 25px;
+  color: #777;
+  font-size: 20px;
+  background-color: #fff;
+  margin-right: 7px;
+}
+.content_in input:hover {
+  background-color: #f64646;
+  color: #fff;
+}

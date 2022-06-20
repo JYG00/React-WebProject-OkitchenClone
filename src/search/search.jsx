@@ -1,18 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
-import style from "./search.module.css";
-import Footer from "../footer";
-import allDataList from "./allDataList";
-import Food from "./food";
-import { useLocation } from "react-router";
-import { BsCheck } from "react-icons/bs";
-import sch_btn from "../img/sch_btn.png";
-import item_no from "../img/item_no.gif";
+import React, { useEffect, useRef, useState } from 'react';
+import style from './search.module.css';
+import Footer from '../footer';
+import allDataList from '../component/data/allDataList';
+import Food from '../component/food/food';
+import { useLocation } from 'react-router';
+import { BsCheck } from 'react-icons/bs';
+import sch_btn from '../img/sch_btn.png';
+import item_no from '../img/item_no.gif';
 
 function Search() {
   // History로 보낸 객체를 props에 받습니다
   const location = useLocation();
-  const [props, setProps] = useState("");
-  const [CloneProps, setCloneProps] = useState("");
+  const [props, setProps] = useState('');
+  const [CloneProps, setCloneProps] = useState('');
 
   useEffect(() => {
     setProps(location.state.props);
@@ -24,16 +24,14 @@ function Search() {
   const onClick = (e) => {
     const s_value = e.target.value;
     // 버튼 앞에 #을 공백으로 대체
-    const value = s_value.replace("#", "");
+    const value = s_value.replace('#', '');
     setProps(value);
     setCloneProps(value);
   };
 
   // 검색결과가 있는지 없는지 확인
   let result = [];
-  allDataList
-    .filter((food) => food.hash.toString().includes(props))
-    .map((food) => result.push(food));
+  allDataList.filter((food) => food.hash.toString().includes(props) || food.name.toString().includes(props)).map((food) => result.push(food));
 
   // 최신순, 조회순 버튼에 따라서 해당 내용 출력
   const [recentlyViewOrder, setRecentlyViewOrder] = useState(true);
@@ -41,10 +39,10 @@ function Search() {
   //페이지 목록 버튼을 클릭시 이벤트 발생
   const onClick_top = (e) => {
     switch (e.target.value) {
-      case "최신순":
+      case '최신순':
         setRecentlyViewOrder(true);
         break;
-      case "조회순":
+      case '조회순':
         setRecentlyViewOrder(false);
         break;
       default:
@@ -56,7 +54,7 @@ function Search() {
   let recently_order = [];
   allDataList
     .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .filter((food) => food.hash.toString().includes(props))
+    .filter((food) => food.hash.toString().includes(props) || food.name.toString().includes(props))
     .map((food) => recently_order.push(food));
   // console.log(recently_order);
 
@@ -64,7 +62,7 @@ function Search() {
   let view_order = [];
   allDataList
     .sort((a, b) => b.view - a.view)
-    .filter((food) => food.hash.toString().includes(props))
+    .filter((food) => food.hash.toString().includes(props) || food.name.toString().includes(props))
     .map((food) => view_order.push(food));
 
   // 두번째 검색란 input 객체
@@ -85,12 +83,7 @@ function Search() {
         <div className={style.issue_bar}>
           <div>
             <form onSubmit={onSubmit} className={style.second_sch}>
-              <input
-                type="text"
-                value={CloneProps}
-                onChange={onChange}
-                ref={inputRef}
-              />
+              <input type="text" value={CloneProps} onChange={onChange} ref={inputRef} />
               <button type="submit">
                 <img src={sch_btn} alt="검색 버튼" />
               </button>
@@ -141,19 +134,10 @@ function Search() {
                   <ul>
                     <li>
                       <BsCheck />
-                      <input
-                        type="button"
-                        value="최신순"
-                        className={style.check}
-                        onClick={onClick_top}
-                      />
+                      <input type="button" value="최신순" className={style.check} onClick={onClick_top} />
                     </li>
                     <li>
-                      <input
-                        type="button"
-                        value="조회순"
-                        onClick={onClick_top}
-                      />
+                      <input type="button" value="조회순" onClick={onClick_top} />
                     </li>
                   </ul>
                 </>
@@ -163,21 +147,12 @@ function Search() {
                     검색결과 <strong>{view_order.length}</strong>건 조회
                   </p>
                   <ul>
-                    <li style={{ marginRight: "12px" }}>
-                      <input
-                        type="button"
-                        value="최신순"
-                        onClick={onClick_top}
-                      />
+                    <li style={{ marginRight: '12px' }}>
+                      <input type="button" value="최신순" onClick={onClick_top} />
                     </li>
                     <li>
                       <BsCheck />
-                      <input
-                        type="button"
-                        value="조회순"
-                        className={style.check}
-                        onClick={onClick_top}
-                      />
+                      <input type="button" value="조회순" className={style.check} onClick={onClick_top} />
                     </li>
                   </ul>
                 </>
@@ -190,22 +165,12 @@ function Search() {
             {recentlyViewOrder === true
               ? recently_order.map((food) => (
                   <div key={food.id}>
-                    <Food
-                      id={food.id}
-                      src={food.src}
-                      hash={food.hash}
-                      name={food.name}
-                    ></Food>
+                    <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
                   </div>
                 ))
               : view_order.map((food) => (
                   <div key={food.id}>
-                    <Food
-                      id={food.id}
-                      src={food.src}
-                      hash={food.hash}
-                      name={food.name}
-                    ></Food>
+                    <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
                   </div>
                 ))}
           </ul>

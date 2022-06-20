@@ -37,10 +37,6 @@ export default function CtgTable({ type }) {
     setProps(param);
   };
 
-  // useEffect(() => {
-  //   console.log("ctgContent에 props 전달");
-  // }, [set]);
-
   return (
     <div className={style.container}>
       {/* 전체 카테고리 */}

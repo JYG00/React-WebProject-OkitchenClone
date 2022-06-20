@@ -1,8 +1,8 @@
-import React from "react";
-import style from "./new.module.css";
-import allDataList from "../search/allDataList";
-import Footer from "../footer";
-import Food from "./food.jsx";
+import React from 'react';
+import style from './new.module.css';
+import allDataList from '../component/data/allDataList';
+import Footer from '../footer';
+import Food from '../component/food/food';
 
 function Tip() {
   // 날짜순으로 15개 정렬
@@ -26,12 +26,7 @@ function Tip() {
           <ul className={style.content_in}>
             {recently_order.map((food) => (
               <li key={food.id}>
-                <Food
-                  id={food.id}
-                  src={food.src}
-                  hash={food.hash}
-                  name={food.name}
-                ></Food>
+                <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
               </li>
             ))}
           </ul>

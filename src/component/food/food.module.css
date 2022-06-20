@@ -3,9 +3,22 @@
   height: 100%;
   float: left;
 }
+.container .imageBox {
+  width: 305px;
+  height: 220px;
+  overflow: hidden;
+}
 .container img {
   width: 100%;
-  height: 70%;
+  height: 100%;
+  cursor: pointer;
+}
+.container img:hover {
+  transform: scale(1.2);
+  transition: all 0.3s ease-in-out;
+}
+.container img:not(:hover) {
+  transition: all 0.3s ease-in-out;
 }
 .container div {
 }

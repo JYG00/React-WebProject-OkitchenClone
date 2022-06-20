@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import style from './ctg_content.module.css';
-import allDataList from '../search/allDataList';
+import allDataList from '../component/data/allDataList';
 import { useState } from 'react';
-import Food from '../search/food';
+import Food from '../component/food/food';
 import { BsCheck } from 'react-icons/bs';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import { useEffect } from 'react';
@@ -16,9 +16,13 @@ export default function Ctg_content({ props }) {
   const [dateOrder, setDateOrder] = useState([...foodArray]);
   const [viewOrder, setViewOrder] = useState([...foodArray]);
 
+  // 컨텐츠가 있는 블록
+  const contentRef = useRef();
+
   // 하단 리스트 버튼 DOM
   const listRef = useRef([]);
   const [btn, setBtn] = useState(1);
+  // 페이지에 적용될 인덱스 범위
   const [index, setIndex] = useState([-1, 20]);
 
   //페이지 목록 버튼을 클릭시 이벤트 발생
@@ -37,8 +41,6 @@ export default function Ctg_content({ props }) {
 
   // 하단 버튼 클릭시 setBtn으로 리스트 스타일 변경
   const onClick = (e) => {
-    console.log('onclick 실행');
-    console.log('value??');
     set(e.currentTarget.getAttribute('value'));
   };
 
@@ -124,6 +126,11 @@ export default function Ctg_content({ props }) {
   // props를 넘겨받은 경우라면 조건에 따라서 렌더링
   useEffect(() => {
     setArray();
+    if (typeof props !== 'undefined') {
+      console.log('props는');
+      console.log(props);
+      contentRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   }, [props]);
 
   const setArray = () => {
@@ -174,7 +181,7 @@ export default function Ctg_content({ props }) {
   };
 
   return (
-    <div style={style.container}>
+    <div style={style.container} ref={contentRef}>
       <div className={style.content}>
         <div className={style.content_in}>
           <div className={style.content_switch}>

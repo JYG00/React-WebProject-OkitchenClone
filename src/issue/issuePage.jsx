@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import style from "./issuePage.module.css";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import { BsCheck } from "react-icons/bs";
-import allDataList from "../search/allDataList";
-import Food from "./food";
+import React, { useState } from 'react';
+import style from './issuePage.module.css';
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
+import { BsCheck } from 'react-icons/bs';
+import allDataList from '../component/data/allDataList';
+import Food from '../component/food/food';
 
 function IssuePage() {
   // 최신순, 조회순 버튼에 따라서 해당 내용 출력
@@ -12,11 +12,11 @@ function IssuePage() {
   //페이지 목록 버튼을 클릭시 이벤트 발생
   const onClick_top = (e) => {
     switch (e.target.value) {
-      case "최신순":
+      case '최신순':
         setRecentlyViewOrder(true);
         setBtn(true);
         break;
-      case "조회순":
+      case '조회순':
         setRecentlyViewOrder(false);
         setBtn(true);
         break;
@@ -31,10 +31,10 @@ function IssuePage() {
   //페이지 목록 버튼을 클릭시 이벤트 발생
   const onClick = (e) => {
     switch (e.target.value) {
-      case "1":
+      case '1':
         setBtn(true);
         break;
-      case "2":
+      case '2':
         setBtn(false);
         break;
       default:
@@ -74,19 +74,10 @@ function IssuePage() {
                   <ul>
                     <li>
                       <BsCheck />
-                      <input
-                        type="button"
-                        value="최신순"
-                        className={style.check}
-                        onClick={onClick_top}
-                      />
+                      <input type="button" value="최신순" className={style.check} onClick={onClick_top} />
                     </li>
                     <li>
-                      <input
-                        type="button"
-                        value="조회순"
-                        onClick={onClick_top}
-                      />
+                      <input type="button" value="조회순" onClick={onClick_top} />
                     </li>
                   </ul>
                 </>
@@ -96,21 +87,12 @@ function IssuePage() {
                     검색결과 <strong>{view_order.length}</strong>건 조회
                   </p>
                   <ul>
-                    <li style={{ marginRight: "12px" }}>
-                      <input
-                        type="button"
-                        value="최신순"
-                        onClick={onClick_top}
-                      />
+                    <li style={{ marginRight: '12px' }}>
+                      <input type="button" value="최신순" onClick={onClick_top} />
                     </li>
                     <li>
                       <BsCheck />
-                      <input
-                        type="button"
-                        value="조회순"
-                        className={style.check}
-                        onClick={onClick_top}
-                      />
+                      <input type="button" value="조회순" className={style.check} onClick={onClick_top} />
                     </li>
                   </ul>
                 </>
@@ -126,24 +108,14 @@ function IssuePage() {
                     .filter((food) => recently_order.indexOf(food) < 20)
                     .map((food) => (
                       <li key={food.id}>
-                        <Food
-                          id={food.id}
-                          src={food.src}
-                          hash={food.hash}
-                          name={food.name}
-                        ></Food>
+                        <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
                       </li>
                     ))
                 : recently_order
                     .filter((food) => recently_order.indexOf(food) > 19)
                     .map((food) => (
                       <li key={food.id}>
-                        <Food
-                          id={food.id}
-                          src={food.src}
-                          hash={food.hash}
-                          name={food.name}
-                        ></Food>
+                        <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
                       </li>
                     ))
               : btn === true
@@ -151,24 +123,14 @@ function IssuePage() {
                   .filter((food) => view_order.indexOf(food) < 20)
                   .map((food) => (
                     <li key={food.id}>
-                      <Food
-                        id={food.id}
-                        src={food.src}
-                        hash={food.hash}
-                        name={food.name}
-                      ></Food>
+                      <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
                     </li>
                   ))
               : view_order
                   .filter((food) => view_order.indexOf(food) > 19)
                   .map((food) => (
                     <li key={food.id}>
-                      <Food
-                        id={food.id}
-                        src={food.src}
-                        hash={food.hash}
-                        name={food.name}
-                      ></Food>
+                      <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
                     </li>
                   ))}
           </ul>
@@ -178,19 +140,10 @@ function IssuePage() {
               {/* 페이지의 번호에 따라 렌더링 */}
               {btn === true ? (
                 <div>
-                  <input
-                    type="button"
-                    className={style.on}
-                    value="1"
-                    onClick={onClick}
-                  />
+                  <input type="button" className={style.on} value="1" onClick={onClick} />
                   <input type="button" value="2" onClick={onClick} />
                   <label>
-                    <button
-                      type="button"
-                      onClick={onClick}
-                      className={style.arrow_btn}
-                    >
+                    <button type="button" onClick={onClick} className={style.arrow_btn}>
                       <IoIosArrowForward />
                     </button>
                   </label>
@@ -198,21 +151,12 @@ function IssuePage() {
               ) : (
                 <div>
                   <label>
-                    <button
-                      type="button"
-                      onClick={onClick}
-                      className={style.arrow_btn_back}
-                    >
+                    <button type="button" onClick={onClick} className={style.arrow_btn_back}>
                       <IoIosArrowBack />
                     </button>
                   </label>
                   <input type="button" value="1" onClick={onClick} />
-                  <input
-                    type="button"
-                    className={style.on}
-                    value="2"
-                    onClick={onClick}
-                  />
+                  <input type="button" className={style.on} value="2" onClick={onClick} />
                 </div>
               )}
             </div>

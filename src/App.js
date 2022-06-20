@@ -1,18 +1,19 @@
-import React, { useRef } from "react";
-import { Route, Link, useHistory } from "react-router-dom";
+import React, { useRef } from 'react';
+import { Route, Link, useHistory } from 'react-router-dom';
 // yarn add react-router-dom@5
-import "./App.css";
-import Main from "./main";
-import Tip from "./tip/tip";
-import New from "./new/new";
-import Issue from "./issue/issue";
-import Search from "./search/search";
-import Ctg from "./ctg/ctg";
-import { RiShoppingBasket2Line, RiFileCopyFill } from "react-icons/ri";
-import logo from "./img/logo.png";
-import top_sch from "./img/top_sch.png";
-import { HiPlusCircle } from "react-icons/hi";
-import { GiHamburgerMenu } from "react-icons/gi";
+import './App.css';
+import Main from './main';
+import Tip from './tip/tip';
+import New from './new/new';
+import Issue from './issue/issue';
+import Search from './search/search';
+import Ctg from './ctg/ctg';
+import Detail from './detail/detail';
+import { RiShoppingBasket2Line, RiFileCopyFill } from 'react-icons/ri';
+import logo from './img/logo.png';
+import top_sch from './img/top_sch.png';
+import { HiPlusCircle } from 'react-icons/hi';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 function App() {
   // input 객체 (검색창)
@@ -23,35 +24,32 @@ function App() {
   // form 태그 내용을 받아서 state 에 저장
   const onSubmit = (e) => {
     e.preventDefault();
-    // setState({ isTrue: true, sch_content: inputRef.current.value });
     history.push({
-      pathname: "/search",
+      pathname: '/search',
       state: { props: inputRef.current.value },
     });
-    inputRef.current.value = "";
+    inputRef.current.value = '';
   };
 
   // 해쉬태그 클릭시 해당 내용을 /search 로 전송
   const onClick = (e) => {
     let btn_value = e.target.value;
-    let value = "";
+    let value = '';
 
     switch (btn_value) {
-      case "#라면맛집":
-        value = "라면";
+      case '#라면맛집':
+        value = '라면';
         break;
-      case "#XO만두":
-        value = "만두";
+      case '#XO만두':
+        value = '만두';
         break;
       default:
-        value = e.currentTarget.getAttribute("value");
+        value = e.currentTarget.getAttribute('value');
         break;
     }
 
-    // console.log(value);
-
     history.push({
-      pathname: "/search",
+      pathname: '/search',
       state: { props: value },
     });
   };
@@ -61,7 +59,7 @@ function App() {
     console.log(e.currentTarget.id);
     const type = e.currentTarget.id;
     history.push({
-      pathname: "/ctg",
+      pathname: '/ctg',
       state: { type: type },
     });
   };
@@ -82,12 +80,7 @@ function App() {
             <div className="search">
               <div className="search_bar">
                 <form onSubmit={onSubmit}>
-                  <input
-                    type="text"
-                    maxLength="30"
-                    ref={inputRef}
-                    placeholder="오뚜기 제품, 요리명 등 다양하게 검색해보세요! (예: 카레)"
-                  />
+                  <input type="text" maxLength="30" ref={inputRef} placeholder="오뚜기 제품, 요리명 등 다양하게 검색해보세요! (예: 카레)" />
                   <label htmlFor="search">
                     <button className="sch_btn" type="submit">
                       <img src={top_sch} alt="검색 이미지"></img>
@@ -118,16 +111,16 @@ function App() {
               <li>
                 <p
                   style={{
-                    padding: "1px",
-                    width: "30px",
-                    height: "30px",
-                    fontSize: "22px",
-                    color: "#fff",
-                    backgroundColor: "#bf132b",
-                    borderRadius: "50px",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
+                    padding: '1px',
+                    width: '30px',
+                    height: '30px',
+                    fontSize: '22px',
+                    color: '#fff',
+                    backgroundColor: '#bf132b',
+                    borderRadius: '50px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
                   <GiHamburgerMenu />
@@ -137,8 +130,8 @@ function App() {
                 <div
                   className="ctg"
                   style={{
-                    borderRight: "1px solid #666",
-                    paddingRight: "20px",
+                    borderRight: '1px solid #666',
+                    paddingRight: '20px',
                   }}
                 >
                   카테고리
@@ -188,13 +181,13 @@ function App() {
                       <li onClick={onClick} value="캠핑">
                         #캠핑
                       </li>
-                      <li onClick={onClick} value="간단꿀조합">
-                        #간단꿀조합
+                      <li onClick={onClick} value="간단 꿀조합">
+                        #간단 꿀조합
                       </li>
                     </ul>
                   </div>
                   <div className="ctg_all" onClick={onClickCtg} id="all">
-                    <HiPlusCircle style={{ color: "#f64646" }} />
+                    <HiPlusCircle style={{ color: '#f64646' }} />
                     <span>카테고리 전체보기</span>
                   </div>
                 </div>
@@ -202,19 +195,19 @@ function App() {
               <li>
                 <Link to="/issue">인기 레시피</Link>
               </li>
-              <li style={{ marginRight: "3%" }}>
+              <li style={{ marginRight: '3%' }}>
                 <Link
                   to="/new"
                   style={{
-                    borderRight: "1px solid #666",
-                    paddingRight: "20px",
+                    borderRight: '1px solid #666',
+                    paddingRight: '20px',
                   }}
                 >
                   신규 레시피
                 </Link>
               </li>
               <li>
-                <Link to="/tip" style={{ color: "#f64646" }}>
+                <Link to="/tip" style={{ color: '#f64646' }}>
                   계랑 팁
                 </Link>
               </li>
@@ -247,18 +240,14 @@ function App() {
           </div>
         </div>
       </div>
-      <div style={{ width: "100%", height: "auto", background: "#ccc" }}>
+      <div style={{ width: '100%', height: 'auto', background: '#ccc' }}>
         <Route path="/" exact={true} component={Main}></Route>
-        {/* {state.isTrue === false ? (
-          <Route path="/" exact={true} component={Main}></Route>
-        ) : (
-          <Search props={state.sch_content}></Search>
-        )} */}
         <Route path="/issue" component={Issue}></Route>
         <Route path="/new" component={New}></Route>
         <Route path="/tip" component={Tip}></Route>
         <Route path="/search" component={Search}></Route>
         <Route path="/ctg" component={Ctg}></Route>
+        <Route path="/detail" component={Detail}></Route>
       </div>
     </div>
   );
