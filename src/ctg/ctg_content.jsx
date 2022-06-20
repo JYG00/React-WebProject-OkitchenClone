@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
-import style from "./ctg_content.module.css";
-import allDataList from "../search/allDataList";
-import { useState } from "react";
-import Food from "../search/food";
-import { BsCheck } from "react-icons/bs";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-import { useEffect } from "react";
+import React, { useRef } from 'react';
+import style from './ctg_content.module.css';
+import allDataList from '../search/allDataList';
+import { useState } from 'react';
+import Food from '../search/food';
+import { BsCheck } from 'react-icons/bs';
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
+import { useEffect } from 'react';
 
 export default function Ctg_content({ props }) {
   // 최신순, 조회순 버튼에 따라서 해당 내용 출력
@@ -24,10 +24,10 @@ export default function Ctg_content({ props }) {
   //페이지 목록 버튼을 클릭시 이벤트 발생
   const onClick_top = (e) => {
     switch (e.target.value) {
-      case "최신순":
+      case '최신순':
         setDateOrView(true);
         break;
-      case "조회순":
+      case '조회순':
         setDateOrView(false);
         break;
       default:
@@ -37,24 +37,24 @@ export default function Ctg_content({ props }) {
 
   // 하단 버튼 클릭시 setBtn으로 리스트 스타일 변경
   const onClick = (e) => {
-    console.log("onclick 실행");
-    console.log("value??");
-    set(e.currentTarget.getAttribute("value"));
+    console.log('onclick 실행');
+    console.log('value??');
+    set(e.currentTarget.getAttribute('value'));
   };
 
   const set = (params) => {
-    console.log("set 실행");
-    console.log("set : " + params);
+    console.log('set 실행');
+    console.log('set : ' + params);
     let intParams = 1;
 
     switch (params) {
-      case "plus":
+      case 'plus':
         setBtn(btn + 1);
         settingIndex(btn + 1);
         break;
-      case "minus":
+      case 'minus':
         setBtn(btn - 1);
-        settingIndex(btn + 1);
+        settingIndex(btn - 1);
         break;
       default:
         // 정수형으로 처리하기 위함
@@ -66,31 +66,29 @@ export default function Ctg_content({ props }) {
   };
   // useEffect는 동기적 코드처럼 작동하기 위함
   useEffect(() => {
-    console.log("effect 실행!!");
+    console.log('effect 실행!!');
     console.log(btn);
-    listRef.current.map((ref) => (ref.className = ""));
-    listRef.current
-      .filter((ref) => ref.getAttribute("value") === `${btn}`)
-      .map((ref) => (ref.className = `${style.on}`));
+    listRef.current.map((ref) => (ref.className = ''));
+    listRef.current.filter((ref) => ref.getAttribute('value') === `${btn}`).map((ref) => (ref.className = `${style.on}`));
     switch (btn) {
       case 1:
-        listRef.current[0].style = "display:none";
-        listRef.current[5].style = "display:inlineBlock";
+        listRef.current[0].style = 'display:none';
+        listRef.current[5].style = 'display:inlineBlock';
         break;
       case 2:
-        listRef.current[0].style = "display:inlineBlock";
-        listRef.current[5].style = "display:inlineBlock";
+        listRef.current[0].style = 'display:inlineBlock';
+        listRef.current[5].style = 'display:inlineBlock';
         break;
       case 3:
-        listRef.current[0].style = "display:inlineBlock";
-        listRef.current[5].style = "display:inlineBlock";
+        listRef.current[0].style = 'display:inlineBlock';
+        listRef.current[5].style = 'display:inlineBlock';
         break;
       case 4:
-        listRef.current[0].style = "display:inlineBlock";
-        listRef.current[5].style = "display:none";
+        listRef.current[0].style = 'display:inlineBlock';
+        listRef.current[5].style = 'display:none';
         break;
       default:
-        console.log("error");
+        console.log('error');
         break;
     }
   }, [btn]);
@@ -135,28 +133,32 @@ export default function Ctg_content({ props }) {
       // 최신날짜순으로 정렬
       foodArray
         .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .filter((food) => food.hash.toString().includes(props))
+        .filter((food) => food.ctg.toString().includes(props))
         .map((food) => arr.push(food));
       setDateOrder(arr);
 
       // 조회순으로 정렬
       foodArray
         .sort((a, b) => b.view - a.view)
-        .filter((food) => food.hash.toString().includes(props))
+        .filter((food) => food.ctg.toString().includes(props))
         .map((food) => arr2.push(food));
       setViewOrder(arr2);
 
       // props 의 해당되는 내용의 갯수에 따라서 페이지 버튼 스타일 적용
       switch (Math.ceil(arr.length / 20)) {
         case 1:
-          listRef.current.map((ref) => (ref.style = "display:none"));
+          listRef.current.map((ref) => (ref.style = 'display:inlineBlock'));
+          listRef.current.map((ref) => (ref.style = 'display:none'));
           break;
         case 2:
-          listRef.current[3].style = "display:none";
-          listRef.current[4].style = "display:none";
+          listRef.current.map((ref) => (ref.style = 'display:inlineBlock'));
+          listRef.current[0].style = 'display:none';
+          listRef.current[3].style = 'display:none';
+          listRef.current[4].style = 'display:none';
           break;
         case 3:
-          listRef.current[4].style = "display:none";
+          listRef.current.map((ref) => (ref.style = 'display:inlineBlock'));
+          listRef.current[4].style = 'display:none';
           break;
         case 4:
           break;
@@ -164,9 +166,7 @@ export default function Ctg_content({ props }) {
           break;
       }
     } else {
-      foodArray
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .map((food) => arr.push(food));
+      foodArray.sort((a, b) => new Date(b.date) - new Date(a.date)).map((food) => arr.push(food));
       setDateOrder(arr);
       foodArray.sort((a, b) => b.view - a.view).map((food) => arr2.push(food));
       setViewOrder(arr2);
@@ -187,19 +187,10 @@ export default function Ctg_content({ props }) {
                   <ul>
                     <li>
                       <BsCheck />
-                      <input
-                        type="button"
-                        value="최신순"
-                        className={style.check}
-                        onClick={onClick_top}
-                      />
+                      <input type="button" value="최신순" className={style.check} onClick={onClick_top} />
                     </li>
                     <li>
-                      <input
-                        type="button"
-                        value="조회순"
-                        onClick={onClick_top}
-                      />
+                      <input type="button" value="조회순" onClick={onClick_top} />
                     </li>
                   </ul>
                 </>
@@ -209,21 +200,12 @@ export default function Ctg_content({ props }) {
                     검색결과 <strong>{viewOrder.length}</strong>건 조회
                   </p>
                   <ul>
-                    <li style={{ marginRight: "12px" }}>
-                      <input
-                        type="button"
-                        value="최신순"
-                        onClick={onClick_top}
-                      />
+                    <li style={{ marginRight: '12px' }}>
+                      <input type="button" value="최신순" onClick={onClick_top} />
                     </li>
                     <li>
                       <BsCheck />
-                      <input
-                        type="button"
-                        value="조회순"
-                        className={style.check}
-                        onClick={onClick_top}
-                      />
+                      <input type="button" value="조회순" className={style.check} onClick={onClick_top} />
                     </li>
                   </ul>
                 </>
@@ -235,35 +217,17 @@ export default function Ctg_content({ props }) {
             {/* 기준2. 페이지 리스트에 따라서 렌더링*/}
             {dateOrView === true
               ? dateOrder
-                  .filter(
-                    (food) =>
-                      dateOrder.indexOf(food) > index[0] &&
-                      dateOrder.indexOf(food) < index[1]
-                  )
+                  .filter((food) => dateOrder.indexOf(food) > index[0] && dateOrder.indexOf(food) < index[1])
                   .map((food) => (
                     <li key={food.id}>
-                      <Food
-                        id={food.id}
-                        src={food.src}
-                        hash={food.hash}
-                        name={food.name}
-                      ></Food>
+                      <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
                     </li>
                   ))
               : viewOrder
-                  .filter(
-                    (food) =>
-                      viewOrder.indexOf(food) > index[0] &&
-                      viewOrder.indexOf(food) < index[1]
-                  )
+                  .filter((food) => viewOrder.indexOf(food) > index[0] && viewOrder.indexOf(food) < index[1])
                   .map((food) => (
                     <li key={food.id}>
-                      <Food
-                        id={food.id}
-                        src={food.src}
-                        hash={food.hash}
-                        name={food.name}
-                      ></Food>
+                      <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
                     </li>
                   ))}
           </ul>
@@ -274,47 +238,16 @@ export default function Ctg_content({ props }) {
         <div>
           <div>
             {/* < 버튼 */}
-            <button
-              onClick={onClick}
-              className={style.arrow_btn_back}
-              value="minus"
-              ref={(elem) => (listRef.current[0] = elem)}
-            >
+            <button onClick={onClick} className={style.arrow_btn_back} value="minus" ref={(elem) => (listRef.current[0] = elem)}>
               <IoIosArrowBack />
             </button>
 
-            <input
-              type="button"
-              className={style.on}
-              value="1"
-              onClick={onClick}
-              ref={(elem) => (listRef.current[1] = elem)}
-            />
-            <input
-              type="button"
-              value="2"
-              onClick={onClick}
-              ref={(elem) => (listRef.current[2] = elem)}
-            />
-            <input
-              type="button"
-              value="3"
-              onClick={onClick}
-              ref={(elem) => (listRef.current[3] = elem)}
-            />
-            <input
-              type="button"
-              value="4"
-              onClick={onClick}
-              ref={(elem) => (listRef.current[4] = elem)}
-            />
+            <input type="button" className={style.on} value="1" onClick={onClick} ref={(elem) => (listRef.current[1] = elem)} />
+            <input type="button" value="2" onClick={onClick} ref={(elem) => (listRef.current[2] = elem)} />
+            <input type="button" value="3" onClick={onClick} ref={(elem) => (listRef.current[3] = elem)} />
+            <input type="button" value="4" onClick={onClick} ref={(elem) => (listRef.current[4] = elem)} />
             {/* > 버튼 */}
-            <button
-              onClick={onClick}
-              className={style.arrow_btn}
-              value="plus"
-              ref={(elem) => (listRef.current[5] = elem)}
-            >
+            <button onClick={onClick} className={style.arrow_btn} value="plus" ref={(elem) => (listRef.current[5] = elem)}>
               <IoIosArrowForward />
             </button>
           </div>

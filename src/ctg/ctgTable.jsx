@@ -1,11 +1,11 @@
-import { useState } from "react";
-import { useRef, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import style from "./ctgTable.module.css";
-import Ctg_content from "./ctg_content";
+import { useState } from 'react';
+import { useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import style from './ctgTable.module.css';
+import Ctg_content from './ctg_content';
 
 export default function CtgTable({ type }) {
-  console.log("최종" + type);
+  console.log('최종' + type);
   const location = useLocation();
   // tabel 객체
   const tableRef = useRef();
@@ -15,18 +15,21 @@ export default function CtgTable({ type }) {
 
   // 카테고리 리스트가 바뀔때마다 테이블을 다르게 보여줌
   useEffect(() => {
-    trRef.current.map((ref) => (ref.style = "display:inlineBlock"));
-    if (type === "all") {
+    trRef.current.map((ref) => (ref.style = 'display:inlineBlock'));
+
+    if (type === 'all') {
       return;
     }
-    trRef.current
-      .filter((ref) => ref.getAttribute("value") !== type)
-      .map((ref) => (ref.style = "display:none"));
+    trRef.current.filter((ref) => ref.getAttribute('value') !== type).map((ref) => (ref.style = 'display:none'));
   }, [type]);
 
   // 테이블 칸을 클릭하면 해당 내용을 적용해서 ctg_content로 전달
   const [props, setProps] = useState();
   const onClick = (e) => {
+    if (e.currentTarget.innerText === '기타') {
+      console.log(e.currentTarget.value);
+      return set(e.currentTarget.value);
+    }
     set(e.currentTarget.innerText);
   };
   // 동기적 코드로 처리하기 위함
@@ -34,9 +37,9 @@ export default function CtgTable({ type }) {
     setProps(param);
   };
 
-  useEffect(() => {
-    console.log("ctgContent에 props 전달");
-  }, [set]);
+  // useEffect(() => {
+  //   console.log("ctgContent에 props 전달");
+  // }, [set]);
 
   return (
     <div className={style.container}>
@@ -55,7 +58,9 @@ export default function CtgTable({ type }) {
               <button onClick={onClick}>분식</button>
               <button onClick={onClick}>샐러드</button>
               <button onClick={onClick}>음료</button>
-              <button onClick={onClick}>기타</button>
+              <button onClick={onClick} value="종류기타">
+                기타
+              </button>
             </td>
           </tr>
           {/* 재료 */}
@@ -69,7 +74,9 @@ export default function CtgTable({ type }) {
               <button onClick={onClick}>해물</button>
               <button onClick={onClick}>계란</button>
               <button onClick={onClick}>유제품</button>
-              <button onClick={onClick}>기타</button>
+              <button onClick={onClick} value="재료기타">
+                기타
+              </button>
             </td>
           </tr>
           {/* 방법 */}
@@ -83,7 +90,9 @@ export default function CtgTable({ type }) {
               <button onClick={onClick}>조림</button>
               <button onClick={onClick}>튀김</button>
               <button onClick={onClick}>무침·비빔</button>
-              <button onClick={onClick}>기타</button>
+              <button onClick={onClick} value="방법기타">
+                기타
+              </button>
             </td>
           </tr>
           {/* 테마 */}
@@ -128,7 +137,9 @@ export default function CtgTable({ type }) {
               <button onClick={onClick}>전자레인지</button>
               <button onClick={onClick}>냄비</button>
               <button onClick={onClick}>오븐</button>
-              <button onClick={onClick}>기타</button>
+              <button onClick={onClick} value="도구기타">
+                기타
+              </button>
             </td>
           </tr>
         </tbody>

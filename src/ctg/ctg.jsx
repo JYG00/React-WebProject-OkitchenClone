@@ -16,7 +16,7 @@ export default function Ctg() {
 
   useEffect(() => {
     set(location.state.type);
-  }, []);
+  }, [location]);
 
   const set = (param) => {
     setProps(param);
@@ -80,6 +80,7 @@ export default function Ctg() {
 
       <div className={style.ctg_content}>
         {props !== "" && <CtgList type={props} />}
+        {/* <CtgList type={props} /> */}
       </div>
       <Footer></Footer>
     </div>
