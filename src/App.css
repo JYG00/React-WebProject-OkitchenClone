@@ -68,7 +68,7 @@ input::placeholder {
   font-weight: 500;
   letter-spacing: -1px;
   color: #fff;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .header_in_top .search_bar label {
   width: 37px;
@@ -146,14 +146,14 @@ input::placeholder {
 }
 .header_in_bottom .nav ul li .ctg {
   font-weight: bold;
-  color: #222;
+  color: #666;
   letter-spacing: -1.5px;
   font-size: 22px;
   text-align: center;
 }
 .header_in_bottom .nav ul li a {
   font-weight: bold;
-  color: #222;
+  color: #666;
   letter-spacing: -1.5px;
   font-size: 22px;
   text-align: center;
@@ -190,7 +190,7 @@ input::placeholder {
   position: relative;
   top: -265px;
   display: block;
-  content: "";
+  content: '';
   height: 340px;
   border-right: 1px solid #888;
 }
@@ -275,15 +275,16 @@ input::placeholder {
   margin-left: 20px;
 }
 
-.header_in_bottom .nav2 ul li a {
+.header_in_bottom .nav2 ul li > div {
   font-size: 20px;
   color: #666;
   font-weight: 700;
+  cursor: pointer;
 }
-.header_in_bottom .nav2 ul li a:hover {
+.header_in_bottom .nav2 ul li > div:hover {
   color: #f64646;
 }
-.header_in_bottom .nav2 ul li a div:first-child {
+.header_in_bottom .nav2 ul li > div div:first-child {
   width: 30px;
   height: 30px;
   border-radius: 50px;
@@ -293,7 +294,7 @@ input::placeholder {
   align-items: center;
   justify-content: center;
 }
-.header_in_bottom .nav2 ul li a div:last-child {
+.header_in_bottom .nav2 ul li > div div:last-child {
   display: inline-block;
   vertical-align: middle;
   height: 30px;

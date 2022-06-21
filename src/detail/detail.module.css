@@ -11,16 +11,16 @@
   background-color: #f3f3f3;
 }
 .imageBox {
-  width: 1500px;
-  height: 800px;
+  width: 1000px;
+  height: 500px;
 }
 .imageBox img {
-  width: 1500px;
-  height: 800px;
-  min-width: 1500px;
-  min-height: 800px;
+  width: 1000px;
+  height: 500px;
+  min-width: 1000px;
+  min-height: 500px;
 }
-/* 중간 내용 부분 */
+/* 해쉬태그 버튼 부분 */
 .content {
   width: 100%;
   display: flex;
@@ -28,12 +28,12 @@
 }
 .content_in {
   width: 1350px;
-  height: 1700px;
+  height: 2000px;
 }
-.content_in h2 {
+.content_in > h2 {
   font-size: 45px;
   color: #333;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 .content_in .button_area {
   margin-top: 20px;
@@ -46,8 +46,39 @@
   font-size: 20px;
   background-color: #fff;
   margin-right: 7px;
+  margin-bottom: 25px;
 }
 .content_in input:hover {
   background-color: #f64646;
   color: #fff;
+}
+/* 레시피 부분 */
+.content_in .recipe {
+  padding-top: 30px;
+  width: 1350px;
+  height: 1800px;
+  border-top: 1px solid #bbbbbb;
+}
+.content_in .recipe > h2 {
+  margin-bottom: 20px;
+}
+.content_in .recipe_content {
+  width: 1350px;
+  height: 500px;
+  border-bottom: 1px solid #bbbbbb;
+}
+.content_in .recipe_content > h2 {
+  color: rgb(191, 19, 43);
+}
+.content_in .recipe_content > p {
+  margin-top: 5px;
+  font-size: 24px;
+  color: #666;
+}
+.content_in .recipe_content .recipe_img {
+  width: 500px;
+  height: 400px;
+  background-color: #dbdbdb;
+  margin: 20px 0px;
+  color: #888;
 }

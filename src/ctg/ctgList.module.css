@@ -45,6 +45,9 @@
 .ctg_list ul li button:hover {
   background-position-y: bottom;
 }
+.ctg_list ul li button:focus {
+  background-position-y: bottom;
+}
 .ctg_list ul li .active {
   background-position-y: bottom;
 }

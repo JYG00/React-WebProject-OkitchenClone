@@ -1,37 +1,24 @@
-import { useRef, useState, useEffect } from "react";
-import style from "./ctgList.module.css";
-import ctg_icon from "../img/ctg_icon.png";
-import { useLocation } from "react-router-dom";
-import CtgTable from "./ctgTable";
+import { useRef, useState, useEffect } from 'react';
+import style from './ctgList.module.css';
+import ctg_icon from '../img/ctg_icon.png';
+import CtgTable from './ctgTable';
 
 export default function CtgList({ type }) {
   const [ctg, setCtg] = useState();
-  const location = useLocation();
+
   // 카테고리 리스트를 DOM을 담는 배열
   const ref = useRef([]);
 
-  // ref.current.map((ref) => {
-  //   ref.value === type && console.log("good");
-  // });
-
   // 헤더에서 선택한 카테고리에 active 클래스 부여
   useEffect(() => {
-    ref.current.map((ref) => (ref.className = ""));
-    console.log("useEffect 실행");
+    ref.current.map((ref) => (ref.className = ''));
+    console.log('useEffect 실행');
     set(type);
   }, [type]);
 
-  // useEffect(() => {
-  //   ref.current.map((ref) => (ref.className = ""));
-  //   console.log("useEffect 실행");
-  //   ref.current
-  //     .filter((ref) => ref.getAttribute("value") === type)
-  //     .map((ref) => (ref.className = `${style.active}`));
-  // }, []);
-
   // 클릭 시 해당 DOM에 스타일 적용
   const onClick = (e) => {
-    set(e.currentTarget.getAttribute("value"));
+    set(e.currentTarget.getAttribute('value'));
   };
 
   const set = (param) => {
@@ -40,11 +27,9 @@ export default function CtgList({ type }) {
 
   // useEffect는 동기적 코드처럼 처리하기 위함
   useEffect(() => {
-    ref.current.map((ref) => (ref.className = ""));
-    console.log("props2:" + ctg);
-    ref.current
-      .filter((ref) => ref.getAttribute("value") === ctg)
-      .map((ref) => (ref.className = `${style.active}`));
+    ref.current.map((ref) => (ref.className = ''));
+    console.log('props2:' + ctg);
+    ref.current.filter((ref) => ref.getAttribute('value') === ctg).map((ref) => (ref.className = `${style.active}`));
   }, [set]);
 
   return (
@@ -56,11 +41,11 @@ export default function CtgList({ type }) {
             <li>
               <button
                 style={{
-                  display: "block",
-                  width: "100%",
-                  height: "100%",
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
                   backgroundImage: `url(${ctg_icon})`,
-                  backgroundPositionX: "0px",
+                  backgroundPositionX: '0px',
                 }}
                 onClick={onClick}
                 value="all"
@@ -71,11 +56,11 @@ export default function CtgList({ type }) {
             <li>
               <button
                 style={{
-                  display: "block",
-                  width: "100%",
-                  height: "100%",
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
                   backgroundImage: `url(${ctg_icon})`,
-                  backgroundPositionX: "-98px",
+                  backgroundPositionX: '-98px',
                 }}
                 onClick={onClick}
                 value="kind"
@@ -86,11 +71,11 @@ export default function CtgList({ type }) {
             <li>
               <button
                 style={{
-                  display: "block",
-                  width: "100%",
-                  height: "100%",
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
                   backgroundImage: `url(${ctg_icon})`,
-                  backgroundPositionX: "-196px",
+                  backgroundPositionX: '-196px',
                 }}
                 onClick={onClick}
                 value="material"
@@ -101,11 +86,11 @@ export default function CtgList({ type }) {
             <li>
               <button
                 style={{
-                  display: "block",
-                  width: "100%",
-                  height: "100%",
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
                   backgroundImage: `url(${ctg_icon})`,
-                  backgroundPositionX: "-294px",
+                  backgroundPositionX: '-294px',
                 }}
                 onClick={onClick}
                 value="way"
@@ -116,11 +101,11 @@ export default function CtgList({ type }) {
             <li>
               <button
                 style={{
-                  display: "block",
-                  width: "100%",
-                  height: "100%",
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
                   backgroundImage: `url(${ctg_icon})`,
-                  backgroundPositionX: "-392px",
+                  backgroundPositionX: '-392px',
                 }}
                 onClick={onClick}
                 value="theme"
@@ -131,11 +116,11 @@ export default function CtgList({ type }) {
             <li>
               <button
                 style={{
-                  display: "block",
-                  width: "100%",
-                  height: "100%",
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
                   backgroundImage: `url(${ctg_icon})`,
-                  backgroundPositionX: "-490px",
+                  backgroundPositionX: '-490px',
                 }}
                 onClick={onClick}
                 value="anniversary"
@@ -146,11 +131,11 @@ export default function CtgList({ type }) {
             <li>
               <button
                 style={{
-                  display: "block",
-                  width: "100%",
-                  height: "100%",
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
                   backgroundImage: `url(${ctg_icon})`,
-                  backgroundPositionX: "-588px",
+                  backgroundPositionX: '-588px',
                 }}
                 onClick={onClick}
                 value="tool"

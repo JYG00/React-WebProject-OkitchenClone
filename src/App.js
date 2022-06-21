@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { Route, Link, useHistory } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { Route, Link, useHistory, useLocation } from 'react-router-dom';
 // yarn add react-router-dom@5
 import './App.css';
 import Main from './main';
@@ -9,6 +9,7 @@ import Issue from './issue/issue';
 import Search from './search/search';
 import Ctg from './ctg/ctg';
 import Detail from './detail/detail';
+import RecentRecipe from './recentRecipe/recentRecipe';
 import { RiShoppingBasket2Line, RiFileCopyFill } from 'react-icons/ri';
 import logo from './img/logo.png';
 import top_sch from './img/top_sch.png';
@@ -18,8 +19,30 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 function App() {
   // input 객체 (검색창)
   const inputRef = useRef();
-
   const history = useHistory();
+  const location = useLocation();
+  const headerRef = useRef();
+  const [recentlyArray, setRecentlyArray] = useState([]);
+
+  // 다른 path로 이동시 헤드에 포커스
+  useEffect(() => {
+    headerRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname === '/detail') {
+      console.log('location으로 전달 받은 값은?');
+      setRecentlyRecipe(location.state.name);
+    }
+  }, [location]);
+
+  const setRecentlyRecipe = (param) => {
+    setRecentlyArray([param, ...recentlyArray]);
+  };
+
+  // "최근 본 레시피" 클릭 시
+  const onClickRecipe = () => {
+    history.push({ pathname: '/recentRecipe', state: { array: recentlyArray } });
+  };
+
+  // const memo = useMemo(setRecentlyRecipe, [recentlyArray]);
 
   // form 태그 내용을 받아서 state 에 저장
   const onSubmit = (e) => {
@@ -67,7 +90,7 @@ function App() {
   return (
     <div>
       {/* 헤더*/}
-      <div className="header">
+      <div className="header" ref={headerRef}>
         <div className="header_in">
           <div className="header_in_top">
             {/* 로고 */}
@@ -217,24 +240,24 @@ function App() {
           <div className="nav2">
             <ul>
               <li>
-                <a href="/" target="_blank">
+                <div>
                   <div>
                     <RiShoppingBasket2Line />
                   </div>
                   <div>
                     <p>오뚜기몰</p>
                   </div>
-                </a>
+                </div>
               </li>
               <li>
-                <Link to="/recently">
+                <div onClick={onClickRecipe}>
                   <div>
                     <RiFileCopyFill />
                   </div>
                   <div>
                     <p>최근 본 레시피</p>
                   </div>
-                </Link>
+                </div>
               </li>
             </ul>
           </div>
@@ -248,6 +271,7 @@ function App() {
         <Route path="/search" component={Search}></Route>
         <Route path="/ctg" component={Ctg}></Route>
         <Route path="/detail" component={Detail}></Route>
+        <Route path="/recentRecipe" component={RecentRecipe}></Route>
       </div>
     </div>
   );

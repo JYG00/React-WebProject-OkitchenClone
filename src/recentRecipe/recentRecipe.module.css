@@ -1,0 +1,69 @@
+.recent {
+  width: 100%;
+  height: auto;
+  background-color: violet;
+}
+/* 신규레시피 메뉴바 */
+.recent_bar {
+  width: 100%;
+  height: 250px;
+  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.recent_bar h2 {
+  font-size: 45px;
+  color: #333;
+}
+.content {
+  width: 100%;
+  height: auto;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content_in {
+  padding-top: 2%;
+  width: 1350px;
+  height: auto;
+  background-color: wheat;
+}
+.content_in li {
+  float: left;
+  width: 305px;
+  height: 330px;
+  background-color: aliceblue;
+  margin-bottom: 45px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+/* 최근 본 레시피가 없다면 */
+.recipe_none {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.none {
+  width: 1350px;
+  height: 500px;
+  background-color: #c1c1c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.none > div {
+  text-align: center;
+}
+.none img {
+  width: 88px;
+  height: 69px;
+  background: transparent;
+}
+.none p {
+  padding-top: 7%;
+  font-size: 18px;
+  color: #333;
+}

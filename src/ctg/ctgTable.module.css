@@ -43,12 +43,15 @@
 .container table td button:hover {
   color: #f64646;
 }
+.container table td button:focus {
+  color: #f64646;
+}
 
 .container table td button::after {
   border-right: 1px solid #888;
   margin: 0 20px;
   height: 20px;
-  content: "";
+  content: '';
 }
 .container table td button:last-child::after {
   display: none;

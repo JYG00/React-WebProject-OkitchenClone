@@ -15,8 +15,8 @@ function Search() {
   const [CloneProps, setCloneProps] = useState('');
 
   useEffect(() => {
-    setProps(location.state.props);
-    setCloneProps(location.state.props);
+    setProps(location.state.props.replace('#', ''));
+    setCloneProps(location.state.props.replace('#', ''));
     console.log(props);
   }, [location]);
 
@@ -174,7 +174,6 @@ function Search() {
                   </div>
                 ))}
           </ul>
-          {}
           {result.length === 0 && (
             <div className={style.none}>
               <div>
