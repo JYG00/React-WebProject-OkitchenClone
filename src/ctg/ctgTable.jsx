@@ -13,14 +13,23 @@ export default function CtgTable({ type }) {
   // tr 객체 (카테고리)
   const trRef = useRef([]);
 
+  // '셰프의 팁 간편식 업그레이드!'
+  const chefRef = useRef();
+
   // 카테고리 리스트가 바뀔때마다 테이블을 다르게 보여줌
   useEffect(() => {
     trRef.current.map((ref) => (ref.style = 'display:inlineBlock'));
 
     if (type === 'all') {
       return;
+    } else if (type === 'chef') {
+      set(chefRef.current.innerText);
+      trRef.current.filter((ref) => ref.getAttribute('value') !== 'theme').map((ref) => (ref.style = 'display:none'));
+      chefRef.current.focus();
+      return;
+    } else {
+      trRef.current.filter((ref) => ref.getAttribute('value') !== type).map((ref) => (ref.style = 'display:none'));
     }
-    trRef.current.filter((ref) => ref.getAttribute('value') !== type).map((ref) => (ref.style = 'display:none'));
   }, [type]);
 
   // 테이블 칸을 클릭하면 해당 내용을 적용해서 ctg_content로 전달
@@ -108,7 +117,9 @@ export default function CtgTable({ type }) {
               <button onClick={onClick}>키즈푸드</button>
               <button onClick={onClick}>채식</button>
               <button onClick={onClick}>부드러운 식감</button>
-              <button onClick={onClick}>셰프의 팁! 간편식 업그레이드</button>
+              <button onClick={onClick} ref={chefRef}>
+                셰프의 팁! 간편식 업그레이드
+              </button>
               <button onClick={onClick}>간단 꿀조합</button>
               <button onClick={onClick}>다이어트</button>
               <button onClick={onClick}>요린이를 위하여</button>

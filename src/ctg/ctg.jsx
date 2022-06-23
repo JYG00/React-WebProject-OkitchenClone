@@ -1,38 +1,26 @@
-import { useEffect, useState } from "react";
-import style from "./ctg.module.css";
-import { Route } from "react-router-dom";
-import {
-  useHistory,
-  useLocation,
-} from "react-router-dom/cjs/react-router-dom.min";
-import Footer from "../footer";
-import CtgList from "./ctgList";
+import { useEffect, useState } from 'react';
+import style from './ctg.module.css';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import Footer from '../footer';
+import CtgList from './ctgList';
 
 export default function Ctg() {
   const location = useLocation();
   const history = useHistory();
 
-  const [props, setProps] = useState("");
+  const [props, setProps] = useState('');
 
   useEffect(() => {
-    set(location.state.type);
+    // footer "셰프의 팁"을 클릭 시
+    setProps(location.state.type);
   }, [location]);
-
-  const set = (param) => {
-    setProps(param);
-  };
-
-  useEffect(() => {
-    console.log("props:" + props);
-  }, [set]);
 
   const onClick = (e) => {
     const btn_value = e.target.value;
-    const value = btn_value.replace("#", "");
-    // console.log(value);
+    const value = btn_value.replace('#', '');
 
     history.push({
-      pathname: "/search",
+      pathname: '/search',
       state: { props: value },
     });
   };
@@ -42,12 +30,8 @@ export default function Ctg() {
       <div className={style.ctg}>
         <div className={style.ctg_bar}>
           <div>
-            <h2 style={{ fontSize: "45px", color: "#333" }}>
-              오'키친 레시피 카테고리
-            </h2>
-            <h2 style={{ fontSize: "30px", color: "#f64646" }}>
-              오뚜기가 제안하고 맛있는 건강한 요리
-            </h2>
+            <h2 style={{ fontSize: '45px', color: '#333' }}>오'키친 레시피 카테고리</h2>
+            <h2 style={{ fontSize: '30px', color: '#f64646' }}>오뚜기가 제안하고 맛있는 건강한 요리</h2>
             <ul className={style.hash}>
               <li>
                 <input type="button" value="#카레" onClick={onClick} />
@@ -79,8 +63,7 @@ export default function Ctg() {
       </div>
 
       <div className={style.ctg_content}>
-        {props !== "" && <CtgList type={props} />}
-        {/* <CtgList type={props} /> */}
+        <CtgList type={props} />
       </div>
       <Footer></Footer>
     </div>

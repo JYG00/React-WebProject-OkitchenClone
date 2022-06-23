@@ -11,9 +11,9 @@
 }
 .footer_top > ul {
   margin: 0 auto;
-  width: 1280px;
+  width: 1350px;
   height: 65px;
-  /* background-color: aqua; */
+  background-color: rgb(133, 7, 32);
 }
 .footer_top > ul li {
   float: left;
@@ -40,7 +40,7 @@
 }
 .footer_bottom > ul {
   margin: 0 auto;
-  width: 1280px;
+  width: 1350px;
   height: 210px;
   background-color: #bf132b;
 }

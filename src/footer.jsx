@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
-import style from "./footer.module.css";
-import { Route, Link } from "react-router-dom";
+import React, { useRef } from 'react';
+import style from './footer.module.css';
+import { Route, Link } from 'react-router-dom';
 // yarn add react-router-dom@5;
 // yarn add react-icons;
-import { FaFacebookF } from "react-icons/fa";
-import { BsInstagram, BsYoutube } from "react-icons/bs";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { FaFacebookF } from 'react-icons/fa';
+import { BsInstagram, BsYoutube } from 'react-icons/bs';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 function Footer() {
   const history = useHistory();
 
@@ -14,8 +14,8 @@ function Footer() {
     console.log(e.currentTarget.id);
     const type = e.currentTarget.id;
     history.push({
-      pathname: "/ctg",
-      state: { type: type },
+      pathname: '/ctg',
+      state: { type: 'chef' },
     });
   };
   return (
@@ -45,7 +45,7 @@ function Footer() {
               <div>
                 <ul className={style.footer_bottom_etc}>
                   <li>
-                    <p style={{ fontSize: "20px" }}>(주)오뚜기</p>
+                    <p style={{ fontSize: '20px' }}>(주)오뚜기</p>
                   </li>
                   <li>
                     <p>경기도 안양시 동안구 흥안대로 405</p>
@@ -66,9 +66,7 @@ function Footer() {
                       <option value="0">FAMILY SITE</option>
                       <option value="http://www.naver.com">(주)오뚜기</option>
                       <option value="http://www.google.com">오뚜기몰</option>
-                      <option value="http://www.daum.net">
-                        오뚜기함태호재단
-                      </option>
+                      <option value="http://www.daum.net">오뚜기함태호재단</option>
                     </select>
                   </li>
                   {/* SNS 로고 */}

@@ -2,8 +2,10 @@ import { useRef, useState, useEffect } from 'react';
 import style from './ctgList.module.css';
 import ctg_icon from '../img/ctg_icon.png';
 import CtgTable from './ctgTable';
+import { useHistory } from 'react-router-dom';
 
 export default function CtgList({ type }) {
+  const history = useHistory();
   const [ctg, setCtg] = useState();
 
   // 카테고리 리스트를 DOM을 담는 배열
@@ -12,6 +14,7 @@ export default function CtgList({ type }) {
   // 헤더에서 선택한 카테고리에 active 클래스 부여
   useEffect(() => {
     ref.current.map((ref) => (ref.className = ''));
+
     console.log('useEffect 실행');
     set(type);
   }, [type]);
@@ -19,6 +22,7 @@ export default function CtgList({ type }) {
   // 클릭 시 해당 DOM에 스타일 적용
   const onClick = (e) => {
     set(e.currentTarget.getAttribute('value'));
+    history.push({ pathname: '/ctg', state: { type: e.currentTarget.getAttribute('value') } });
   };
 
   const set = (param) => {
@@ -29,6 +33,11 @@ export default function CtgList({ type }) {
   useEffect(() => {
     ref.current.map((ref) => (ref.className = ''));
     console.log('props2:' + ctg);
+    // footer '셰프의 팁'을 통해서 왔다면?
+    if (ctg === 'chef') {
+      ref.current.filter((ref) => ref.getAttribute('value') === 'theme').map((ref) => (ref.className = `${style.active}`));
+      return;
+    }
     ref.current.filter((ref) => ref.getAttribute('value') === ctg).map((ref) => (ref.className = `${style.active}`));
   }, [set]);
 
