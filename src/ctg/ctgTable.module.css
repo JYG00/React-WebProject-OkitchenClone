@@ -3,10 +3,10 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  min-width: 1350px;
 }
-
 .container table {
-  width: 1300px;
+  width: 1350px;
   height: auto;
   border-top: 2px solid #f64646;
   border-spacing: 0px;

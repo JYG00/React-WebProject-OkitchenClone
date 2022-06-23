@@ -1,16 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import style from './search.module.css';
 import Footer from '../footer';
-import allDataList from '../component/data/allDataList';
+import allDataList from '../data/allDataList';
 import Food from '../component/food/food';
 import { useLocation } from 'react-router';
 import { BsCheck } from 'react-icons/bs';
 import sch_btn from '../img/sch_btn.png';
 import item_no from '../img/item_no.gif';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Search() {
   // History로 보낸 객체를 props에 받습니다
   const location = useLocation();
+  const history = useHistory();
   const [props, setProps] = useState('');
   const [CloneProps, setCloneProps] = useState('');
 
@@ -77,10 +80,19 @@ function Search() {
     setProps(inputRef.current.value);
   };
 
+  const onClick_pageBtn = () => {
+    history.push({ pathname: '/search', state: { props: props } });
+  };
+
   return (
-    <div>
-      <div className={style.issue}>
-        <div className={style.issue_bar}>
+    <div className={style.container}>
+      <div className={style.search}>
+        <div className={style.search_bar}>
+          {/* 홈, 현재 페이지 버튼 */}
+          <div className={style.now_page}>
+            <Link to="/">홈</Link>
+            <input onClick={onClick_pageBtn} type="button" value="검색 결과" />
+          </div>
           <div>
             <form onSubmit={onSubmit} className={style.second_sch}>
               <input type="text" value={CloneProps} onChange={onChange} ref={inputRef} />

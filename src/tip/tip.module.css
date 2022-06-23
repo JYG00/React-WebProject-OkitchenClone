@@ -1,35 +1,46 @@
+.container {
+  width: 100%;
+  min-width: 1350px;
+}
+
 .tip {
   width: 100%;
   height: 2910px;
-  background-color: brown;
+  /* background-color: brown; */
 }
 /* 계량팁 */
 .tip_head {
   width: 100%;
   height: 360px;
-  background-color: pink;
+  /* background-color: pink; */
   display: flex;
   justify-content: center;
 }
 .tip_head > div {
   width: 1350px;
   height: 360px;
-  background-color: rgb(248, 213, 219);
+  /* background-color: rgb(248, 213, 219); */
 }
-
+/* 홈 / 현재 페이지로 */
 .now_page {
+  margin-bottom: 220px;
+  position: absolute;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  /* padding-top: 2%; */
   width: 1350px;
   height: 60px;
-  background-color: bisque;
 }
 .now_page a {
-  margin-left: 1%;
   font-size: 14px;
   color: #888;
+}
+.now_page a:first-child::after {
+  margin: 0 10px;
+  display: inline-block;
+  height: 12px;
+  content: '';
+  border-right: 1px solid #888;
 }
 .tip_exp {
   width: 1350px;
@@ -37,12 +48,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
 }
 .tip_exp div {
   width: 800px;
   height: 250px;
-  background-color: coral;
+  /* background-color: coral; */
   text-align: center;
 }
 .tip_exp h2 {
@@ -54,4 +65,142 @@
 .tip_exp p {
   font-size: 18px;
   color: #777;
+}
+
+/* Measurement Part */
+/* 계량 */
+.measurement {
+  width: 100%;
+  height: 850px;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+}
+.measurement > div {
+  width: 1350px;
+  height: 730px;
+  /* background-color: rgb(154, 247, 247); */
+}
+/* {tip_icon, tipHead2, tipHead4, tipParagraph} */
+.measurement_exp_in {
+  width: 1350px;
+  height: 250px;
+  /* background-color: chocolate; */
+  text-align: center;
+}
+.measurement_exp_in img {
+  padding-top: 2%;
+}
+.measurement_exp_in > h2 {
+  font-size: 30px;
+  color: #bf132b;
+  margin-bottom: 2%;
+}
+.measurement_exp_in > h4 {
+  font-size: 24px;
+}
+.measurement_exp_in > p {
+  font-size: 20px;
+}
+.measurement_exp_in img {
+  width: 70px;
+  height: 55px;
+}
+/*  tipImg_part */
+.measurement_table {
+  width: 1350px;
+  height: 600px;
+  /* background-color: rgb(228, 228, 250); */
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.measurement_img_part1 {
+  width: 620px;
+  height: 500px;
+  /* background-color: #888; */
+}
+.measurement_img_part2 {
+  width: 620px;
+  height: 500px;
+  /* background-color: #555; */
+}
+/* tipImg */
+.measurement_img {
+  width: 620px;
+  height: 400px;
+}
+.measurement_img img {
+  width: 100%;
+  height: 100%;
+}
+/* 사진에 대한 설명 */
+.measurement_img_exp {
+  width: 620px;
+  height: 100px;
+  /* background-color: rgb(238, 238, 212); */
+  display: flex;
+  align-items: center;
+}
+.measurement_img_exp h4 {
+  font-size: 20px;
+  color: #333;
+}
+.measurement_img_exp p {
+  font-size: 16px;
+}
+
+/* 재료별 분량 */
+.portion {
+  width: 100%;
+  height: 850px;
+  /* background-color: rgb(0, 134, 45); */
+  display: flex;
+  justify-content: center;
+}
+.portion > div {
+  width: 1350px;
+  height: 730px;
+  /* background-color: rgb(154, 247, 247); */
+}
+/* 자주쓰는 재료들의 무게가 궁금해요! */
+.ingredient_exp_in {
+  width: 1350px;
+  height: 250px;
+  /* background-color: chocolate; */
+  text-align: center;
+}
+.ingredient_exp_in {
+  /* padding-top: 2%; */
+}
+.ingredient_exp_in img {
+  padding-top: 2%;
+}
+.ingredient_exp_in > h2 {
+  font-size: 30px;
+  color: #bf132b;
+  margin-bottom: 2%;
+}
+.ingredient_exp_in > h4 {
+  font-size: 24px;
+}
+.ingredient_exp_in > p {
+  font-size: 20px;
+}
+.ingredient_exp_in img {
+  width: 70px;
+  height: 55px;
+}
+/* 종이컵 사진 파트 */
+.ingredient_img_part {
+  width: 1350px;
+  height: 600px;
+  /* background-color: rgb(228, 228, 250); */
+  display: flex;
+  justify-content: center;
+}
+.ingredient_img_part > div {
+  width: 1280px;
+  height: 600px;
+  /* background-color: aqua; */
 }

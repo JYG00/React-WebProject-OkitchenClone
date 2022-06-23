@@ -1,14 +1,14 @@
-import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import style from './recentRecipe.module.css';
-import allDataList from '../component/data/allDataList';
+import allDataList from '../data/allDataList';
 import Food from '../component/food/food';
 import Footer from '../footer';
 import item_no from '../img/item_no.gif';
-import { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function RecentRecipe() {
   const location = useLocation();
+  const history = useHistory();
   const foodArray = [...allDataList];
 
   // 최근 레시피가 담길 배열
@@ -24,12 +24,22 @@ export default function RecentRecipe() {
   // 넘겨받은 단어로 데이터를 찾고 recentRecipe 배열에 담습니다
   data.map((name) => foodArray.filter((food) => food.name.includes(name)).map((food) => recentRecipe.push(food)));
 
+  const onClick = () => {
+    history.push({ pathname: '/recentRecipe', state: { array: data } });
+  };
+
   return (
     <div className={style.container}>
       <div className={style.recent}>
         {/* 최근 본 레시피*/}
         <div className={style.recent_bar}>
-          <h2>최근 본 레시피</h2>
+          <div>
+            <div className={style.now_page}>
+              <Link to="/">홈</Link>
+              <input onClick={onClick} type="button" value="최근 본 레시피" />
+            </div>
+            <h2>최근 본 레시피</h2>
+          </div>
         </div>
         {/* 최근 본 레시피 내용,사진 */}
         <div className={style.content}>
@@ -46,8 +56,8 @@ export default function RecentRecipe() {
           {recentRecipe.length === 0 && (
             <div className={style.none}>
               <div>
-                <img src={item_no} alt="검색결과가 없습니다" />
-                <p>검색결과가 없습니다</p>
+                <img src={item_no} alt="최근 본 레시피가 없습니다" />
+                <p>최근 본 레시피가 없습니다</p>
               </div>
             </div>
           )}

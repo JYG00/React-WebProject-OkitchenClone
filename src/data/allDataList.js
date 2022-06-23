@@ -1,6 +1,6 @@
 let allDataList = [
   {
-    src: require('../../img/호두마늘볶음.jpg'),
+    src: require('../img/호두마늘볶음.jpg'),
     id: 1,
     hash: ['#밑반찬', '#매실청', '#단짠단짠', '#안주'],
     name: '호두마늘볶음',
@@ -10,7 +10,7 @@ let allDataList = [
     recipe: ['후라이팬에', '마늘과 호두를', '볶습니다'],
   },
   {
-    src: require('../../img/햄마요덮밥.jpg'),
+    src: require('../img/햄마요덮밥.jpg'),
     id: 2,
     hash: ['#덮밥요리', '#오뚜기햄', '#골드마요네스'],
     name: '햄마요덮밥',
@@ -20,7 +20,7 @@ let allDataList = [
     recipe: ['햄을 볶고', '밥에 올리고', '마요네즈를 짜줍니다'],
   },
   {
-    src: require('../../img/푸팟퐁커리.jpg'),
+    src: require('../img/푸팟퐁커리.jpg'),
     id: 3,
     hash: ['#태국식', '#게맛살', '#오뚜기카레'],
     name: '푸팟퐁커리',
@@ -30,7 +30,7 @@ let allDataList = [
     recipe: ['맛살을 찢고', '밥위에 올리고', '카레를 부어줍니다'],
   },
   {
-    src: require('../../img/토마토 냉파스타.jpg'),
+    src: require('../img/토마토 냉파스타.jpg'),
     id: 4,
     hash: ['#파스타샐러드', '#키즈셰프', '#토마토퓨레'],
     name: '토마토 냉파스타',
@@ -40,7 +40,7 @@ let allDataList = [
     recipe: ['면을 삶고', '찬물에 행구고', '토마토 소스를 부어줍니다'],
   },
   {
-    src: require('../../img/북어채 무침.jpg'),
+    src: require('../img/북어채 무침.jpg'),
     id: 5,
     hash: ['#밑반찬', '#매실청', '#집밥'],
     name: '북어채 무침',
@@ -50,7 +50,7 @@ let allDataList = [
     recipe: ['매실청과', '북어채를', '무칩니다'],
   },
   {
-    src: require('../../img/토마토 미트볼파스타.jpg'),
+    src: require('../img/토마토 미트볼파스타.jpg'),
     id: 6,
     hash: ['#미트볼X파스타면', '#오즈키친', '#스파게티'],
     name: '토마토 미트볼파스타',
@@ -60,7 +60,7 @@ let allDataList = [
     recipe: ['미트볼을 삶고', '면을 삶고', '삶았던 재료 위에 토마토 소스를 부어줍니다'],
   },
   {
-    src: require('../../img/콘치즈.jpg'),
+    src: require('../img/콘치즈.jpg'),
     id: 7,
     hash: ['#치즈듬뿍', '#단짠단짠', '#골드마요네스', '#안주'],
     name: '콘치즈',
@@ -70,7 +70,7 @@ let allDataList = [
     recipe: ['후라이팬에 옥수수통조림을 까서 넣고', ' 치즈도 같이 올려주고', ' 약불에서 볶아줍니다'],
   },
   {
-    src: require('../../img/카레 샥슈카.jpg'),
+    src: require('../img/카레 샥슈카.jpg'),
     id: 8,
     hash: ['#3일숙성카레', '#에그인헬', '#계란요리'],
     name: '카레 샥슈카',
@@ -80,7 +80,7 @@ let allDataList = [
     recipe: ['카레를 만들고', ' 밥 위에', ' 계란 후라이를 올려줍니다'],
   },
   {
-    src: require('../../img/카레 비프 스튜.jpg'),
+    src: require('../img/카레 비프 스튜.jpg'),
     id: 9,
     hash: ['#3일숙성카레', '#카레맛집', '#쇠고기'],
     name: '카레 비프 스튜',
@@ -90,7 +90,7 @@ let allDataList = [
     recipe: ['카레를 만들고', ' 소고기도 넣어주고', ' 밥 위에 올려줍니다'],
   },
   {
-    src: require('../../img/치킨 카레 타코.jpg'),
+    src: require('../img/치킨 카레 타코.jpg'),
     id: 10,
     hash: ['#맥시코', '#밀또띠아', '#닭가슴살'],
     name: '치킨 카레 타코',
@@ -100,7 +100,7 @@ let allDataList = [
     recipe: ['닭을 튀기고', ' 또띠아 위에', ' 채소와 함께 재료를 싸줍니다'],
   },
   {
-    src: require('../../img/차돌박이 된장찌개.jpg'),
+    src: require('../img/차돌박이 된장찌개.jpg'),
     id: 11,
     hash: ['#셰프의팁', '#즉석국', '#캠핑', '#된장'],
     name: '차돌박이 된장찌개',
@@ -110,7 +110,7 @@ let allDataList = [
     recipe: ['된장과 채소를 넣고', ' 차돌박이도 같이 넣고 볶아준다음', ' 물을 붓고 끓입니다'],
   },
   {
-    src: require('../../img/진라면밥.jpg'),
+    src: require('../img/진라면밥.jpg'),
     id: 12,
     hash: ['#셰프의팁', '#라면밥', '#냄비밥', '#분식'],
     name: '진라면밥',
@@ -120,7 +120,7 @@ let allDataList = [
     recipe: ['라면을 끓이고', ' 밥도 넣고', ' 김가루도 취향에 맞게 뿌려줍니다'],
   },
   {
-    src: require('../../img/육개장 칼국수.jpg'),
+    src: require('../img/육개장 칼국수.jpg'),
     id: 13,
     hash: ['#셰프의팁', '#즉석국', '#집밥'],
     name: '육개장 칼국수',
@@ -130,7 +130,7 @@ let allDataList = [
     recipe: ['육개장을 넣고', ' 면을 넣고', ' 삶아줍니다'],
   },
   {
-    src: require('../../img/유자 연근조림.jpg'),
+    src: require('../img/유자 연근조림.jpg'),
     id: 14,
     hash: ['#집밥', '#밑반찬', '#꿀유자차'],
     name: '유자 연근조림',
@@ -140,7 +140,7 @@ let allDataList = [
     recipe: ['유자청과', '연근을', '조립니다'],
   },
   {
-    src: require('../../img/옥수수전.jpg'),
+    src: require('../img/옥수수전.jpg'),
     id: 15,
     hash: ['#스위트콘', '#부침개', '#연유'],
     name: '옥수수전',
@@ -150,7 +150,7 @@ let allDataList = [
     recipe: ['캔옥수수를 까서', '밀가루와 함께', '부쳐줍니다'],
   },
   {
-    src: require('../../img/오이미역냉국.jpg'),
+    src: require('../img/오이미역냉국.jpg'),
     id: 16,
     hash: ['#집밥', '#밑반찬', '#옛날미역'],
     name: '오이미역냉국',
@@ -160,7 +160,7 @@ let allDataList = [
     recipe: ['오이를 썰고', '미역과 함께 넣고', '식초와 물을 넣습니다'],
   },
   {
-    src: require('../../img/에그마요 샌드위치.jpg'),
+    src: require('../img/에그마요 샌드위치.jpg'),
     id: 17,
     hash: ['#갈릭아이올리', '#계란요리', '#브런치'],
     name: '에그마요 샌드위치',
@@ -170,7 +170,7 @@ let allDataList = [
     recipe: ['삶은 계란을', '마요네즈에 버무리고', '빵 사이에 넣습니다'],
   },
   {
-    src: require('../../img/시나몬롤.jpg'),
+    src: require('../img/시나몬롤.jpg'),
     id: 18,
     hash: ['#베이킹', '#찹살호떡믹스', '#에어프라이어'],
     name: '시나몬롤',
@@ -180,7 +180,7 @@ let allDataList = [
     recipe: ['찹살호떡믹스와 함께 반죽을 해서', '에어프라이어에', '180도로 데워줍니다'],
   },
   {
-    src: require('../../img/쇠고기채소말이.jpg'),
+    src: require('../img/쇠고기채소말이.jpg'),
     id: 19,
     hash: ['#불고기', '#도시락', '#파티'],
     name: '쇠고기채소말이',
@@ -190,7 +190,7 @@ let allDataList = [
     recipe: ['쇠고기 불고기를 볶고', '채소와 함께', '말아줍니다'],
   },
   {
-    src: require('../../img/삼겹살 순두부짜글이.jpg'),
+    src: require('../img/삼겹살 순두부짜글이.jpg'),
     id: 20,
     hash: ['#얼큰칼칼', '#오늘밥상', '#한식', '#된장'],
     name: '삼겹살 순두부짜글이',
@@ -200,7 +200,7 @@ let allDataList = [
     recipe: ['된장에 채소와', '삼겹살을 볶고', '물을 넣고 끓여줍니다'],
   },
   {
-    src: require('../../img/바지락찜.jpg'),
+    src: require('../img/바지락찜.jpg'),
     id: 21,
     hash: ['#안주', '#해물찜', '#얼큰칼칼'],
     name: '바지락찜',
@@ -210,7 +210,7 @@ let allDataList = [
     recipe: ['찜기에 싱싱한 바지락을 넣고', '냄비에 물을 넣고', '쪄줍니다'],
   },
   {
-    src: require('../../img/문어 와사비 냉채.jpg'),
+    src: require('../img/문어 와사비 냉채.jpg'),
     id: 22,
     hash: ['#와사비소스', '#샐러드', '#무침'],
     name: '문어 와사비 냉채',
@@ -220,7 +220,7 @@ let allDataList = [
     recipe: ['삶은 문어와', '각종 채소와 와사비를', '무칩니다'],
   },
   {
-    src: require('../../img/몬테크리스토.jpg'),
+    src: require('../img/몬테크리스토.jpg'),
     id: 23,
     hash: ['#오뚜기쨈', '#토스트', '#치즈듬뿍'],
     name: '몬테크리스토',
@@ -230,7 +230,7 @@ let allDataList = [
     recipe: ['빵위에 잼과', '치즈를 넣고', '구워줍니다'],
   },
   {
-    src: require('../../img/매콤 쉬림프 카레라이스.jpg'),
+    src: require('../img/매콤 쉬림프 카레라이스.jpg'),
     id: 24,
     hash: ['#카레맛집', '#새우', '#스리라챠소스'],
     name: '매콤 쉬림프 카레라이스',
@@ -240,7 +240,7 @@ let allDataList = [
     recipe: ['카레를 끓이고', '스리라챠소스와 함께 새우를 볶고', '밥 위에 올려줍니다'],
   },
   {
-    src: require('../../img/떡만둣국.jpg'),
+    src: require('../img/떡만둣국.jpg'),
     id: 25,
     hash: ['#XO만두', '#따끈한국물', '#설날'],
     name: '떡만둣국',
@@ -250,7 +250,7 @@ let allDataList = [
     recipe: ['만두와 떡을 넣고', '끓여준다음', '계란지단을 올려줍니다'],
   },
   {
-    src: require('../../img/돈코츠오라면.jpg'),
+    src: require('../img/돈코츠오라면.jpg'),
     id: 26,
     hash: ['#오라면X부산식돼지국밥', '#야식', '#캠핑', '#분식', '#간단 꿀조합'],
     name: '돈코츠오라면',
@@ -260,7 +260,7 @@ let allDataList = [
     recipe: ['돼지국밥 간편식을 넣어주고', '끓인다음 라면을 넣어주고', '밥도 같이 말아먹습니다'],
   },
   {
-    src: require('../../img/돈까스샌드위치.jpg'),
+    src: require('../img/돈까스샌드위치.jpg'),
     id: 27,
     hash: ['#식빵요리', '#도시락', '#마요네스'],
     name: '돈까스샌드위치',
@@ -270,7 +270,7 @@ let allDataList = [
     recipe: ['돈까스를 튀기고', '빵 사이에', '끼워줍니다'],
   },
   {
-    src: require('../../img/더치베이비 팬케이크.jpg'),
+    src: require('../img/더치베이비 팬케이크.jpg'),
     id: 28,
     hash: ['#핫케이크', '#시나몬', '#브런치'],
     name: '더치베이비 팬케이크',
@@ -280,7 +280,7 @@ let allDataList = [
     recipe: ['시나몬을 핫케이크 믹스와 반죽해서', '오븐에', '구워줍니다'],
   },
   {
-    src: require('../../img/단밤 크림스프.jpg'),
+    src: require('../img/단밤 크림스프.jpg'),
     id: 29,
     hash: ['#밤', '#크림스프', '#분말스프'],
     name: '단밤 크림스프',
@@ -290,7 +290,7 @@ let allDataList = [
     recipe: ['삶은 밤을', '크림 스프에', '넣어줍니다'],
   },
   {
-    src: require('../../img/녹차핫케이크와 딸기콩피.jpg'),
+    src: require('../img/녹차핫케이크와 딸기콩피.jpg'),
     id: 30,
     hash: ['#홈카페', '#브런치', '#계란요리'],
     name: '녹차핫케이크와 딸기콩피',
@@ -300,7 +300,7 @@ let allDataList = [
     recipe: ['핫케이크 믹스로 반죽해', '오븐에', '구워줍니다'],
   },
   {
-    src: require('../../img/골뱅이야채초무침.jpg'),
+    src: require('../img/골뱅이야채초무침.jpg'),
     id: 31,
     hash: ['#새콤달콤', '#초고추장', '#안주'],
     name: '골뱅이야채초무침',
@@ -310,7 +310,7 @@ let allDataList = [
     recipe: ['골뱅이캔을 따서', '야채와 함께', '초고추장을 넣고 무칩니다'],
   },
   {
-    src: require('../../img/고추참치계란말이.jpg'),
+    src: require('../img/고추참치계란말이.jpg'),
     id: 32,
     hash: ['#반찬', '#간단한끼', '#계란요리'],
     name: '고추참치계란말이',
@@ -320,7 +320,7 @@ let allDataList = [
     recipe: ['계란을 풀고', '후라이팬에 올려서', '고추참치를 중간에 넣고 말아줍니다'],
   },
   {
-    src: require('../../img/고추잡채.jpg'),
+    src: require('../img/고추잡채.jpg'),
     id: 33,
     hash: ['#중식', '#굴소스', '#돼지불고기양념'],
     name: '고추잡채',
@@ -330,7 +330,7 @@ let allDataList = [
     recipe: ['돼지고기에', '굴소스와 불고기 양념을 넣고 볶아줍니다', '꽃빵도 함께 먹습니다'],
   },
   {
-    src: require('../../img/고사리 갈릭볶음밥.jpg'),
+    src: require('../img/고사리 갈릭볶음밥.jpg'),
     id: 34,
     hash: ['#마늘의민족', '#알리오올리오', '#한그릇'],
     name: '고사리 갈릭볶음밥',
@@ -340,7 +340,7 @@ let allDataList = [
     recipe: ['고사리와 마늘을', '후라이팬에 넣고', '밥과 같이 볶아줍니다'],
   },
   {
-    src: require('../../img/비어치킨.jpg'),
+    src: require('../img/비어치킨.jpg'),
     id: 35,
     hash: ['#비어', '#치킨'],
     name: '비어치킨',
@@ -350,7 +350,7 @@ let allDataList = [
     recipe: ['치킨 반죽에 맥주를 넣고', '오븐 또는 에어프라이어에', '180도로 구워줍니다'],
   },
   {
-    src: require('../../img/진라거치아바타.jpg'),
+    src: require('../img/진라거치아바타.jpg'),
     id: 36,
     hash: ['#치아바타'],
     name: '진라거치아바타',
@@ -360,7 +360,7 @@ let allDataList = [
     recipe: ['빵 반죽에', '맥주를 넣고', '오븐에 구워줍니다'],
   },
   {
-    src: require('../../img/비어브레드.jpg'),
+    src: require('../img/비어브레드.jpg'),
     id: 37,
     hash: ['#브레드'],
     name: '비어브레드',
@@ -370,7 +370,7 @@ let allDataList = [
     recipe: ['빵 반죽에', '맥주를 넣고', '오븐에 구워줍니다'],
   },
   {
-    src: require('../../img/전자레인지브라우니.jpg'),
+    src: require('../img/전자레인지브라우니.jpg'),
     id: 38,
     hash: ['#핫케이크믹스', '#핫쵸코', '#브라우니'],
     name: '전자레인지브라우니',
@@ -380,7 +380,7 @@ let allDataList = [
     recipe: ['브라우니믹스를 반죽해', '랩을 감싸주고', '전자레인지에 돌립니다'],
   },
   {
-    src: require('../../img/유자고구마샐러드.jpg'),
+    src: require('../img/유자고구마샐러드.jpg'),
     id: 39,
     hash: [],
     name: '유자고구마샐러드',
@@ -390,7 +390,7 @@ let allDataList = [
     recipe: ['삶은 고구마에', '유자청을 올리고', '드레싱을 뿌려줍니다'],
   },
   {
-    src: require('../../img/팥스타.jpg'),
+    src: require('../img/팥스타.jpg'),
     id: 40,
     hash: ['#팥칼국수', '#동지', '#겨울간식'],
     name: '팥스타',
@@ -400,7 +400,7 @@ let allDataList = [
     recipe: ['인스턴트 팥죽을 까서', '삶은 칼국수면에', '붓습니다'],
   },
   {
-    src: require('../../img/오이무침.jpg'),
+    src: require('../img/오이무침.jpg'),
     id: 41,
     hash: ['#반찬', '#오이무침', '#다시마식초'],
     name: '오이무침',
@@ -410,7 +410,7 @@ let allDataList = [
     recipe: ['오이와', '식초를 넣고', '고춧가루와 함께 무칩니다'],
   },
   {
-    src: require('../../img/연어장.jpg'),
+    src: require('../img/연어장.jpg'),
     id: 42,
     hash: ['#간편장아찌', '#연어', '#간편요리'],
     name: '연어장',
@@ -420,7 +420,7 @@ let allDataList = [
     recipe: ['연어를 넣고', '달달한 간장과 함께', '숙성시킵니다'],
   },
   {
-    src: require('../../img/케일장아찌.jpg'),
+    src: require('../img/케일장아찌.jpg'),
     id: 43,
     hash: ['#장아찌', '#케일장아찌', '#간편장아찌소스'],
     name: '케일장아찌',
@@ -430,7 +430,7 @@ let allDataList = [
     recipe: ['케일을 넣고', '간장과 함께', '숙성시킵니다'],
   },
   {
-    src: require('../../img/두부참치마요샌드위치.jpg'),
+    src: require('../img/두부참치마요샌드위치.jpg'),
     id: 44,
     hash: ['#참치', '#샌드위치', '#1/2하프마요네스'],
     name: '두부참치마요샌드위치',
@@ -440,7 +440,7 @@ let allDataList = [
     recipe: ['참치와 마요네즈를 섞고', '구운 두부와 함께', '빵 사이에 끼워줍니다'],
   },
   {
-    src: require('../../img/오트밀토마토리조또.jpg'),
+    src: require('../img/오트밀토마토리조또.jpg'),
     id: 45,
     hash: ['#다이어트', '#닭가슴살', '#브런치'],
     name: '오트밀토마토리조또',
@@ -450,7 +450,7 @@ let allDataList = [
     recipe: ['토마토와', '닭가슴살을', '후라이팬에 조려줍니다'],
   },
   {
-    src: require('../../img/단호박시나몬그라탕.jpg'),
+    src: require('../img/단호박시나몬그라탕.jpg'),
     id: 46,
     hash: ['#단호박', '#그라탕', '#1/2하프마요네스'],
     name: '단호박시나몬그라탕',
@@ -460,7 +460,7 @@ let allDataList = [
     recipe: ['단호박과 시나몬을 넣고', '마요네즈와 함께', '오븐에서 구워줍니다'],
   },
   {
-    src: require('../../img/순후추떡국라면.jpg'),
+    src: require('../img/순후추떡국라면.jpg'),
     id: 47,
     hash: ['#떡국', '#옛날쌀떡국', '#설날', '#분식', '라면'],
     name: '순후추떡국라면',
@@ -470,7 +470,7 @@ let allDataList = [
     recipe: ['라면을 끓이고', '중간에 떡을 넣고', '후추도 뿌려줍니다'],
   },
   {
-    src: require('../../img/어묵 진짬뽕.jpg'),
+    src: require('../img/어묵 진짬뽕.jpg'),
     id: 48,
     hash: ['#진짬뽕', '#어묵', '#꿀조합', '#분식', '라면'],
     name: '어묵 진짬뽕',
@@ -480,7 +480,7 @@ let allDataList = [
     recipe: ['진짬뽕을 냄비에 넣고', '중간에 어묵도 같이 넣고', '끓여줍니다'],
   },
   {
-    src: require('../../img/야끼소바빵.jpg'),
+    src: require('../img/야끼소바빵.jpg'),
     id: 49,
     hash: ['#철판뽀끼', '#야끼소바', '#일본요리'],
     name: '야끼소바빵',
@@ -490,7 +490,7 @@ let allDataList = [
     recipe: ['야끼소바 컵라면을 끓여주고', '후라이팬에', '베이컨과 함께 볶습니다'],
   },
   {
-    src: require('../../img/돈까스 김치나베 라면.jpg'),
+    src: require('../img/돈까스 김치나베 라면.jpg'),
     id: 50,
     hash: ['#열라면', '#돈까스', '#돈까스김치나베'],
     name: '돈까스 김치나베 라면',
@@ -500,7 +500,7 @@ let allDataList = [
     recipe: ['돈까스를 튀기고', '열라면에 김치를 넣고', '마지막에 돈까스를 올려줍니다'],
   },
   {
-    src: require('../../img/진짬뽕라면볶음밥.jpg'),
+    src: require('../img/진짬뽕라면볶음밥.jpg'),
     id: 51,
     hash: ['#진짬뽕', '#볶음밥', '#라면볶음밥'],
     name: '진짬뽕라면볶음밥',
@@ -510,7 +510,7 @@ let allDataList = [
     recipe: ['진짬뽕을 스프와 함께 부숴서', '밥과 함께', '후라이팬에 기름을 두르고 볶습니다'],
   },
   {
-    src: require('../../img/크림 진짬뽕.jpg'),
+    src: require('../img/크림 진짬뽕.jpg'),
     id: 52,
     hash: ['#크림진짬뽕', '#진짬뽕', '#라면맛집'],
     name: '크림 진짬뽕',
@@ -520,7 +520,7 @@ let allDataList = [
     recipe: ['진짬뽕을 냄비에 넣고', '중간에 크림과 함께', '끓여줍니다'],
   },
   {
-    src: require('../../img/열라떡볶이.jpg'),
+    src: require('../img/열라떡볶이.jpg'),
     id: 53,
     hash: ['#열라면X떡국떡', '#분식집', '#라면맛집', '#떡볶이'],
     name: '열라떡볶이',
@@ -530,7 +530,7 @@ let allDataList = [
     recipe: ['떡과 고추장과 물을 넣고', '떡볶이가 완성될쯤에', '라면을 넣고 조립니다'],
   },
   {
-    src: require('../../img/모듬만두덮밥.jpg'),
+    src: require('../img/모듬만두덮밥.jpg'),
     id: 54,
     hash: ['#XO만두', '#왕초보', '#셰프의팁', '#덮밥'],
     name: '모듬만두덮밥',
@@ -540,7 +540,7 @@ let allDataList = [
     recipe: ['찐 모듬만두와', '계란과 간장을', '밥 위에 올려줍니다'],
   },
   {
-    src: require('../../img/만두전골.jpg'),
+    src: require('../img/만두전골.jpg'),
     id: 55,
     hash: ['#XO만두', '#따끈한국물', '#만능소스', '#전골'],
     name: '만두전골',
@@ -550,7 +550,7 @@ let allDataList = [
     recipe: ['만두와 소스를', '전골 냄비에 넣고', '채소와 함께 끓여줍니다'],
   },
   {
-    src: require('../../img/완자꼬치.jpg'),
+    src: require('../img/완자꼬치.jpg'),
     id: 56,
     hash: ['#XO만두', '#굴림만두', '#캠핑', '#꼬치', '#완자'],
     name: '완자꼬치',
@@ -560,7 +560,7 @@ let allDataList = [
     recipe: ['만두와 완자를', '후라이팬에 구운 다음', '꼬치에 꽂습니다'],
   },
   {
-    src: require('../../img/깐풍만두.jpg'),
+    src: require('../img/깐풍만두.jpg'),
     id: 57,
     hash: ['#XO만두', '#고추맛기름', '#중식', '#깐풍'],
     name: '깐풍만두',
@@ -570,7 +570,7 @@ let allDataList = [
     recipe: ['만두를', '깐풍소스와 함께', '후라이팬에 볶습니다'],
   },
   {
-    src: require('../../img/만두덮밥.jpg'),
+    src: require('../img/만두덮밥.jpg'),
     id: 58,
     hash: ['#잡채만두', '#계란요리', '#단짠단짠', '#덮밥'],
     name: '만두덮밥',
@@ -580,7 +580,7 @@ let allDataList = [
     recipe: ['찐 만두와', '계란과 간장을', '밥 위에 올려줍니다'],
   },
   {
-    src: require('../../img/흑임자 크림스프.jpg'),
+    src: require('../img/흑임자 크림스프.jpg'),
     id: 59,
     hash: ['#크림스프X검은깨', '#스프맛집', '#브런치', '#간단 꿀조합', '#흑임자'],
     name: '흑임자 크림스프',
@@ -590,7 +590,7 @@ let allDataList = [
     recipe: ['흑임자와', '크림스프를', '냄비에 넣고 끓여줍니다'],
   },
   {
-    src: require('../../img/햄버그 스테이크 샐러드.jpg'),
+    src: require('../img/햄버그 스테이크 샐러드.jpg'),
     id: 60,
     hash: ['#햄버그X채소', '#오즈키친', '#왕초보', '#간단 꿀조합', '#샐러드'],
     name: '햄버그 스테이크 샐러드',
@@ -600,7 +600,7 @@ let allDataList = [
     recipe: ['대운 햄버그 스테이크를', '채소와 함께', '드레싱을 뿌려줍니다'],
   },
   {
-    src: require('../../img/한라산볶음밥.jpg'),
+    src: require('../img/한라산볶음밥.jpg'),
     id: 61,
     hash: ['#볶음밥X라조장', '#계란요리', '#치즈듬뿍', '#간단 꿀조합'],
     name: '한라산볶음밥',
@@ -610,7 +610,7 @@ let allDataList = [
     recipe: ['라조장과 계란을', '치즈도 함께 넣어서', '후라이팬에 볶습니다'],
   },
   {
-    src: require('../../img/토마토 미트볼그라탕.jpg'),
+    src: require('../img/토마토 미트볼그라탕.jpg'),
     id: 62,
     hash: ['#미트볼X치즈', '#그라탕', '#치즈듬뿍', '#간단 꿀조합'],
     name: '토마토 미트볼그라탕',
@@ -620,7 +620,7 @@ let allDataList = [
     recipe: ['구운 미트볼 위에', '토마토 소스와 치즈를 넣고', '오븐에 구워줍니다'],
   },
   {
-    src: require('../../img/초콜릿피자.jpg'),
+    src: require('../img/초콜릿피자.jpg'),
     id: 63,
     hash: ['#냉동피자X초콜릿', '#바나나', '#단짠단짠', '#간단 꿀조합'],
     name: '초콜릿피자',
@@ -630,7 +630,7 @@ let allDataList = [
     recipe: ['냉동피자를 돌려서', '바나나와 초콜릿을 올리고', '다시 전자레인지나 에어프라이어에 조리합니다'],
   },
   {
-    src: require('../../img/진저라떼.jpg'),
+    src: require('../img/진저라떼.jpg'),
     id: 64,
     hash: ['#꿀생강차X우유', '#홈카페', '#생강청', '#간단 꿀조합'],
     name: '진저라떼',

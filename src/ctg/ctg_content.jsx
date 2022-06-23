@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import style from './ctg_content.module.css';
-import allDataList from '../component/data/allDataList';
+import allDataList from '../data/allDataList';
 import { useState } from 'react';
 import Food from '../component/food/food';
 import { BsCheck } from 'react-icons/bs';
@@ -127,8 +127,6 @@ export default function Ctg_content({ props }) {
   useEffect(() => {
     setArray();
     if (typeof props !== 'undefined') {
-      console.log('props는');
-      console.log(props);
       contentRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [props]);
@@ -248,7 +246,6 @@ export default function Ctg_content({ props }) {
             <button onClick={onClick} className={style.arrow_btn_back} value="minus" ref={(elem) => (listRef.current[0] = elem)}>
               <IoIosArrowBack />
             </button>
-
             <input type="button" className={style.on} value="1" onClick={onClick} ref={(elem) => (listRef.current[1] = elem)} />
             <input type="button" value="2" onClick={onClick} ref={(elem) => (listRef.current[2] = elem)} />
             <input type="button" value="3" onClick={onClick} ref={(elem) => (listRef.current[3] = elem)} />

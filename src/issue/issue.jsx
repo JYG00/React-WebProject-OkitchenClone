@@ -1,8 +1,9 @@
-import React from "react";
-import style from "./issue.module.css";
-import Footer from "../footer";
-import IssuePage from "./issuePage";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import React from 'react';
+import style from './issue.module.css';
+import Footer from '../footer';
+import IssuePage from './issuePage';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Link } from 'react-router-dom';
 
 function Issue() {
   const history = useHistory();
@@ -10,11 +11,11 @@ function Issue() {
   const onClick = (e) => {
     const btn_value = e.target.value;
 
-    const value = btn_value.replace("#", "");
+    const value = btn_value.replace('#', '');
     // console.log(value);
 
     history.push({
-      pathname: "/search",
+      pathname: '/search',
       state: { props: value },
     });
   };
@@ -23,8 +24,12 @@ function Issue() {
     <div>
       <div className={style.issue}>
         <div className={style.issue_bar}>
+          <div className={style.now_page}>
+            <Link to="/">홈</Link>
+            <Link to="/issue">인기 레시피</Link>
+          </div>
           <div>
-            <h2 style={{ fontSize: "45px", color: "#333" }}>인기레시피</h2>
+            <h2 style={{ fontSize: '45px', color: '#333' }}>인기레시피</h2>
             <ul className={style.hash}>
               <li>
                 <input type="button" value="#카레" onClick={onClick} />

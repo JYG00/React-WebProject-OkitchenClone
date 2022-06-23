@@ -5,12 +5,15 @@
 }
 /* 메인이미지 */
 .mainImg {
+  display: flex;
   width: 100%;
   min-width: 1350px;
   height: 725px;
   overflow: hidden;
   background-color: burlywood;
+  left: 1350px;
 }
+
 /* 인기 */
 .popular {
   display: flex;

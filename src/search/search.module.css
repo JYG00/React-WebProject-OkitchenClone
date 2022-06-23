@@ -1,10 +1,14 @@
-.issue {
+.container {
+  width: 100%;
+  min-width: 1350px;
+}
+.search {
   width: 100%;
   height: 280px;
-  background-color: aqua;
+  /* background-color: aqua; */
 }
 /* 인기레시피 메뉴바 */
-.issue_bar {
+.search_bar {
   width: 100%;
   height: 280px;
   background-color: #f3f3f3;
@@ -12,6 +16,33 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+/* 홈 버튼, 현재 페이지 버튼 */
+.now_page {
+  margin-bottom: 220px;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 1350px;
+  height: 60px;
+}
+.now_page a {
+  font-size: 14px;
+  color: #888;
+}
+.now_page input {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: #888;
+}
+.now_page a:first-child::after {
+  margin: 0 10px;
+  display: inline-block;
+  height: 12px;
+  content: '';
+  border-right: 1px solid #888;
 }
 .second_sch {
   display: flex;
@@ -73,28 +104,28 @@
 .content {
   width: 100%;
   height: auto;
-  background-color: orange;
+  /* background-color: orange; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .content_in {
   /* padding-top: 2%; */
-  width: 1340px;
+  width: 1350px;
   height: auto;
-  background-color: wheat;
+  /* background-color: wheat; */
 }
 .sch_result {
-  width: 1340px;
+  width: 1350px;
   height: 117px;
-  background-color: pink;
+  /* background-color: pink; */
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 .sch_result h2::before {
   display: inline-block;
-  content: "";
+  content: '';
   width: 1340px;
   border-top: 2px solid #f64646;
   padding-bottom: 3%;
@@ -112,21 +143,21 @@
   float: left;
   width: 305px;
   height: 330px;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   margin-bottom: 45px;
   margin-left: 15px;
   margin-right: 15px;
 }
 .content_switch {
-  width: 1340px;
+  width: 1350px;
   height: 100px;
-  background-color: blue;
+  /* background-color: blue; */
   display: flex;
   align-items: center;
   padding-top: 3%;
 }
 .content_switch div {
-  width: 1340px;
+  width: 1350px;
   height: 40px;
   background-color: #fff;
   display: flex;
@@ -157,13 +188,13 @@
 }
 .content_in > ul {
   margin: 0 auto;
-  width: 1340px;
+  width: 1350px;
   height: auto;
-  background-color: rgb(247, 145, 20);
+  /* background-color: rgb(247, 145, 20); */
 }
 /* 검색결과가 없을 경우 */
 .none {
-  width: 1340px;
+  width: 1350px;
   height: 350px;
   background-color: #c1c1c1;
   display: flex;

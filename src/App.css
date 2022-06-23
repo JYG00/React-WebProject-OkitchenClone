@@ -3,6 +3,8 @@
   height: 170px;
   background: linear-gradient(to right, #bf132b, #f64646);
   min-width: 1350px;
+  border-bottom: 1px solid #d5d5d5;
+  box-shadow: 3px 3px 5px rgb(0 0 0 / 4%);
 }
 .header_in {
   display: flex;
@@ -45,19 +47,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 1%;
+  padding-bottom: 15px;
   padding-left: 50px;
 }
 .header_in_top .search_bar input {
   background: transparent;
   width: 578px;
-  height: 45px;
+  height: 60px;
   border: 0;
   border-bottom: 2px solid #fff;
   font-size: 21px;
   font-weight: 500;
   color: #fff;
-  padding-bottom: 8px;
 }
 .header_in_top .search_bar .sch_btn {
   background: transparent;
@@ -115,8 +116,6 @@ input::placeholder {
   width: 100%;
   height: 65px;
   background-color: #fff;
-  border-bottom: 1px solid #d5d5d5;
-  box-shadow: 3px 3px 5px rgb(0 0 0 / 4%);
 }
 .header_in_bottom {
   width: 1350px;
@@ -125,6 +124,7 @@ input::placeholder {
   /* background-color: orange; */
   background-color: #fff;
 }
+/* 네비 영역 */
 .header_in_bottom .nav {
   display: flex;
   width: 650px;
@@ -134,10 +134,7 @@ input::placeholder {
 }
 .header_in_bottom .nav > ul {
   width: 600px;
-}
-.header_in_bottom .nav ul li:first-child {
-  padding-top: 3%;
-  margin-right: 1%;
+  height: 65px;
 }
 .header_in_bottom .nav > ul > li {
   float: left;
@@ -145,12 +142,26 @@ input::placeholder {
   padding-top: 3.5%;
   padding-bottom: 3.5%;
 }
+
 .header_in_bottom .nav ul li .ctg {
   font-weight: bold;
   color: #666;
   letter-spacing: -1.5px;
   font-size: 22px;
   text-align: center;
+}
+/* 카테고리 메뉴 아이콘 */
+.header_in_bottom .nav ul li .ctg p {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  color: #fff;
+  background-color: #bf132b;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 3px;
 }
 .header_in_bottom .nav ul li a {
   font-weight: bold;
@@ -162,14 +173,28 @@ input::placeholder {
 .header_in_bottom .nav ul li a:hover {
   color: #f64646;
 }
+/* .header_in_bottom .nav > ul > li:first-child {
+  background-color: red;
+} */
 /* 카테고리 마우스 커서 올렸을때 */
-.header_in_bottom .nav ul li:nth-child(2):hover > .ctg_hover {
+.header_in_bottom .nav > ul > li:first-child:hover > .ctg_hover {
   display: block;
 }
+.ctg_hover:hover {
+  display: block;
+}
+.header_in_bottom .nav > ul > li:first-child:hover > div {
+  color: #f64646;
+}
+.header_in_bottom .nav > ul > li:first-child:hover > div p {
+  background-color: #f64646;
+}
+/* 카테고리 리스트 */
 .ctg_hover {
+  z-index: 2;
   letter-spacing: -1.5px;
   position: absolute;
-  margin: 14px -40px;
+  margin: 14px 0px;
   display: none;
   width: 360px;
   height: 470px;

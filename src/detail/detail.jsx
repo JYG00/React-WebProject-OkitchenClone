@@ -1,5 +1,5 @@
 import style from './detail.module.css';
-import allDataList from '../component/data/allDataList';
+import allDataList from '../data/allDataList';
 import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import Footer from '../footer';
 

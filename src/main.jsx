@@ -1,12 +1,30 @@
-import React from "react";
-import style from "./main.module.css";
-import Footer from "./footer";
+import React, { useEffect, useState } from 'react';
+import style from './main.module.css';
+import Footer from './footer';
+import { useRef } from 'react';
 
 function Main() {
+  const mainRef = useRef();
+
+  const [xPosition, setXPosition] = useState();
+
+  const set = () => {
+    setXPosition(xPosition + 1350);
+  };
+
+  useEffect(() => {}, [set]);
+
   return (
-    <div className={style.main}>
+    <div className={style.main} ref={mainRef}>
       {/* 메인이미지 */}
-      <div className={style.mainImg}>MainImg</div>
+      <div className={style.mainImg}>
+        <div className={style.mainSlide}>
+          <img src={require('./img/main01.jpg')} alt="메인 슬라이드" />
+        </div>
+        <div className={style.mainSlide}>
+          <img src={require('./img/main02.jpg')} alt="메인 슬라이드" />
+        </div>
+      </div>
       {/* 인기 메뉴 */}
       <div className={style.popular}>
         <ul>
@@ -85,9 +103,7 @@ function Main() {
                   <h2>인기레시피</h2>
                 </li>
                 <li>
-                  <p>
-                    오'키친에서 많은 분들이 찾아본 인기 레시피를 소개합니다.
-                  </p>
+                  <p>오'키친에서 많은 분들이 찾아본 인기 레시피를 소개합니다.</p>
                 </li>
               </ul>
             </div>

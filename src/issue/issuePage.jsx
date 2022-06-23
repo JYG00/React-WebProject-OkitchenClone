@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import style from './issuePage.module.css';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import { BsCheck } from 'react-icons/bs';
-import allDataList from '../component/data/allDataList';
+import allDataList from '../data/allDataList';
 import Food from '../component/food/food';
 
 function IssuePage() {

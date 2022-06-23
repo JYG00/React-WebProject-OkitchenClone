@@ -1,5 +1,6 @@
 .container {
   width: 100%;
+  min-width: 1350px;
   display: flex;
   justify-content: center;
 }
@@ -13,7 +14,7 @@
 .ctg_list {
   width: 1350px;
   height: 200px;
-  background-color: pink;
+  /* background-color: pink; */
   display: flex;
   align-items: center;
 }
@@ -23,7 +24,7 @@
   overflow: hidden;
   width: 1350px;
   height: 140px;
-  background-color: white;
+  /* background-color: white; */
   display: flex;
   align-items: center;
   padding-bottom: 20px;
@@ -31,7 +32,7 @@
 .ctg_list ul li {
   width: 98px;
   height: 98px;
-  background-color: bisque;
+  /* background-color: bisque; */
   border-radius: 50px;
   margin-right: 93px;
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import style from './new.module.css';
-import allDataList from '../component/data/allDataList';
+import allDataList from '../data/allDataList';
 import Footer from '../footer';
 import Food from '../component/food/food';
+import { Link } from 'react-router-dom';
 
 function Tip() {
   // 날짜순으로 15개 정렬
@@ -19,7 +20,14 @@ function Tip() {
       <div className={style.new}>
         {/* 신규레시피 메뉴바 */}
         <div className={style.new_bar}>
-          <h2>신규레시피</h2>
+          <div>
+            {/* 홈, 현재 페이지 버튼 */}
+            <div className={style.now_page}>
+              <Link to="/">홈</Link>
+              <Link to="/new">신규 레시피</Link>
+            </div>
+            <h2>신규레시피</h2>
+          </div>
         </div>
         {/* 신규레시피 내용,사진 */}
         <div className={style.content}>

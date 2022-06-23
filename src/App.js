@@ -131,31 +131,10 @@ function App() {
             <div className="nav">
               <ul>
                 <li>
-                  <p
-                    style={{
-                      padding: '1px',
-                      width: '30px',
-                      height: '30px',
-                      fontSize: '22px',
-                      color: '#fff',
-                      backgroundColor: '#bf132b',
-                      borderRadius: '50px',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <GiHamburgerMenu />
-                  </p>
-                </li>
-                <li>
-                  <div
-                    className="ctg"
-                    style={{
-                      borderRight: '1px solid #666',
-                      paddingRight: '20px',
-                    }}
-                  >
+                  <div className="ctg">
+                    <p>
+                      <GiHamburgerMenu />
+                    </p>
                     카테고리
                   </div>
                   {/* 카테고리에 마우스를 올렸을때 */}
@@ -264,7 +243,7 @@ function App() {
         </div>
       </div>
 
-      <div style={{ width: '100%', height: 'auto', background: '#ccc' }}>
+      <div style={{ width: '100%', height: 'auto', background: '#fff' }}>
         <Route path="/" exact={true} component={Main}></Route>
         <Route path="/issue" component={Issue}></Route>
         <Route path="/new" component={New}></Route>
