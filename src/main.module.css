@@ -1,17 +1,50 @@
 .main {
   width: 100%;
+  min-width: 1350px;
   height: 5000px;
   background-color: chocolate;
 }
 /* 메인이미지 */
 .mainImg {
-  display: flex;
   width: 100%;
-  min-width: 1350px;
-  height: 725px;
+  height: 760px;
+  position: relative;
   overflow: hidden;
   background-color: burlywood;
-  left: 1350px;
+}
+/* 슬라이드 화살표 버튼 */
+.mainImg .mainSlideBtn_container {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  top: 390px;
+  width: 1750px;
+  margin-left: 80px;
+}
+.mainImg .mainSlideBtn {
+  width: 40px;
+  height: 70px;
+  background: url('./img/visual_arrow.png');
+}
+#mainSlideRight {
+  background-position: right;
+}
+
+/* 메인 슬라이드 */
+.mainImg .mainImg_in {
+  display: flex;
+  position: absolute;
+  width: 21429px;
+  left: -2381px;
+}
+.mainSlide {
+  width: 2381px;
+  height: 760px;
+}
+.mainSlide > img {
+  width: 100%;
+  height: 100%;
 }
 
 /* 인기 */

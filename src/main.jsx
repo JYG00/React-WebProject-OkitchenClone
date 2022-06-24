@@ -6,23 +6,81 @@ import { useRef } from 'react';
 function Main() {
   const mainRef = useRef();
 
-  const [xPosition, setXPosition] = useState();
+  const [xPosition, setXPosition] = useState(-2381);
 
-  const set = () => {
-    setXPosition(xPosition + 1350);
+  // 왼쪽 화살표 버튼을 누를경우
+  const onClickLeft = () => {
+    mainRef.current.style.transition = 'all 0.3s ease-in-out';
+    set(xPosition + 2381);
+  };
+  // 오른쪽 화살표 버튼을 누를경우
+  const onClickRight = () => {
+    mainRef.current.style.transition = 'all 0.3s ease-in-out';
+    set(xPosition - 2381);
   };
 
-  useEffect(() => {}, [set]);
+  const set = (param) => {
+    setXPosition(param);
+  };
+
+  useEffect(() => {
+    mainRef.current.style.transition = 'all 0.3s ease-in-out';
+    mainRef.current.style.left = `${xPosition}px`;
+    // 마지막 페이지에 도달하면 첫 페이지로 이동
+    if (xPosition === -19048) {
+      mainRef.current.style.transition = 'none';
+      mainRef.current.style.left = 0;
+      set(-2381);
+    }
+    // 첫 페이지에 도달하면 마지막 페이지로 이동
+    if (xPosition === 0) {
+      mainRef.current.style.transition = 'none';
+      mainRef.current.style.left = '-19048px';
+      set(-16667);
+    }
+  }, [xPosition]);
 
   return (
-    <div className={style.main} ref={mainRef}>
+    <div className={style.main}>
       {/* 메인이미지 */}
       <div className={style.mainImg}>
-        <div className={style.mainSlide}>
-          <img src={require('./img/main01.jpg')} alt="메인 슬라이드" />
+        <div className={style.mainSlideBtn_container}>
+          {/* 왼쪽 화살표 버튼 */}
+          <div className={style.mainSlideBtn} id={style.mainSlideLeft} onClick={onClickLeft}></div>
+          {/* 오른쪽 화살표 버튼 */}
+          <div className={style.mainSlideBtn} id={style.mainSlideRight} onClick={onClickRight}></div>
         </div>
-        <div className={style.mainSlide}>
-          <img src={require('./img/main02.jpg')} alt="메인 슬라이드" />
+        <div className={style.mainSlideListBtn_container}>
+          <div></div>
+        </div>
+        <div className={style.mainImg_in} ref={mainRef}>
+          <div className={style.mainSlide}>
+            <img src={require('./img/main07.jpg')} alt="메인 슬라이드" />
+          </div>
+          <div className={style.mainSlide}>
+            <img src={require('./img/main01.jpg')} alt="메인 슬라이드" />
+          </div>
+          <div className={style.mainSlide}>
+            <img src={require('./img/main02.jpg')} alt="메인 슬라이드" />
+          </div>
+          <div className={style.mainSlide}>
+            <img src={require('./img/main03.jpg')} alt="메인 슬라이드" />
+          </div>
+          <div className={style.mainSlide}>
+            <img src={require('./img/main04.jpg')} alt="메인 슬라이드" />
+          </div>
+          <div className={style.mainSlide}>
+            <img src={require('./img/main05.jpg')} alt="메인 슬라이드" />
+          </div>
+          <div className={style.mainSlide}>
+            <img src={require('./img/main06.jpg')} alt="메인 슬라이드" />
+          </div>
+          <div className={style.mainSlide}>
+            <img src={require('./img/main07.jpg')} alt="메인 슬라이드" />
+          </div>
+          <div className={style.mainSlide}>
+            <img src={require('./img/main01.jpg')} alt="메인 슬라이드" />
+          </div>
         </div>
       </div>
       {/* 인기 메뉴 */}
@@ -130,6 +188,10 @@ function Main() {
       <Footer></Footer>
     </div>
   );
+}
+
+function MainSlideExp() {
+  return <div></div>;
 }
 
 export default Main;
