@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React-WebProject-okitchenClone-block/static/css/main.5900c90a.css",
-    "main.js": "/React-WebProject-okitchenClone-block/static/js/main.08156ac1.js",
+    "main.css": "/React-WebProject-okitchenClone-block/static/css/main.66a2993f.css",
+    "main.js": "/React-WebProject-okitchenClone-block/static/js/main.98cace86.js",
     "static/js/787.24866016.chunk.js": "/React-WebProject-okitchenClone-block/static/js/787.24866016.chunk.js",
     "static/media/main06.jpg": "/React-WebProject-okitchenClone-block/static/media/main06.290ccf8ab2638a6e0f47.jpg",
     "static/media/main03.jpg": "/React-WebProject-okitchenClone-block/static/media/main03.e49d59336d592a29c526.jpg",
@@ -88,12 +88,12 @@
     "static/media/양파.jpg": "/React-WebProject-okitchenClone-block/static/media/양파.af76079f58623b3ca284.jpg",
     "static/media/애호박.jpg": "/React-WebProject-okitchenClone-block/static/media/애호박.92491fe08f46b85f2037.jpg",
     "index.html": "/React-WebProject-okitchenClone-block/index.html",
-    "main.5900c90a.css.map": "/React-WebProject-okitchenClone-block/static/css/main.5900c90a.css.map",
-    "main.08156ac1.js.map": "/React-WebProject-okitchenClone-block/static/js/main.08156ac1.js.map",
+    "main.66a2993f.css.map": "/React-WebProject-okitchenClone-block/static/css/main.66a2993f.css.map",
+    "main.98cace86.js.map": "/React-WebProject-okitchenClone-block/static/js/main.98cace86.js.map",
     "787.24866016.chunk.js.map": "/React-WebProject-okitchenClone-block/static/js/787.24866016.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5900c90a.css",
-    "static/js/main.08156ac1.js"
+    "static/css/main.66a2993f.css",
+    "static/js/main.98cace86.js"
   ]
 }
