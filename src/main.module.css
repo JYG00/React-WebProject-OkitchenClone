@@ -34,17 +34,66 @@
 #mainSlideRight {
   background-position: right;
 }
+/* 슬라이드 리스트 */
+.mainImg .mainSlideListBtn_container {
+  width: 100%;
+  position: absolute;
+  top: 640px;
+  display: flex;
+  justify-content: flex-start;
+  z-index: 2;
+  padding-left: 320px;
+}
+.mainImg .pageBtn {
+  color: #fff;
+  width: 120px;
+  height: 40px;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  font-size: 18px;
+}
+.mainImg .pageBtn > div {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  font-size: 0;
+  display: inline-block;
+  content: '';
+  margin: 0 5px;
+}
 
 /* 메인 슬라이드 */
 .mainImg .mainImg_in {
+  transition: all 0.3s ease-in-out;
   display: flex;
   position: absolute;
   width: 18000px;
-  left: -2000px;
+}
+.mainImg .mainImg_in_none {
+  transition: none;
+  display: flex;
+  position: absolute;
+  width: 18000px;
 }
 .mainSlide {
   width: 100%;
   height: 725px;
+  display: flex;
+  align-items: center;
+}
+.mainSlide > div {
+  position: absolute;
+  width: 100%;
+  height: 380px;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
 }
 
 /* 인기 */

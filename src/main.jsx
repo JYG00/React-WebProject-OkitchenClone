@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import style from './main.module.css';
 import Footer from './footer';
 import { useRef } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 // 메인 슬라이드(carousel) 이미지
 import main01 from './img/main01.jpg';
 import main02 from './img/main02.jpg';
@@ -10,44 +11,93 @@ import main04 from './img/main04.jpg';
 import main05 from './img/main05.jpg';
 import main06 from './img/main06.jpg';
 import main07 from './img/main07.jpg';
+// 메인 슬라이드 리스트 아이콘
+import stopBtn from './img/visual_stop.png';
+import startBtn from './img/visual_start.png';
 
 function Main() {
   const mainRef = useRef();
+  const pageRef = useRef();
+  const history = useHistory();
 
   const [xPosition, setXPosition] = useState(-2000);
+  const [page, setPage] = useState(1);
+  const [isRunning, setRunning] = useState(true);
 
   // 왼쪽 화살표 버튼을 누를경우
   const onClickLeft = () => {
-    mainRef.current.style.transition = 'all 0.3s ease-in-out';
+    // 페이지 -1
+    setPageNum(page - 1);
+    // 슬라이드가 왼쪽으로 이동
     set(xPosition + 2000);
   };
   // 오른쪽 화살표 버튼을 누를경우
   const onClickRight = () => {
-    mainRef.current.style.transition = 'all 0.3s ease-in-out';
+    // 페이지 +1
+    setPageNum(page + 1);
+    // 슬라이드 오른쪽 이동
     set(xPosition - 2000);
   };
 
+  // 자동 슬라이드 정지
+  const onClickStop = () => {
+    setRun(false);
+  };
+
+  // 자동 슬라이드 재생
+  const onClickPlay = () => {
+    setRun(true);
+  };
+
+  // 동기적 코드로 처리하기 위함
   const set = (param) => {
     setXPosition(param);
   };
+  const setPageNum = (param) => {
+    setPage(param);
+  };
+  const setRun = (param) => {
+    setRunning(param);
+  };
 
+  // 슬라이드 위치가 바뀌면 호출
   useEffect(() => {
     // xPosition에 따라서 슬라이드 위치 변경
-    mainRef.current.style.transition = 'all 0.3s ease-in-out';
-    mainRef.current.style.left = `${xPosition}px`;
+    mainRef.current.className = `${style.mainImg_in}`;
+    mainRef.current.style.transform = `translateX(${xPosition}px)`;
+    // mainRef.current.style.left = `${xPosition}px`;
+    console.log(pageRef.current.getAttribute('value'));
     // 마지막 페이지에서 첫 페이지로 부드럽게 이동
-    if (xPosition === -16000) {
-      mainRef.current.style.transition = 'none';
-      mainRef.current.style.left = 0;
+    if (pageRef.current.getAttribute('value') == 8) {
+      history.push('/');
+      // 페이지를 1로 설정
+      setPageNum(1);
+      mainRef.current.className = `${style.mainImg_in_none}`;
+      mainRef.current.style.transform = `translateX(0px)`;
       set(-2000);
     }
     // 첫 페이지에서 마지막 페이지로 부드럽게 이동
-    if (xPosition === 0) {
-      mainRef.current.style.transition = 'none';
-      mainRef.current.style.left = '-16000px';
+    if (pageRef.current.getAttribute('value') < 1) {
+      // 페이지를 7로 설정
+      setPageNum(7);
+      // 슬라이드가 이어지는 효과를 주기 위해서 transition:none 부여
+      mainRef.current.className = `${style.mainImg_in_none}`;
+      mainRef.current.style.transform = `translateX(-16000px)`;
+      // mainRef.current.style.left = '-16000px';
       set(-14000);
     }
   }, [xPosition]);
+
+  // 5초마다 슬라이드가 옆으로 이동
+  useEffect(() => {
+    if (isRunning) {
+      const interval = setInterval(() => {
+        // 5초마다 슬라이드가 오른쪽으로 이동
+        onClickRight();
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  });
 
   return (
     <div className={style.main}>
@@ -61,13 +111,26 @@ function Main() {
             <div className={style.mainSlideBtn} id={style.mainSlideRight} onClick={onClickRight}></div>
           </div>
         </div>
+        {/* 슬라이드 리스트 버튼 */}
         <div className={style.mainSlideListBtn_container}>
-          <div></div>
+          <div className={style.pageBtn}>
+            {/* 멈춤 버튼 */}
+            <div style={{ background: `url(${stopBtn})` }} onClick={onClickStop}></div>
+            <span ref={pageRef} value={page}>
+              {page} / 7
+            </span>
+            {/* 재생 버튼 */}
+            <div style={{ background: `url(${startBtn})` }} onClick={onClickPlay}></div>
+          </div>
         </div>
         {/* 메인 슬라이드 이미지*/}
         <div className={style.mainImg_in} ref={mainRef}>
-          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }}></div>
-          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }}></div>
+          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }}>
+            <div>contenttag</div>
+          </div>
+          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }}>
+            <div>contenttag</div>
+          </div>
           <div className={style.mainSlide} style={{ background: `url(${main02}) no-repeat center`, backgroundSize: 'cover' }}></div>
           <div className={style.mainSlide} style={{ background: `url(${main03}) no-repeat center`, backgroundSize: 'cover' }}></div>
           <div className={style.mainSlide} style={{ background: `url(${main04}) no-repeat center`, backgroundSize: 'cover' }}></div>
@@ -184,8 +247,23 @@ function Main() {
   );
 }
 
-function MainSlideExp() {
-  return <div></div>;
+function MainSlideExp({ keyTop, keyMiddle, keyBottom, hashBtn, mainBtn }) {
+  return (
+    <div>
+      <div>
+        {/* 키워드 상단 밑줄 */}
+        <div className={style.keyTop}>{keyTop}</div>
+        {/* 키워드 중간 */}
+        <div className={style.keyMiddle}>{keyMiddle}</div>
+        {/* 키워드 하단 제일 큰 글씨*/}
+        <div className={style.keyBottom}>{keyBottom}</div>
+        {/* 해쉬버튼 클릭 시 검색*/}
+        <div className={style.hashBtn}>{hashBtn}</div>
+        {/* 메인버튼 클릭 시 해당 카테고리 또는 링크로 이동*/}
+        <div className={style.mainBtn}>{mainBtn}</div>
+      </div>
+    </div>
+  );
 }
 
 export default Main;
