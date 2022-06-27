@@ -7,20 +7,24 @@
 /* 메인이미지 */
 .mainImg {
   width: 100%;
-  height: 760px;
+  height: 725px;
   position: relative;
   overflow: hidden;
   background-color: burlywood;
 }
 /* 슬라이드 화살표 버튼 */
 .mainImg .mainSlideBtn_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.mainImg .mainSlideBtn_container > div {
   position: absolute;
   display: flex;
   justify-content: space-between;
   z-index: 2;
-  top: 390px;
-  width: 1750px;
-  margin-left: 80px;
+  top: 330px;
+  width: 1550px;
 }
 .mainImg .mainSlideBtn {
   width: 40px;
@@ -35,16 +39,12 @@
 .mainImg .mainImg_in {
   display: flex;
   position: absolute;
-  width: 21429px;
-  left: -2381px;
+  width: 18000px;
+  left: -2000px;
 }
 .mainSlide {
-  width: 2381px;
-  height: 760px;
-}
-.mainSlide > img {
   width: 100%;
-  height: 100%;
+  height: 725px;
 }
 
 /* 인기 */
