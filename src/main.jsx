@@ -14,9 +14,14 @@ import main07 from './img/main07.jpg';
 // 메인 슬라이드 리스트 아이콘
 import stopBtn from './img/visual_stop.png';
 import startBtn from './img/visual_start.png';
+// 미니 슬라이드(carousel) 이미지
+import mini01 from './img/쨈 아이스크림.jpg';
+import mini02 from './img/옥수수 푸딩.jpg';
+import mini03 from './img/피자 토스트.jpg';
 
 function Main() {
   const mainRef = useRef();
+  const miniSlideRef = useRef();
   const pageRef = useRef();
   const history = useHistory();
 
@@ -47,6 +52,82 @@ function Main() {
   // 자동 슬라이드 재생
   const onClickPlay = () => {
     setRun(true);
+  };
+
+  // 슬라이드 클릭 시
+  const onClickSlide = () => {
+    // 클릭한 슬라이드의 페이지에 따라서 이동
+    switch (page) {
+      // 레시피 페이지로 이동
+      case 1: {
+        history.push({ pathname: '/detail', state: { name: '카레 토마토솥밥' } });
+        break;
+      }
+      // 스피드 테마로 이동
+      case 2: {
+        history.push({
+          pathname: '/ctg',
+          state: { type: 'speed' },
+        });
+        break;
+      }
+      // 왕초보(요린이를 위하여) 테마로 이동
+      case 3: {
+        history.push({
+          pathname: '/ctg',
+          state: { type: 'child' },
+        });
+        break;
+      }
+      // 셰프의 팁! 테마로 이동
+      case 4: {
+        history.push({
+          pathname: '/ctg',
+          state: { type: 'chef' },
+        });
+        break;
+      }
+      // 도서관 페이지로 이동
+      case 5: {
+        history.push({
+          pathname: '/none',
+          state: { key: '허브·스파이스 전문 도서관 라이브러리 H' },
+        });
+        break;
+      }
+      // 생일 테마로 이동
+      case 6: {
+        history.push({
+          pathname: '/ctg',
+          state: { type: 'birthday' },
+        });
+        break;
+      }
+      // 오키친 스튜디오 페이지로 이동
+      case 7: {
+        history.push({
+          pathname: '/none',
+          state: { key: '오키친 스튜디오' },
+        });
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+  };
+
+  // 해쉬버튼 클릭시
+  const onClick = (e) => {
+    const btn_value = e.target.value;
+
+    const value = btn_value.replace('#', '');
+    // console.log(value);
+
+    history.push({
+      pathname: '/search',
+      state: { props: value },
+    });
   };
 
   // 동기적 코드로 처리하기 위함
@@ -123,39 +204,39 @@ function Main() {
         </div>
         {/* 메인 슬라이드 이미지*/}
         <div className={style.mainImg_in} ref={mainRef}>
-          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }}></div>
-          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }}>
+          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}></div>
+          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
             <div>
               <MainSlideExp keyTop={'간편하지만 정성스러운 한끼!'} keyMiddle={'갓 지은 솥밥으로'} keyBottom={'맛있고 든든하게 영양 챙기기'} hashBtn={['#채식', '#카레토마토솥밥']} mainBtn={'레시피 바로 보기'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main02}) no-repeat center`, backgroundSize: 'cover' }}>
+          <div className={style.mainSlide} style={{ background: `url(${main02}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
             <div>
               <MainSlideExp keyTop={'빠르고 간편하게'} keyMiddle={'하지만 맛은 최고!'} keyBottom={'10분 내로~ 스피드 레시피'} hashBtn={['#XO만두', '#떡만둣국', '#뜨끈한국물']} mainBtn={'스피드 테마 보기'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main03}) no-repeat center`, backgroundSize: 'cover' }}>
+          <div className={style.mainSlide} style={{ background: `url(${main03}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
             <div>
               <MainSlideExp keyTop={'쉽고 빠르게'} keyMiddle={'따라 할 수 있는!'} keyBottom={'새내기 요리사 초보 레시피'} hashBtn={['#토마토 냉파스타', '#에그마요 샌드위치']} mainBtn={'왕초보 테마 보기'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main04}) no-repeat center`, backgroundSize: 'cover' }}>
+          <div className={style.mainSlide} style={{ background: `url(${main04}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
             <div>
               <MainSlideExp keyTop={'오뚜기 간편식'} keyMiddle={'요리가 되는 팁!'} keyBottom={'요리의 업그레이드 셰프의 팁'} hashBtn={['#얼큰한', '#열라면', '#순두부열라면']} mainBtn={'셰프의 팁 테마 보기'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main05}) no-repeat center`, backgroundSize: 'cover' }}>
+          <div className={style.mainSlide} style={{ background: `url(${main05}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
             <div>
-              <MainSlideExp keyTop={'향신료의 매력에'} keyMiddle={'푹 빠지고 싶다면?'} keyBottom={'허브·스파이스 전문 도서관 라이브러리 H'} hashBtn={['#채식', '#카레토마토솥밥']} mainBtn={'레시피 바로 보기'} color={'black'} />
+              <MainSlideExp keyTop={'향신료의 매력에'} keyMiddle={'푹 빠지고 싶다면?'} keyBottom={'허브·스파이스 전문 도서관 라이브러리 H'} hashBtn={['#채식', '#카레토마토솥밥']} mainBtn={'자세한 이용 방법 보기'} color={'black'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main06}) no-repeat center`, backgroundSize: 'cover' }}>
+          <div className={style.mainSlide} style={{ background: `url(${main06}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
             <div>
               <MainSlideExp keyTop={'간편하게 완성하는'} keyMiddle={'브런치 메뉴'} keyBottom={'더치베이비 펜케이크'} hashBtn={['#생일축하해', '#핫케이크']} mainBtn={'생일테마 바로가기'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }}></div>
-          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }}>
+          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}></div>
+          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
             <div>
               <MainSlideExp keyTop={'간편하지만 정성스러운 한끼!'} keyMiddle={'갓 지은 솥밥으로'} keyBottom={'맛있고 든든하게 영양 챙기기'} hashBtn={['#채식', '#카레토마토솥밥']} mainBtn={'레시피 바로 보기'} />
             </div>
@@ -164,12 +245,68 @@ function Main() {
       </div>
       {/* 인기 메뉴 */}
       <div className={style.popular}>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-        </ul>
+        <div>
+          {/* 이건 어때요? 인기 검색어 */}
+          <ul className={style.popular_sch}>
+            <li>
+              <ul>
+                <li>
+                  <h2>이건어때요?</h2>
+                  <h2>인기검색어</h2>
+                  <p>고민을 덜어주는 추천 검색어</p>
+                </li>
+                <li>
+                  {/* 해쉬태그 버튼 */}
+                  <ul className={style.hash}>
+                    <li>
+                      <input type="button" value="#카레" onClick={onClick} />
+                    </li>
+                    <li>
+                      <input type="button" value="#마요네스" onClick={onClick} />
+                    </li>
+                    <li>
+                      <input type="button" value="#분식" onClick={onClick} />
+                    </li>
+                    <li>
+                      <input type="button" value="#브런치" onClick={onClick} />
+                    </li>
+                    <li>
+                      <input type="button" value="#집밥" onClick={onClick} />
+                    </li>
+                    <li>
+                      <input type="button" value="#치즈듬뿍" onClick={onClick} />
+                    </li>
+                    <li>
+                      <input type="button" value="#캠핑" onClick={onClick} />
+                    </li>
+                    <li>
+                      <input type="button" value="#간단 꿀조합" onClick={onClick} />
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          {/* 키즈 셰프 레시피 */}
+          <ul className={style.kidsChef}>
+            {/* 미니 슬라이드 */}
+            <div ref={miniSlideRef}>
+              <div className={style.miniSlide}>
+                <MiniSlide name={'쨈 아이스크림'} hash={['#오뚜기쨈', '#딸기쨈', '#포도쨈']} background={mini01} />
+              </div>
+              <div className={style.miniSlide}>
+                <MiniSlide name={'옥수수 토스트'} hash={['#옥수수푸딩', '#콘스프']} background={mini02} />
+              </div>
+              <div className={style.miniSlide}>
+                <MiniSlide name={'피자 토스트'} hash={['#피자토스트', '#피자소스', '#피자']} background={mini03} />
+              </div>
+            </div>
+          </ul>
+          {/* 최근 본 레시피 */}
+          <ul>3</ul>
+          {/* 오뚜기의 쉽고 간단한 계량 꿀팁 */}
+          <ul>4</ul>
+        </div>
       </div>
       {/* 메뉴바 */}
       <div className={style.menubar}>MenuBarImg</div>
@@ -371,6 +508,37 @@ export function MainSlideExp({ keyTop, keyMiddle, keyBottom, hashBtn, mainBtn, c
           <div>
             <input type="button" value={mainBtn} onClick={onClickMain} />
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// 미니 슬라이드 carousel 컨텐츠
+export function MiniSlide({ name, hash, background }) {
+  console.log(background);
+  return (
+    <div>
+      {/* 키즈셰프 레시피 */}
+      <div className={style.kidsChef_Rcp}>
+        <h2>kid's cooking</h2>
+        <h2>키즈셰프 레시피</h2>
+      </div>
+      {/* 레시피 사진 */}
+      <div className={style.kidsChef_img}>
+        <div style={{ width: '220px', height: '220px', borderRadius: '220px' }}>
+          <div style={{ background: `url(${background})`, backgroundSize: 'cover' }}></div>
+        </div>
+      </div>
+      {/* 레시피 이름, 태그 */}
+      <div className={style.kidsChef_name}>
+        <div>
+          {/* 이름 */}
+          <h3>{name}</h3>
+          {/* 태그 */}
+          <p>
+            {hash[0]} {hash[1]} {hash[2]}
+          </p>
         </div>
       </div>
     </div>

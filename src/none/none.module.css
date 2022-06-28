@@ -1,0 +1,37 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.none {
+  width: 1350px;
+  height: 500px;
+  /* background-color: #c1c1c1; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.none > div {
+  text-align: center;
+}
+.none img {
+  width: 88px;
+  height: 69px;
+  background: transparent;
+}
+.none h2 {
+  padding-top: 50px;
+}
+.none p {
+  padding-top: 7%;
+  font-size: 18px;
+  color: #333;
+}
+.none p:last-child {
+  cursor: pointer;
+  font-size: 25px;
+}
+.none p:last-child:hover {
+  color: #f64646;
+  text-decoration: underline;
+}

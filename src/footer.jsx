@@ -11,8 +11,6 @@ function Footer() {
 
   // 카테고리 리스트 클릭시
   const onClickChef = (e) => {
-    console.log(e.currentTarget.id);
-    const type = e.currentTarget.id;
     history.push({
       pathname: '/ctg',
       state: { type: 'chef' },
@@ -28,9 +26,7 @@ function Footer() {
               <Link to="/issue">인기 레시피</Link>
             </li>
             <li>
-              <button onClick={onClickChef} id="theme">
-                셰프의 팁
-              </button>
+              <button onClick={onClickChef}>셰프의 팁</button>
             </li>
             <li>
               <Link to="/new">신규 레시피</Link>

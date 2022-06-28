@@ -33,8 +33,20 @@ export default function CtgList({ type }) {
   useEffect(() => {
     ref.current.map((ref) => (ref.className = ''));
     console.log('props2:' + ctg);
-    // footer '셰프의 팁'을 통해서 왔다면?
+    // footer '셰프의 팁'
     if (ctg === 'chef') {
+      ref.current.filter((ref) => ref.getAttribute('value') === 'theme').map((ref) => (ref.className = `${style.active}`));
+      return;
+    } else if (ctg === 'birthday') {
+      // main '생일 테마'
+      ref.current.filter((ref) => ref.getAttribute('value') === 'anniversary').map((ref) => (ref.className = `${style.active}`));
+      return;
+    } else if (ctg === 'child') {
+      // main 왕초보 (요린이를 위하여)
+      ref.current.filter((ref) => ref.getAttribute('value') === 'theme').map((ref) => (ref.className = `${style.active}`));
+      return;
+    } else if (ctg === 'speed') {
+      // main 스피드 (요린이를 위하여)
       ref.current.filter((ref) => ref.getAttribute('value') === 'theme').map((ref) => (ref.className = `${style.active}`));
       return;
     }

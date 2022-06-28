@@ -13,8 +13,17 @@ export default function CtgTable({ type }) {
   // tr 객체 (카테고리)
   const trRef = useRef([]);
 
-  // '셰프의 팁 간편식 업그레이드!'
+  // '테마 : 셰프의 팁 간편식 업그레이드!'
   const chefRef = useRef();
+
+  // '테마 : 생일'
+  const birthdayRef = useRef();
+
+  // '테마 : 요린이를 위하여'
+  const childRef = useRef();
+
+  // '테마 : 스피드'
+  const speedRef = useRef();
 
   // 카테고리 리스트가 바뀔때마다 테이블을 다르게 보여줌
   useEffect(() => {
@@ -23,9 +32,28 @@ export default function CtgTable({ type }) {
     if (type === 'all') {
       return;
     } else if (type === 'chef') {
+      // 테마 : 셰프의 팁
       set(chefRef.current.innerText);
       trRef.current.filter((ref) => ref.getAttribute('value') !== 'theme').map((ref) => (ref.style = 'display:none'));
       chefRef.current.focus();
+      return;
+    } else if (type === 'birthday') {
+      // 기념일 : 생일
+      set(birthdayRef.current.innerText);
+      trRef.current.filter((ref) => ref.getAttribute('value') !== 'anniversary').map((ref) => (ref.style = 'display:none'));
+      birthdayRef.current.focus();
+      return;
+    } else if (type === 'child') {
+      // 테마 : 요린이를 위하여
+      set(childRef.current.innerText);
+      trRef.current.filter((ref) => ref.getAttribute('value') !== 'theme').map((ref) => (ref.style = 'display:none'));
+      childRef.current.focus();
+      return;
+    } else if (type === 'speed') {
+      // 테마 : 스피드
+      set(speedRef.current.innerText);
+      trRef.current.filter((ref) => ref.getAttribute('value') !== 'theme').map((ref) => (ref.style = 'display:none'));
+      speedRef.current.focus();
       return;
     } else {
       trRef.current.filter((ref) => ref.getAttribute('value') !== type).map((ref) => (ref.style = 'display:none'));
@@ -104,7 +132,9 @@ export default function CtgTable({ type }) {
           <tr ref={(elem) => (trRef.current[3] = elem)} value="theme">
             <th>테마</th>
             <td>
-              <button onClick={onClick}>스피드</button>
+              <button onClick={onClick} ref={speedRef}>
+                스피드
+              </button>
               <button onClick={onClick}>브런치</button>
               <button onClick={onClick}>야식</button>
               <button onClick={onClick}>간식</button>
@@ -122,7 +152,9 @@ export default function CtgTable({ type }) {
               </button>
               <button onClick={onClick}>간단 꿀조합</button>
               <button onClick={onClick}>다이어트</button>
-              <button onClick={onClick}>요린이를 위하여</button>
+              <button onClick={onClick} ref={childRef}>
+                요린이를 위하여
+              </button>
             </td>
           </tr>
           {/* 기념일 */}
@@ -130,7 +162,9 @@ export default function CtgTable({ type }) {
             <th>기념일</th>
             <td>
               <button onClick={onClick}>명절</button>
-              <button onClick={onClick}>생일</button>
+              <button onClick={onClick} ref={birthdayRef}>
+                생일
+              </button>
               <button onClick={onClick}>카레데이</button>
               <button onClick={onClick}>크리스마스</button>
             </td>

@@ -10,6 +10,7 @@ import Search from './search/search';
 import Ctg from './ctg/ctg';
 import Detail from './detail/detail';
 import RecentRecipe from './recentRecipe/recentRecipe';
+import None from './none/none';
 import { RiShoppingBasket2Line, RiFileCopyFill } from 'react-icons/ri';
 import logo from './img/logo.png';
 import top_sch from './img/top_sch.png';
@@ -35,6 +36,11 @@ function App() {
 
   const setRecentlyRecipe = (param) => {
     setRecentlyArray([param, ...recentlyArray]);
+  };
+
+  // "오뚜기몰" 클릭 시
+  const onClickMall = () => {
+    history.push({ pathname: '/none', state: { key: '오뚜기몰' } });
   };
 
   // "최근 본 레시피" 클릭 시
@@ -218,7 +224,7 @@ function App() {
             <div className="nav2">
               <ul>
                 <li>
-                  <div>
+                  <div onClick={onClickMall}>
                     <div>
                       <RiShoppingBasket2Line />
                     </div>
@@ -252,6 +258,7 @@ function App() {
         <Route path="/ctg" component={Ctg}></Route>
         <Route path="/detail" component={Detail}></Route>
         <Route path="/recentRecipe" component={RecentRecipe}></Route>
+        <Route path="/none" component={None}></Route>
       </div>
     </div>
   );
