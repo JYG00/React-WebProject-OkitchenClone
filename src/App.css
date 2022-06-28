@@ -191,7 +191,7 @@ input::placeholder {
 }
 /* 카테고리 리스트 */
 .ctg_hover {
-  z-index: 2;
+  z-index: 100;
   letter-spacing: -1.5px;
   position: absolute;
   margin: 14px 0px;

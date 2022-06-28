@@ -45,6 +45,7 @@
   padding-left: 320px;
 }
 .mainImg .pageBtn {
+  letter-spacing: -1.5px;
   color: #fff;
   width: 120px;
   height: 40px;
@@ -63,7 +64,7 @@
   font-size: 0;
   display: inline-block;
   content: '';
-  margin: 0 5px;
+  margin: 0 6px;
 }
 
 /* 메인 슬라이드 */
@@ -87,14 +88,121 @@
 }
 .mainSlide > div {
   position: absolute;
-  width: 100%;
+  width: 2000px;
   height: 380px;
-  background-color: aquamarine;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 3;
 }
+/* 메인 슬라이드 내용 MainSlideExp*/
+.MainSlideExp_container {
+  width: 2000px;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+}
+.MainSlideExp_container > div {
+  width: 1350px;
+  height: 450px;
+  /* background-color: bisque; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* 키워드 상단 밑줄 */
+.keyTop {
+  width: 1350px;
+  height: 50px;
+  /* background-color: pink; */
+  display: flex;
+  align-items: center;
+}
+.keyTop h2 {
+  padding-left: 5px;
+  font-size: 30px;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* 키워드 중간 */
+/* 키워드 하단 제일 큰 글씨 */
+.keyMiddle {
+  width: 1350px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  /* background-color: rgb(250, 102, 127); */
+}
+.keyMiddle p {
+  padding-left: 5px;
+  font-size: 30px;
+  color: #fff;
+  font-weight: 500;
+}
+/* 키워드 하단 제일 큰 글씨 */
+.keyBottom {
+  width: 1350px;
+  height: 150px;
+  /* background-color: rgb(248, 77, 105); */
+  display: flex;
+  align-items: center;
+}
+.keyBottom h2:first-child {
+  font-size: 55px;
+  color: #fff;
+  font-weight: 500;
+}
+.keyBottom h2:last-child {
+  font-size: 60px;
+  color: #fff;
+}
+/* 해쉬버튼 클릭 시 검색 */
+.hashBtn {
+  width: 1350px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  /* background-color: rgb(252, 47, 81); */
+}
+.hashBtn input {
+  float: left;
+  font-size: 20px;
+  color: #666;
+  border: 0;
+  width: auto;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50px;
+  border: 1px solid #c1c1c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px 0 15px;
+  margin-right: 10px;
+  margin-bottom: 8px;
+}
+
+/* 메인버튼 클릭 시 해당 카테고리 또는 링크로 이동*/
+.mainBtn {
+  width: 1350px;
+  height: 60px;
+  /* background-color: rgb(248, 28, 65); */
+}
+.mainBtn input {
+  border: 0;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #f64646;
+  cursor: pointer;
+}
+.mainBtn input:hover {
+  background-color: #bf132b !important;
+}
+/* ///////////////////////////// */
 
 /* 인기 */
 .popular {

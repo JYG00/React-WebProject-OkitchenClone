@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import style from './main.module.css';
 import Footer from './footer';
 import { useRef } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 // 메인 슬라이드(carousel) 이미지
 import main01 from './img/main01.jpg';
 import main02 from './img/main02.jpg';
@@ -65,8 +65,6 @@ function Main() {
     // xPosition에 따라서 슬라이드 위치 변경
     mainRef.current.className = `${style.mainImg_in}`;
     mainRef.current.style.transform = `translateX(${xPosition}px)`;
-    // mainRef.current.style.left = `${xPosition}px`;
-    console.log(pageRef.current.getAttribute('value'));
     // 마지막 페이지에서 첫 페이지로 부드럽게 이동
     if (pageRef.current.getAttribute('value') == 8) {
       history.push('/');
@@ -125,19 +123,43 @@ function Main() {
         </div>
         {/* 메인 슬라이드 이미지*/}
         <div className={style.mainImg_in} ref={mainRef}>
-          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }}>
-            <div>contenttag</div>
-          </div>
-          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }}>
-            <div>contenttag</div>
-          </div>
-          <div className={style.mainSlide} style={{ background: `url(${main02}) no-repeat center`, backgroundSize: 'cover' }}></div>
-          <div className={style.mainSlide} style={{ background: `url(${main03}) no-repeat center`, backgroundSize: 'cover' }}></div>
-          <div className={style.mainSlide} style={{ background: `url(${main04}) no-repeat center`, backgroundSize: 'cover' }}></div>
-          <div className={style.mainSlide} style={{ background: `url(${main05}) no-repeat center`, backgroundSize: 'cover' }}></div>
-          <div className={style.mainSlide} style={{ background: `url(${main06}) no-repeat center`, backgroundSize: 'cover' }}></div>
           <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }}></div>
-          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }}></div>
+          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }}>
+            <div>
+              <MainSlideExp keyTop={'간편하지만 정성스러운 한끼!'} keyMiddle={'갓 지은 솥밥으로'} keyBottom={'맛있고 든든하게 영양 챙기기'} hashBtn={['#채식', '#카레토마토솥밥']} mainBtn={'레시피 바로 보기'} />
+            </div>
+          </div>
+          <div className={style.mainSlide} style={{ background: `url(${main02}) no-repeat center`, backgroundSize: 'cover' }}>
+            <div>
+              <MainSlideExp keyTop={'빠르고 간편하게'} keyMiddle={'하지만 맛은 최고!'} keyBottom={'10분 내로~ 스피드 레시피'} hashBtn={['#XO만두', '#떡만둣국', '#뜨끈한국물']} mainBtn={'스피드 테마 보기'} />
+            </div>
+          </div>
+          <div className={style.mainSlide} style={{ background: `url(${main03}) no-repeat center`, backgroundSize: 'cover' }}>
+            <div>
+              <MainSlideExp keyTop={'쉽고 빠르게'} keyMiddle={'따라 할 수 있는!'} keyBottom={'새내기 요리사 초보 레시피'} hashBtn={['#토마토 냉파스타', '#에그마요 샌드위치']} mainBtn={'왕초보 테마 보기'} />
+            </div>
+          </div>
+          <div className={style.mainSlide} style={{ background: `url(${main04}) no-repeat center`, backgroundSize: 'cover' }}>
+            <div>
+              <MainSlideExp keyTop={'오뚜기 간편식'} keyMiddle={'요리가 되는 팁!'} keyBottom={'요리의 업그레이드 셰프의 팁'} hashBtn={['#얼큰한', '#열라면', '#순두부열라면']} mainBtn={'셰프의 팁 테마 보기'} />
+            </div>
+          </div>
+          <div className={style.mainSlide} style={{ background: `url(${main05}) no-repeat center`, backgroundSize: 'cover' }}>
+            <div>
+              <MainSlideExp keyTop={'향신료의 매력에'} keyMiddle={'푹 빠지고 싶다면?'} keyBottom={'허브·스파이스 전문 도서관 라이브러리 H'} hashBtn={['#채식', '#카레토마토솥밥']} mainBtn={'레시피 바로 보기'} color={'black'} />
+            </div>
+          </div>
+          <div className={style.mainSlide} style={{ background: `url(${main06}) no-repeat center`, backgroundSize: 'cover' }}>
+            <div>
+              <MainSlideExp keyTop={'간편하게 완성하는'} keyMiddle={'브런치 메뉴'} keyBottom={'더치베이비 펜케이크'} hashBtn={['#생일축하해', '#핫케이크']} mainBtn={'생일테마 바로가기'} />
+            </div>
+          </div>
+          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }}></div>
+          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }}>
+            <div>
+              <MainSlideExp keyTop={'간편하지만 정성스러운 한끼!'} keyMiddle={'갓 지은 솥밥으로'} keyBottom={'맛있고 든든하게 영양 챙기기'} hashBtn={['#채식', '#카레토마토솥밥']} mainBtn={'레시피 바로 보기'} />
+            </div>
+          </div>
         </div>
       </div>
       {/* 인기 메뉴 */}
@@ -247,20 +269,109 @@ function Main() {
   );
 }
 
-function MainSlideExp({ keyTop, keyMiddle, keyBottom, hashBtn, mainBtn }) {
+export function MainSlideExp({ keyTop, keyMiddle, keyBottom, hashBtn, mainBtn, color }) {
+  // keyBottom의 문자열을 공백으로 분리
+  // 문자 덩어리의 갯수에 따라서 다르게 렌더링
+  const str = keyBottom;
+  const strArr = str.split(' ');
+
+  // color 옵션이 'black' 이면 특정 컴포넌트의 색깔을 검정으로 변경
+  const ref = useRef([]);
+
+  if (color === 'black') {
+    ref.current.map((ref) => (ref.style.color = '#000'));
+  }
+
+  // 해쉬버튼을 눌렀을때
+  const onClickHash = (e) => {};
+  // 메인버튼을 눌렀을때
+  const onClickMain = (e) => {};
+
   return (
-    <div>
+    <div className={style.MainSlideExp_container}>
       <div>
         {/* 키워드 상단 밑줄 */}
-        <div className={style.keyTop}>{keyTop}</div>
+        <div className={style.keyTop}>
+          <div>
+            <h2 ref={(elem) => (ref.current[0] = elem)}>{keyTop}</h2>
+          </div>
+        </div>
         {/* 키워드 중간 */}
-        <div className={style.keyMiddle}>{keyMiddle}</div>
+        <div className={style.keyMiddle}>
+          <div>
+            <p ref={(elem) => (ref.current[1] = elem)}>{keyMiddle}</p>
+          </div>
+        </div>
         {/* 키워드 하단 제일 큰 글씨*/}
-        <div className={style.keyBottom}>{keyBottom}</div>
+        <div className={style.keyBottom}>
+          <div>
+            {/* 위에서 나눈 문자 덩어리의 갯수에 따라서 다르게 렌더링 */}
+            {(() => {
+              switch (strArr.length) {
+                case 2: {
+                  return (
+                    <div>
+                      <h2>{strArr[0]}</h2>
+                      <h2>{strArr[1]}</h2>
+                    </div>
+                  );
+                }
+                case 3: {
+                  return (
+                    <div>
+                      <h2>
+                        {strArr[0]} {strArr[1]}
+                      </h2>
+                      <h2>{strArr[2]}</h2>
+                    </div>
+                  );
+                }
+                case 4: {
+                  return (
+                    <div>
+                      <h2>
+                        {strArr[0]} {strArr[1]}
+                      </h2>
+                      <h2>
+                        {strArr[2]} {strArr[3]}
+                      </h2>
+                    </div>
+                  );
+                }
+                case 5: {
+                  return (
+                    <div>
+                      <h2 ref={(elem) => (ref.current[2] = elem)}>
+                        {strArr[0]} {strArr[1]} {strArr[2]}
+                      </h2>
+                      <h2 ref={(elem) => (ref.current[3] = elem)}>
+                        {strArr[3]} {strArr[4]}
+                      </h2>
+                    </div>
+                  );
+                }
+                default: {
+                  return <h2>{strArr}</h2>;
+                }
+              }
+            })()}
+          </div>
+        </div>
         {/* 해쉬버튼 클릭 시 검색*/}
-        <div className={style.hashBtn}>{hashBtn}</div>
+        <div className={style.hashBtn}>
+          <div>
+            <input type="button" value={hashBtn[0]} onClick={onClickHash} />
+            <input type="button" value={hashBtn[1]} onClick={onClickHash} />
+            {/* 세번째 태그가 있을때만 렌더링 */}
+            {hashBtn[2] && <input type="button" value={hashBtn[2]} onClick={onClickHash} />}
+          </div>
+        </div>
         {/* 메인버튼 클릭 시 해당 카테고리 또는 링크로 이동*/}
-        <div className={style.mainBtn}>{mainBtn}</div>
+        <div className={style.mainBtn}>
+          <div>
+            <input type="button" value={mainBtn} onClick={onClickMain} />
+          </div>
+        </div>
       </div>
     </div>
   );
