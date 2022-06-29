@@ -12,7 +12,7 @@
   overflow: hidden;
   background-color: burlywood;
 }
-/* 슬라이드 화살표 버튼 */
+/* 메인 슬라이드 화살표 버튼 */
 .mainImg .mainSlideBtn_container {
   width: 100%;
   display: flex;
@@ -31,7 +31,7 @@
   height: 70px;
   background: url('./img/visual_arrow.png');
   cursor: pointer;
-  z-index: 2;
+  z-index: 10;
 }
 #mainSlideRight {
   background-position: right;
@@ -77,9 +77,9 @@
   width: 18000px;
 }
 .mainImg .mainImg_in_none {
+  position: absolute;
   transition: none;
   display: flex;
-  position: absolute;
   width: 18000px;
 }
 .mainSlide {
@@ -285,15 +285,32 @@
 }
 /* 키즈 셰프 레시피 */
 .kidsChef {
+  width: 100%;
+  position: relative;
   overflow: hidden;
 }
-.kidsChef > div {
-  width: 900px;
-  height: 500px;
+
+.kidsChef > .miniSlide_container {
+  display: flex;
+  position: absolute;
+  width: 1500px;
+  height: 450px;
+}
+.miniSlide_container_on {
+  display: flex;
+  position: absolute;
+  width: 1500px;
+  transition: all 0.3s ease-in-out;
+}
+.miniSlide_container_off {
+  display: flex;
+  position: absolute;
+  width: 1500px;
+  transition: none;
 }
 .miniSlide {
   width: 300px;
-  height: 500px;
+  height: 450px;
 }
 /* 미니 슬라이드 */
 /* 레시피 상단 */
@@ -319,7 +336,7 @@
 /* 레시피 이름,태그 */
 .kidsChef_name {
   width: 300px;
-  height: 150px;
+  height: 100px;
   background-color: rgb(250, 76, 105);
   display: flex;
   justify-content: center;
@@ -327,8 +344,33 @@
   text-align: center;
 }
 .kidsChef_name > div {
-  padding-bottom: 40px;
 }
+/* 미니 슬라이드 컨트롤러 */
+.miniSlide_controller {
+  position: absolute;
+  top: 450px;
+  width: 300px;
+  height: 50px;
+  background-color: pink;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* 미니 슬라이드 컨트롤러 페이지 뷰 */
+.miniSlide_pgView {
+  height: 30px;
+  color: #333;
+  font-size: 18px;
+  letter-spacing: 5px;
+}
+/* 미니 슬라이드 컨트롤러 버튼 */
+.miniSlide_arrow {
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  margin: 0 10px;
+}
+
 /* 메뉴바 */
 .menubar {
   width: 100%;

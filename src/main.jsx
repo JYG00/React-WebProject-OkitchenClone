@@ -11,37 +11,67 @@ import main04 from './img/main04.jpg';
 import main05 from './img/main05.jpg';
 import main06 from './img/main06.jpg';
 import main07 from './img/main07.jpg';
-// 메인 슬라이드 리스트 아이콘
+// 메인 슬라이드 컨트롤러 아이콘
 import stopBtn from './img/visual_stop.png';
 import startBtn from './img/visual_start.png';
 // 미니 슬라이드(carousel) 이미지
 import mini01 from './img/쨈 아이스크림.jpg';
 import mini02 from './img/옥수수 푸딩.jpg';
 import mini03 from './img/피자 토스트.jpg';
+// 미니 슬라이드 컨트롤러 아이콘
+import { BsArrowLeft } from 'react-icons/bs';
+import { BsArrowRight } from 'react-icons/bs';
 
 function Main() {
+  // 메인 슬라이드 객체
   const mainRef = useRef();
-  const miniSlideRef = useRef();
+  // 메인 슬라이드 페이지 객체
   const pageRef = useRef();
+  // 서브 슬라이드 객체
+  const miniSlideRef = useRef();
+  // 서브 슬라이드 페이지 객체
+  const pageRef_sub = useRef();
+
   const history = useHistory();
 
+  // 메인 슬라이드 포지션, 페이지, 자동유무
   const [xPosition, setXPosition] = useState(-2000);
   const [page, setPage] = useState(1);
   const [isRunning, setRunning] = useState(true);
 
-  // 왼쪽 화살표 버튼을 누를경우
+  // 서브 슬라이드 포지션, 페이지
+  const [xPosition_sub, setXPosition_sub] = useState(-300);
+  const [page_sub, setPage_sub] = useState(1);
+
+  // 메인 슬라이드의 왼쪽 화살표 버튼을 누를경우
   const onClickLeft = () => {
     // 페이지 -1
     setPageNum(page - 1);
     // 슬라이드가 왼쪽으로 이동
     set(xPosition + 2000);
   };
-  // 오른쪽 화살표 버튼을 누를경우
+  // 메인 슬라이드의 오른쪽 화살표 버튼을 누를경우
   const onClickRight = () => {
     // 페이지 +1
     setPageNum(page + 1);
     // 슬라이드 오른쪽 이동
     set(xPosition - 2000);
+  };
+
+  // 서브 슬라이드의 왼쪽 화살표 버튼을 누를경우
+  const onClickMiniSlideLeft = () => {
+    // 페이지 -1
+    setPageNum_sub(page_sub - 1);
+    // 슬라이드가 왼쪽으로 이동
+    set_sub(xPosition_sub + 300);
+  };
+
+  // 서브 슬라이드의 오른쪽 화살표 버튼을 누를경우
+  const onClickMiniSlideRight = () => {
+    // 페이지 +1
+    setPageNum_sub(page_sub + 1);
+    // 슬라이드 오른쪽 이동
+    set_sub(xPosition_sub - 300);
   };
 
   // 자동 슬라이드 정지
@@ -54,7 +84,7 @@ function Main() {
     setRun(true);
   };
 
-  // 슬라이드 클릭 시
+  // 메인 슬라이드 클릭 시
   const onClickSlide = () => {
     // 클릭한 슬라이드의 페이지에 따라서 이동
     switch (page) {
@@ -130,7 +160,7 @@ function Main() {
     });
   };
 
-  // 동기적 코드로 처리하기 위함
+  // setState를 동기적 코드로 처리하기 위함
   const set = (param) => {
     setXPosition(param);
   };
@@ -140,19 +170,26 @@ function Main() {
   const setRun = (param) => {
     setRunning(param);
   };
+  const set_sub = (param) => {
+    setXPosition_sub(param);
+  };
+  const setPageNum_sub = (param) => {
+    setPage_sub(param);
+  };
 
-  // 슬라이드 위치가 바뀌면 호출
+  // 메인 슬라이드 위치(xPosition) 바뀌면 스타일도 맞게 변경
   useEffect(() => {
     // xPosition에 따라서 슬라이드 위치 변경
     mainRef.current.className = `${style.mainImg_in}`;
-    mainRef.current.style.transform = `translateX(${xPosition}px)`;
+    mainRef.current.style.left = `${xPosition}px`;
+    // mainRef.current.style.transform = `translateX(${xPosition}px)`;
     // 마지막 페이지에서 첫 페이지로 부드럽게 이동
     if (pageRef.current.getAttribute('value') == 8) {
-      history.push('/');
       // 페이지를 1로 설정
       setPageNum(1);
       mainRef.current.className = `${style.mainImg_in_none}`;
-      mainRef.current.style.transform = `translateX(0px)`;
+      mainRef.current.style.left = '0px';
+      // 포지션도 처음값으로 설정
       set(-2000);
     }
     // 첫 페이지에서 마지막 페이지로 부드럽게 이동
@@ -161,14 +198,41 @@ function Main() {
       setPageNum(7);
       // 슬라이드가 이어지는 효과를 주기 위해서 transition:none 부여
       mainRef.current.className = `${style.mainImg_in_none}`;
-      mainRef.current.style.transform = `translateX(-16000px)`;
-      // mainRef.current.style.left = '-16000px';
+      mainRef.current.style.left = '-16000px';
+      // 포지션도 페이지 7에 맞게 변경
       set(-14000);
     }
   }, [xPosition]);
 
-  // 5초마다 슬라이드가 옆으로 이동
+  // 서브 슬라이드 위치(xPosition_sub) 바뀌면 스타일도 맞게 변경
   useEffect(() => {
+    // xPosition에 따라서 슬라이드 위치 변경
+    miniSlideRef.current.className = `${style.miniSlide_container_on}`;
+    miniSlideRef.current.style.transform = `translateX(${xPosition_sub}px)`;
+    // 마지막 페이지에서 첫 페이지로 부드럽게 이동
+    if (pageRef_sub.current.getAttribute('value') == 4) {
+      // 페이지를 1로 설정
+      setPageNum_sub(1);
+      miniSlideRef.current.className = `${style.miniSlide_container_off}`;
+      miniSlideRef.current.style.transform = `translateX(0px)`;
+      // 포지션도 처음값으로 설정
+      set_sub(-300);
+    }
+    // 첫 페이지에서 마지막 페이지로 부드럽게 이동
+    if (pageRef_sub.current.getAttribute('value') < 1) {
+      // 페이지를 3으로 설정
+      setPageNum_sub(3);
+      // 슬라이드가 이어지는 효과를 주기 위해서 transition:none 부여
+      miniSlideRef.current.className = `${style.miniSlide_container_off}`;
+      miniSlideRef.current.style.transform = `translateX(-1200px)`;
+      // 포지션도 페이지 7에 맞게 변경
+      set_sub(-900);
+    }
+  }, [xPosition_sub]);
+
+  // 자동 슬라이드
+  useEffect(() => {
+    // 자동유무
     if (isRunning) {
       const interval = setInterval(() => {
         // 5초마다 슬라이드가 오른쪽으로 이동
@@ -290,15 +354,42 @@ function Main() {
           {/* 키즈 셰프 레시피 */}
           <ul className={style.kidsChef}>
             {/* 미니 슬라이드 */}
-            <div ref={miniSlideRef}>
+            <div ref={miniSlideRef} className={style.miniSlide_container}>
+              {/* 미니 슬라이드 이미지 */}
+              {/* 이미지3 */}
+              <div className={style.miniSlide}>
+                <MiniSlide name={'피자 토스트'} hash={['#피자토스트', '#피자소스', '#피자']} background={mini03} />
+              </div>
+              {/* 이미지1 */}
               <div className={style.miniSlide}>
                 <MiniSlide name={'쨈 아이스크림'} hash={['#오뚜기쨈', '#딸기쨈', '#포도쨈']} background={mini01} />
               </div>
+              {/* 이미지2 */}
               <div className={style.miniSlide}>
                 <MiniSlide name={'옥수수 토스트'} hash={['#옥수수푸딩', '#콘스프']} background={mini02} />
               </div>
+              {/* 이미지3 */}
               <div className={style.miniSlide}>
                 <MiniSlide name={'피자 토스트'} hash={['#피자토스트', '#피자소스', '#피자']} background={mini03} />
+              </div>
+              {/* 이미지1 */}
+              <div className={style.miniSlide}>
+                <MiniSlide name={'쨈 아이스크림'} hash={['#오뚜기쨈', '#딸기쨈', '#포도쨈']} background={mini01} />
+              </div>
+            </div>
+            {/* 미니 슬라이드 컨트롤러 */}
+            <div className={style.miniSlide_controller}>
+              {/* 왼쪽버튼 */}
+              <div className={style.miniSlide_arrow} onClick={onClickMiniSlideLeft}>
+                <BsArrowLeft />
+              </div>
+              {/* 페이지 뷰 */}
+              <div className={style.miniSlide_pgView} ref={pageRef_sub} value={page_sub}>
+                {page_sub}/3
+              </div>
+              {/* 오른쪽버튼 */}
+              <div className={style.miniSlide_arrow} onClick={onClickMiniSlideRight}>
+                <BsArrowRight />
               </div>
             </div>
           </ul>
@@ -408,11 +499,12 @@ function Main() {
 
 export function MainSlideExp({ keyTop, keyMiddle, keyBottom, hashBtn, mainBtn, color }) {
   // keyBottom의 문자열을 공백으로 분리
-  // 문자 덩어리의 갯수에 따라서 다르게 렌더링
+  // 문자 덩어리의 갯수에 따라서 렌더링
   const str = keyBottom;
   const strArr = str.split(' ');
 
   // color 옵션이 'black' 이면 특정 컴포넌트의 색깔을 검정으로 변경
+  // 검정색으로 바꿀 배열 객체
   const ref = useRef([]);
 
   if (color === 'black') {
@@ -526,8 +618,8 @@ export function MiniSlide({ name, hash, background }) {
       </div>
       {/* 레시피 사진 */}
       <div className={style.kidsChef_img}>
-        <div style={{ width: '220px', height: '220px', borderRadius: '220px' }}>
-          <div style={{ background: `url(${background})`, backgroundSize: 'cover' }}></div>
+        <div style={{ width: '220px', height: '220px' }}>
+          <img src={background} alt="레시피 사진" style={{ width: '100%', height: '100%', borderRadius: '220px' }} />
         </div>
       </div>
       {/* 레시피 이름, 태그 */}

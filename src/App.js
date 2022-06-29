@@ -27,6 +27,9 @@ function App() {
 
   // 다른 path로 이동시 헤드에 포커스
   useEffect(() => {
+    if (location.pathname === '/') {
+      return;
+    }
     headerRef.current.scrollIntoView();
     if (location.pathname === '/detail') {
       // path가 /detail 이면 '최근 본 레시피'에 저장
