@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import style from './main.module.css';
 import Footer from './footer';
 import { useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 // 메인 슬라이드(carousel) 이미지
 import main01 from './img/main01.jpg';
 import main02 from './img/main02.jpg';
@@ -25,17 +25,19 @@ import { BsArrowRight } from 'react-icons/bs';
 function Main() {
   // 메인 슬라이드 객체
   const mainRef = useRef();
+  const mainSlideRef = useRef([]);
   // 메인 슬라이드 페이지 객체
   const pageRef = useRef();
   // 서브 슬라이드 객체
   const miniSlideRef = useRef();
   // 서브 슬라이드 페이지 객체
   const pageRef_sub = useRef();
+  const [recentlyArray, setRecentlyArray] = useState([]);
 
   const history = useHistory();
+  const location = useLocation();
 
   // 메인 슬라이드 포지션, 페이지, 자동유무
-  const [xPosition, setXPosition] = useState(-2000);
   const [page, setPage] = useState(1);
   const [isRunning, setRunning] = useState(true);
 
@@ -47,16 +49,46 @@ function Main() {
   const onClickLeft = () => {
     // 페이지 -1
     setPageNum(page - 1);
-    // 슬라이드가 왼쪽으로 이동
-    set(xPosition + 2000);
   };
   // 메인 슬라이드의 오른쪽 화살표 버튼을 누를경우
   const onClickRight = () => {
     // 페이지 +1
     setPageNum(page + 1);
-    // 슬라이드 오른쪽 이동
-    set(xPosition - 2000);
   };
+
+  // 자동 슬라이드 정지
+  const onClickStop = () => {
+    setRun(false);
+  };
+
+  // 자동 슬라이드 재생
+  const onClickPlay = () => {
+    setRun(true);
+  };
+
+  // 메인 슬라이드 위치 바뀌면 스타일 변경
+  useEffect(() => {
+    mainSlideRef.current.filter((ref) => ref.className === `${style.mainSlide_on}`).map((ref) => (ref.className = `${style.mainSlide}`));
+    mainSlideRef.current[page].className = `${style.mainSlide_on}`;
+
+    if (page === 8) {
+      setPageNum(1);
+    } else if (page === 0) {
+      setPageNum(7);
+    }
+  }, [page]);
+
+  // 자동 슬라이드
+  useEffect(() => {
+    // 자동유무
+    if (isRunning) {
+      // 5초마다 슬라이드가 오른쪽으로 이동
+      const interval = setInterval(() => {
+        setPageNum(page + 1);
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  });
 
   // 서브 슬라이드의 왼쪽 화살표 버튼을 누를경우
   const onClickMiniSlideLeft = () => {
@@ -74,15 +106,31 @@ function Main() {
     set_sub(xPosition_sub - 300);
   };
 
-  // 자동 슬라이드 정지
-  const onClickStop = () => {
-    setRun(false);
-  };
-
-  // 자동 슬라이드 재생
-  const onClickPlay = () => {
-    setRun(true);
-  };
+  // 서브 슬라이드 위치(xPosition_sub) 바뀌면 스타일도 맞게 변경
+  useEffect(() => {
+    // xPosition에 따라서 슬라이드 위치 변경
+    miniSlideRef.current.className = `${style.miniSlide_container_on}`;
+    miniSlideRef.current.style.transform = `translateX(${xPosition_sub}px)`;
+    // 마지막 페이지에서 첫 페이지로 부드럽게 이동
+    if (pageRef_sub.current.getAttribute('value') == 4) {
+      // 페이지를 1로 설정
+      setPageNum_sub(1);
+      miniSlideRef.current.className = `${style.miniSlide_container_off}`;
+      miniSlideRef.current.style.transform = `translateX(0px)`;
+      // 포지션도 처음값으로 설정
+      set_sub(-300);
+    }
+    // 첫 페이지에서 마지막 페이지로 부드럽게 이동
+    if (pageRef_sub.current.getAttribute('value') < 1) {
+      // 페이지를 3으로 설정
+      setPageNum_sub(3);
+      // 슬라이드가 이어지는 효과를 주기 위해서 transition:none 부여
+      miniSlideRef.current.className = `${style.miniSlide_container_off}`;
+      miniSlideRef.current.style.transform = `translateX(-1200px)`;
+      // 포지션도 페이지 7에 맞게 변경
+      set_sub(-900);
+    }
+  }, [xPosition_sub]);
 
   // 메인 슬라이드 클릭 시
   const onClickSlide = () => {
@@ -152,7 +200,6 @@ function Main() {
     const btn_value = e.target.value;
 
     const value = btn_value.replace('#', '');
-    // console.log(value);
 
     history.push({
       pathname: '/search',
@@ -161,9 +208,6 @@ function Main() {
   };
 
   // setState를 동기적 코드로 처리하기 위함
-  const set = (param) => {
-    setXPosition(param);
-  };
   const setPageNum = (param) => {
     setPage(param);
   };
@@ -176,71 +220,6 @@ function Main() {
   const setPageNum_sub = (param) => {
     setPage_sub(param);
   };
-
-  // 메인 슬라이드 위치(xPosition) 바뀌면 스타일도 맞게 변경
-  useEffect(() => {
-    // xPosition에 따라서 슬라이드 위치 변경
-    mainRef.current.className = `${style.mainImg_in}`;
-    mainRef.current.style.left = `${xPosition}px`;
-    // mainRef.current.style.transform = `translateX(${xPosition}px)`;
-    // 마지막 페이지에서 첫 페이지로 부드럽게 이동
-    if (pageRef.current.getAttribute('value') == 8) {
-      // 페이지를 1로 설정
-      setPageNum(1);
-      mainRef.current.className = `${style.mainImg_in_none}`;
-      mainRef.current.style.left = '0px';
-      // 포지션도 처음값으로 설정
-      set(-2000);
-    }
-    // 첫 페이지에서 마지막 페이지로 부드럽게 이동
-    if (pageRef.current.getAttribute('value') < 1) {
-      // 페이지를 7로 설정
-      setPageNum(7);
-      // 슬라이드가 이어지는 효과를 주기 위해서 transition:none 부여
-      mainRef.current.className = `${style.mainImg_in_none}`;
-      mainRef.current.style.left = '-16000px';
-      // 포지션도 페이지 7에 맞게 변경
-      set(-14000);
-    }
-  }, [xPosition]);
-
-  // 서브 슬라이드 위치(xPosition_sub) 바뀌면 스타일도 맞게 변경
-  useEffect(() => {
-    // xPosition에 따라서 슬라이드 위치 변경
-    miniSlideRef.current.className = `${style.miniSlide_container_on}`;
-    miniSlideRef.current.style.transform = `translateX(${xPosition_sub}px)`;
-    // 마지막 페이지에서 첫 페이지로 부드럽게 이동
-    if (pageRef_sub.current.getAttribute('value') == 4) {
-      // 페이지를 1로 설정
-      setPageNum_sub(1);
-      miniSlideRef.current.className = `${style.miniSlide_container_off}`;
-      miniSlideRef.current.style.transform = `translateX(0px)`;
-      // 포지션도 처음값으로 설정
-      set_sub(-300);
-    }
-    // 첫 페이지에서 마지막 페이지로 부드럽게 이동
-    if (pageRef_sub.current.getAttribute('value') < 1) {
-      // 페이지를 3으로 설정
-      setPageNum_sub(3);
-      // 슬라이드가 이어지는 효과를 주기 위해서 transition:none 부여
-      miniSlideRef.current.className = `${style.miniSlide_container_off}`;
-      miniSlideRef.current.style.transform = `translateX(-1200px)`;
-      // 포지션도 페이지 7에 맞게 변경
-      set_sub(-900);
-    }
-  }, [xPosition_sub]);
-
-  // 자동 슬라이드
-  useEffect(() => {
-    // 자동유무
-    if (isRunning) {
-      const interval = setInterval(() => {
-        // 5초마다 슬라이드가 오른쪽으로 이동
-        onClickRight();
-      }, 5000);
-      return () => clearInterval(interval);
-    }
-  });
 
   return (
     <div className={style.main}>
@@ -268,39 +247,39 @@ function Main() {
         </div>
         {/* 메인 슬라이드 이미지*/}
         <div className={style.mainImg_in} ref={mainRef}>
-          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}></div>
-          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
+          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide} ref={(elem) => (mainSlideRef.current[0] = elem)}></div>
+          <div className={style.mainSlide_on} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide} ref={(elem) => (mainSlideRef.current[1] = elem)}>
             <div>
               <MainSlideExp keyTop={'간편하지만 정성스러운 한끼!'} keyMiddle={'갓 지은 솥밥으로'} keyBottom={'맛있고 든든하게 영양 챙기기'} hashBtn={['#채식', '#카레토마토솥밥']} mainBtn={'레시피 바로 보기'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main02}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
+          <div className={style.mainSlide} style={{ background: `url(${main02}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide} ref={(elem) => (mainSlideRef.current[2] = elem)}>
             <div>
               <MainSlideExp keyTop={'빠르고 간편하게'} keyMiddle={'하지만 맛은 최고!'} keyBottom={'10분 내로~ 스피드 레시피'} hashBtn={['#XO만두', '#떡만둣국', '#뜨끈한국물']} mainBtn={'스피드 테마 보기'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main03}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
+          <div className={style.mainSlide} style={{ background: `url(${main03}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide} ref={(elem) => (mainSlideRef.current[3] = elem)}>
             <div>
               <MainSlideExp keyTop={'쉽고 빠르게'} keyMiddle={'따라 할 수 있는!'} keyBottom={'새내기 요리사 초보 레시피'} hashBtn={['#토마토 냉파스타', '#에그마요 샌드위치']} mainBtn={'왕초보 테마 보기'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main04}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
+          <div className={style.mainSlide} style={{ background: `url(${main04}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide} ref={(elem) => (mainSlideRef.current[4] = elem)}>
             <div>
               <MainSlideExp keyTop={'오뚜기 간편식'} keyMiddle={'요리가 되는 팁!'} keyBottom={'요리의 업그레이드 셰프의 팁'} hashBtn={['#얼큰한', '#열라면', '#순두부열라면']} mainBtn={'셰프의 팁 테마 보기'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main05}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
+          <div className={style.mainSlide} style={{ background: `url(${main05}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide} ref={(elem) => (mainSlideRef.current[5] = elem)}>
             <div>
               <MainSlideExp keyTop={'향신료의 매력에'} keyMiddle={'푹 빠지고 싶다면?'} keyBottom={'허브·스파이스 전문 도서관 라이브러리 H'} hashBtn={['#채식', '#카레토마토솥밥']} mainBtn={'자세한 이용 방법 보기'} color={'black'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main06}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
+          <div className={style.mainSlide} style={{ background: `url(${main06}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide} ref={(elem) => (mainSlideRef.current[6] = elem)}>
             <div>
               <MainSlideExp keyTop={'간편하게 완성하는'} keyMiddle={'브런치 메뉴'} keyBottom={'더치베이비 펜케이크'} hashBtn={['#생일축하해', '#핫케이크']} mainBtn={'생일테마 바로가기'} />
             </div>
           </div>
-          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}></div>
-          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide}>
+          <div className={style.mainSlide} style={{ background: `url(${main07}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide} ref={(elem) => (mainSlideRef.current[7] = elem)}></div>
+          <div className={style.mainSlide} style={{ background: `url(${main01}) no-repeat center`, backgroundSize: 'cover' }} onClick={onClickSlide} ref={(elem) => (mainSlideRef.current[8] = elem)}>
             <div>
               <MainSlideExp keyTop={'간편하지만 정성스러운 한끼!'} keyMiddle={'갓 지은 솥밥으로'} keyBottom={'맛있고 든든하게 영양 챙기기'} hashBtn={['#채식', '#카레토마토솥밥']} mainBtn={'레시피 바로 보기'} />
             </div>
@@ -366,7 +345,7 @@ function Main() {
               </div>
               {/* 이미지2 */}
               <div className={style.miniSlide}>
-                <MiniSlide name={'옥수수 토스트'} hash={['#옥수수푸딩', '#콘스프']} background={mini02} />
+                <MiniSlide name={'옥수수 푸딩'} hash={['#옥수수푸딩', '#콘스프']} background={mini02} />
               </div>
               {/* 이미지3 */}
               <div className={style.miniSlide}>
@@ -608,7 +587,12 @@ export function MainSlideExp({ keyTop, keyMiddle, keyBottom, hashBtn, mainBtn, c
 
 // 미니 슬라이드 carousel 컨텐츠
 export function MiniSlide({ name, hash, background }) {
-  console.log(background);
+  const history = useHistory();
+
+  const onClick = () => {
+    history.push({ pathname: '/detail', state: { name: name } });
+  };
+
   return (
     <div>
       {/* 키즈셰프 레시피 */}
@@ -618,7 +602,7 @@ export function MiniSlide({ name, hash, background }) {
       </div>
       {/* 레시피 사진 */}
       <div className={style.kidsChef_img}>
-        <div style={{ width: '220px', height: '220px' }}>
+        <div style={{ width: '220px', height: '220px', cursor: 'pointer' }} onClick={onClick}>
           <img src={background} alt="레시피 사진" style={{ width: '100%', height: '100%', borderRadius: '220px' }} />
         </div>
       </div>
