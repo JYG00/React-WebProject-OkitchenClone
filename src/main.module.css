@@ -373,6 +373,62 @@
   margin: 0 10px;
 }
 
+/* 최근 본 레시피 */
+.recentRcp {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.recentRcp h2 {
+  color: #333;
+}
+.recentRcp p {
+  color: #666;
+  padding: 30px 0;
+}
+.recentRcp > div {
+  /* padding: 150px 40px;
+  border: 5px solid rgb(160, 147, 147); */
+}
+.recentRcp:hover > div {
+  /* transition: all 0.3s ease-in-out;
+  border: 5px solid rgb(112, 24, 24); */
+}
+.recentRcp:not(:hover) > div {
+  transition: all 0.3s ease-in-out;
+}
+.rcp_img {
+  width: 300px;
+  height: 200px;
+  background-color: red;
+}
+/* 계량 팁 */
+.tip {
+}
+.tip > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 40px 20px;
+  cursor: pointer;
+}
+.tip h2 {
+  letter-spacing: -1.5px;
+  font-size: 33px;
+  color: #fff;
+}
+.tip p {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: -1.5px;
+  padding: 20px 0;
+}
+
 /* 메뉴바 */
 .menubar {
   width: 100%;

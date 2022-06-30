@@ -5,6 +5,9 @@ import Food from '../component/food/food';
 import Footer from '../footer';
 import item_no from '../img/item_no.gif';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { getRcp } from './recentRcp';
 
 export default function RecentRecipe() {
   const location = useLocation();
@@ -17,9 +20,12 @@ export default function RecentRecipe() {
   // 넘겨받은 데이터가 담길 배열
   let data = [];
 
-  // 데이터가 겹치지 않기 위해 Set 사용
-  const set = new Set(location.state.array);
+  const set = new Set(getRcp());
   data = [...set];
+
+  // 데이터가 겹치지 않기 위해 Set 사용
+  // const set = new Set(location.state.array);
+  // data = [...set];
 
   // 넘겨받은 단어로 데이터를 찾고 recentRecipe 배열에 담습니다
   data.map((name) => foodArray.filter((food) => food.name.includes(name)).map((food) => recentRecipe.push(food)));

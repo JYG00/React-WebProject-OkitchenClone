@@ -16,6 +16,7 @@ import logo from './img/logo.png';
 import top_sch from './img/top_sch.png';
 import { HiPlusCircle } from 'react-icons/hi';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { setRcp } from './recentRecipe/recentRcp';
 
 function App() {
   // input 객체 (검색창)
@@ -33,6 +34,7 @@ function App() {
     headerRef.current.scrollIntoView();
     if (location.pathname === '/detail') {
       // path가 /detail 이면 '최근 본 레시피'에 저장
+      setRcp(location.state.name);
       setRecentlyRecipe(location.state.name);
     }
   }, [location]);

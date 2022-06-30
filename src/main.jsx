@@ -21,6 +21,9 @@ import mini03 from './img/피자 토스트.jpg';
 // 미니 슬라이드 컨트롤러 아이콘
 import { BsArrowLeft } from 'react-icons/bs';
 import { BsArrowRight } from 'react-icons/bs';
+// 배너 '계량 팁' 사진
+import tip_bg from './img/tip_bg.jpg';
+import { getRcp } from './recentRecipe/recentRcp';
 
 function Main() {
   // 메인 슬라이드 객체
@@ -32,7 +35,6 @@ function Main() {
   const miniSlideRef = useRef();
   // 서브 슬라이드 페이지 객체
   const pageRef_sub = useRef();
-  const [recentlyArray, setRecentlyArray] = useState([]);
 
   const history = useHistory();
   const location = useLocation();
@@ -195,7 +197,7 @@ function Main() {
     }
   };
 
-  // 해쉬버튼 클릭시
+  // 해쉬버튼 클릭시 (첫번째 배너)
   const onClick = (e) => {
     const btn_value = e.target.value;
 
@@ -205,6 +207,15 @@ function Main() {
       pathname: '/search',
       state: { props: value },
     });
+  };
+
+  // 나머지 배너 클릭시
+  const onClickBanner = () => {
+    history.push({ pathname: '/recentRecipe' });
+  };
+
+  const onClickBanner_tip = () => {
+    history.push({ pathname: '/tip' });
   };
 
   // setState를 동기적 코드로 처리하기 위함
@@ -220,6 +231,10 @@ function Main() {
   const setPageNum_sub = (param) => {
     setPage_sub(param);
   };
+
+  // 가장 최근 본 레시피
+  let arr = getRcp();
+  const mostRecent_rcp = arr[arr.length - 1];
 
   return (
     <div className={style.main}>
@@ -373,9 +388,41 @@ function Main() {
             </div>
           </ul>
           {/* 최근 본 레시피 */}
-          <ul>3</ul>
+          <ul className={style.recentRcp}>
+            <div value="recentRecipe" onClick={onClickBanner}>
+              <h2>History</h2>
+              <h2>최근 본 레시피</h2>
+              <p>
+                최근에 본 레시피를
+                <br />
+                다시 찾아 볼 수 있습니다
+              </p>
+              {mostRecent_rcp ? (
+                <div className={style.rcp_img}>
+                  <img src={require(`./img/${mostRecent_rcp}.jpg`)} alt="최근 본 레시피 사진" style={{ width: '100%', height: '100%' }} />
+                </div>
+              ) : (
+                <div className={style.rcp_img}></div>
+              )}
+            </div>
+          </ul>
           {/* 오뚜기의 쉽고 간단한 계량 꿀팁 */}
-          <ul>4</ul>
+          <ul className={style.tip}>
+            <div style={{ background: `url(${tip_bg}) no-repeat`, backgroundSize: '300px 500px' }} value="tip" onClick={onClickBanner_tip}>
+              <h2>
+                오뚜기의
+                <br />
+                쉽고 간단한
+                <br />
+                계량 꿀팁!
+              </h2>
+              <p>
+                밥숟가락, 종이컵으로
+                <br />
+                간단하고 쉽게 알려드립니다.
+              </p>
+            </div>
+          </ul>
         </div>
       </div>
       {/* 메뉴바 */}
