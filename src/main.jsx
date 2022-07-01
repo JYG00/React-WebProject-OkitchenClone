@@ -28,6 +28,9 @@ import { getRcp } from './recentRecipe/recentRcp';
 // 배너 사진
 import banner01 from './img/banner01.jpg';
 import banner02 from './img/banner02.jpg';
+import banner03 from './img/banner03.jpg';
+// 배너 슬라이드 아이콘
+import bannerArrow from './img/banner_arrow.png';
 import allDataList from './data/allDataList';
 import Food from './component/food/food';
 
@@ -41,9 +44,10 @@ function Main() {
   const miniSlideRef = useRef();
   // 서브 슬라이드 페이지 객체
   const pageRef_sub = useRef();
+  // 배너 슬라이드 객체
+  const bannerSlideRef = useRef();
 
   const history = useHistory();
-  const location = useLocation();
 
   // 메인 슬라이드 포지션, 페이지, 자동유무
   const [page, setPage] = useState(1);
@@ -52,6 +56,9 @@ function Main() {
   // 서브 슬라이드 포지션, 페이지
   const [xPosition_sub, setXPosition_sub] = useState(-300);
   const [page_sub, setPage_sub] = useState(1);
+
+  // 배너 슬라이드 포지션
+  const [xPosition_ban, setXPosition_ban] = useState(-1354);
 
   // 메인 슬라이드의 왼쪽 화살표 버튼을 누를경우
   const onClickLeft = () => {
@@ -114,13 +121,25 @@ function Main() {
     set_sub(xPosition_sub - 300);
   };
 
+  // 배너 슬라이드의 왼쪽 화살표 버튼을 누를경우
+  const onClickBannerSlideLeft = () => {
+    // 슬라이드가 왼쪽으로 이동
+    set_ban(xPosition_ban + 677);
+  };
+
+  // 배너 슬라이드의 오른쪽 화살표 버튼을 누를경우
+  const onClickBannerSlideRight = () => {
+    // 슬라이드 오른쪽 이동
+    set_ban(xPosition_ban - 677);
+  };
+
   // 서브 슬라이드 위치(xPosition_sub) 바뀌면 스타일도 맞게 변경
   useEffect(() => {
     // xPosition에 따라서 슬라이드 위치 변경
     miniSlideRef.current.className = `${style.miniSlide_container_on}`;
     miniSlideRef.current.style.transform = `translateX(${xPosition_sub}px)`;
     // 마지막 페이지에서 첫 페이지로 부드럽게 이동
-    if (pageRef_sub.current.getAttribute('value') == 4) {
+    if (pageRef_sub.current.getAttribute('value') > 3) {
       // 페이지를 1로 설정
       setPageNum_sub(1);
       miniSlideRef.current.className = `${style.miniSlide_container_off}`;
@@ -139,6 +158,28 @@ function Main() {
       set_sub(-900);
     }
   }, [xPosition_sub]);
+
+  // 배너 슬라이드 위치(xPosition_ban) 바뀌면 스타일도 맞게 변경
+  useEffect(() => {
+    // xPosition에 따라서 슬라이드 위치 변경
+    bannerSlideRef.current.style.transition = 'all 0.3s ease-in-out';
+    bannerSlideRef.current.style.transform = `translateX(${xPosition_ban}px)`;
+    // 마지막 페이지에서 첫 페이지로 부드럽게 이동
+    if (xPosition_ban < -2708) {
+      bannerSlideRef.current.style.transition = 'none';
+      bannerSlideRef.current.style.transform = `translateX(-677px)`;
+      // 포지션도 처음값으로 설정
+      set_ban(-1354);
+    }
+    // // 첫 페이지에서 마지막 페이지로 부드럽게 이동
+    if (xPosition_ban > -1354) {
+      // 슬라이드가 이어지는 효과를 주기 위해서 transition:none 부여
+      bannerSlideRef.current.style.transition = 'none';
+      bannerSlideRef.current.style.transform = `translateX(-3385px)`;
+      // 포지션도 페이지에 맞게 변경
+      set_ban(-2708);
+    }
+  }, [xPosition_ban]);
 
   // 메인 슬라이드 클릭 시
   const onClickSlide = () => {
@@ -216,12 +257,14 @@ function Main() {
   };
 
   // 나머지 배너 클릭시
-  const onClickBanner = () => {
-    history.push({ pathname: '/recentRecipe' });
-  };
-
-  const onClickBanner_tip = () => {
-    history.push({ pathname: '/tip' });
+  const onClickBanner = (e) => {
+    if (e.currentTarget.getAttribute('value') === '오뚜기몰 가기') {
+      history.push({ pathname: '/none', state: { key: '오뚜기몰' } });
+    } else if (e.currentTarget.getAttribute('value') === '자세한 이용 방법 보기') {
+      history.push({ pathname: '/none', state: { key: '허브·스파이스 전문 도서관 라이브러리 H' } });
+    } else {
+      history.push({ pathname: `/${e.currentTarget.getAttribute('value')}` });
+    }
   };
 
   // setState를 동기적 코드로 처리하기 위함
@@ -236,6 +279,9 @@ function Main() {
   };
   const setPageNum_sub = (param) => {
     setPage_sub(param);
+  };
+  const set_ban = (param) => {
+    setXPosition_ban(param);
   };
 
   // 가장 최근 본 레시피
@@ -434,7 +480,7 @@ function Main() {
           </ul>
           {/* 오뚜기의 쉽고 간단한 계량 꿀팁 */}
           <ul className={style.tip}>
-            <div style={{ background: `url(${tip_bg}) no-repeat`, backgroundSize: '300px 500px' }} value="tip" onClick={onClickBanner_tip}>
+            <div style={{ background: `url(${tip_bg}) no-repeat`, backgroundSize: '300px 500px' }} value="tip" onClick={onClickBanner}>
               <h2>
                 오뚜기의
                 <br />
@@ -458,7 +504,7 @@ function Main() {
             <h2>요리를 더 쉽게</h2>
             <h2>오뚜기몰의 각종 소스들로 모든 레시피를 보다</h2>
             <h2>쉽게, 빠르게, 맛있게</h2>
-            <input type="button" value="오뚜기몰 가기" />
+            <input type="button" value="오뚜기몰 가기" onClick={onClickBanner} />
           </div>
         </div>
       </div>
@@ -539,7 +585,49 @@ function Main() {
           </ul>
         </div>
         {/* 사진 */}
-        <div className={style.chef_img}></div>
+        <div className={style.chef_img} style={{ background: `url(${banner03}) no-repeat`, backgroundSize: 'cover', backgroundPositionX: '-550px' }}>
+          <div className={style.bannerArrow}>
+            {/* 왼쪽화살표 */}
+            <div style={{ background: `url(${bannerArrow}) no-repeat`, width: '79px', height: '21px' }} onClick={onClickBannerSlideLeft}></div>
+            {/* 오른쪽 화살표 */}
+            <div style={{ background: `url(${bannerArrow}) no-repeat`, width: '79px', height: '21px', backgroundPosition: 'right' }} onClick={onClickBannerSlideRight}></div>
+          </div>
+          <div className={style.bannerSlideContainer} ref={bannerSlideRef}>
+            {/* 배너 슬라이드 이미지 */}
+            {/* 이미지2 */}
+            <div className={style.bannerSlide}>
+              <BannerSlide name={'완자꼬치'} />
+            </div>
+            {/* 이미지3 */}
+            <div className={style.bannerSlide}>
+              <BannerSlide name={'한라산볶음밥'} />
+            </div>
+            {/* 이미지1 */}
+            <div className={style.bannerSlide}>
+              <BannerSlide name={'초콜릿피자'} />
+            </div>
+            {/* 이미지2 */}
+            <div className={style.bannerSlide}>
+              <BannerSlide name={'완자꼬치'} />
+            </div>
+            {/* 이미지3 */}
+            <div className={style.bannerSlide}>
+              <BannerSlide name={'한라산볶음밥'} />
+            </div>
+            {/* 이미지1 */}
+            <div className={style.bannerSlide}>
+              <BannerSlide name={'초콜릿피자'} />
+            </div>
+            {/* 이미지2 */}
+            <div className={style.bannerSlide}>
+              <BannerSlide name={'완자꼬치'} />
+            </div>
+            {/* 이미지3 */}
+            <div className={style.bannerSlide}>
+              <BannerSlide name={'한라산볶음밥'} />
+            </div>
+          </div>
+        </div>
       </div>
       {/* 인기 레시피 */}
       <div className={style.popularRecipe}>
@@ -578,7 +666,7 @@ function Main() {
             <h2>향신료의 매력에 푹 빠지고 싶다면?</h2>
             <h2>허브·스파이스 전문 도서관</h2>
             <h2>라이브러리 H</h2>
-            <input type="button" value="자세한 이용 방법 보기" />
+            <input type="button" value="자세한 이용 방법 보기" onClick={onClickBanner} />
           </div>
         </div>
       </div>
@@ -727,6 +815,34 @@ export function MiniSlide({ name, hash, background }) {
             {hash[0]} {hash[1]} {hash[2]}
           </p>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// 배너 슬라이드 carousel 컨텐츠
+export function BannerSlide({ name }) {
+  const history = useHistory();
+
+  const onClick = () => {
+    history.push({ pathname: '/detail', state: { name: name } });
+  };
+
+  const DataList = [...allDataList];
+  let result = [];
+
+  DataList.filter((food) => food.name.includes(name)).map((food) => result.push(food));
+
+  return (
+    <div onClick={onClick} style={{ cursor: 'pointer' }}>
+      <div style={{ width: '547px', height: '450px', marginRight: '130px' }}>
+        <img src={result[0].src} alt="배너 슬라이드 이미지" style={{ width: '100%', height: '100%' }} />
+      </div>
+      <div style={{ width: '530px', textAlign: 'center', paddingTop: '20px' }}>
+        <p style={{ color: '#333', fontSize: '16px' }}>
+          {result[0].hash[0]} {result[0].hash[1]} {result[0].hash[2]}
+        </p>
+        <h2 style={{ color: '#333', fontSize: '30px' }}>{result[0].name}</h2>
       </div>
     </div>
   );

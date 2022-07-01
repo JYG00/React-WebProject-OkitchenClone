@@ -602,14 +602,12 @@
 /* 셰프의 팁 */
 .chef {
   width: 100%;
-
   height: 800px;
   background-color: aqua;
 }
 .chef_header {
   text-align: center;
   width: 100%;
-
   height: 200px;
   background-color: white;
 }
@@ -629,10 +627,37 @@
 }
 .chef_img {
   width: 100%;
-
+  position: relative;
   height: 600px;
+  overflow: hidden;
   background-color: lemonchiffon;
 }
+/* 배너 슬라이드 */
+.bannerSlideContainer {
+  position: absolute;
+  display: flex;
+  width: 5416px;
+}
+.bannerSlide {
+  width: 677px;
+}
+.bannerArrow {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 30px;
+  top: 50%;
+}
+.bannerArrow > div {
+  margin: 0 285px;
+  z-index: 10;
+  cursor: pointer;
+}
+/* .bannerSlide > div {
+  background-color: aqua;
+} */
+
 /* ///////////////////////////// */
 /* 인기 레시피 */
 .popularRecipe {
