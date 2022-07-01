@@ -14,16 +14,22 @@ import main07 from './img/main07.jpg';
 // 메인 슬라이드 컨트롤러 아이콘
 import stopBtn from './img/visual_stop.png';
 import startBtn from './img/visual_start.png';
-// 미니 슬라이드(carousel) 이미지
+// 서브 슬라이드(carousel) 이미지
 import mini01 from './img/쨈 아이스크림.jpg';
 import mini02 from './img/옥수수 푸딩.jpg';
 import mini03 from './img/피자 토스트.jpg';
-// 미니 슬라이드 컨트롤러 아이콘
+// 서브 슬라이드 컨트롤러 아이콘
 import { BsArrowLeft } from 'react-icons/bs';
 import { BsArrowRight } from 'react-icons/bs';
 // 배너 '계량 팁' 사진
 import tip_bg from './img/tip_bg.jpg';
+// 최근 본 레시피 getter
 import { getRcp } from './recentRecipe/recentRcp';
+// 배너 사진
+import banner01 from './img/banner01.jpg';
+import banner02 from './img/banner02.jpg';
+import allDataList from './data/allDataList';
+import Food from './component/food/food';
 
 function Main() {
   // 메인 슬라이드 객체
@@ -236,6 +242,26 @@ function Main() {
   let arr = getRcp();
   const mostRecent_rcp = arr[arr.length - 1];
 
+  // 추천 레시피
+  const DataList = [...allDataList];
+  let contentLeftMain = [];
+  DataList.filter((food) => food.name.includes('한라봉소르베')).map((food) => contentLeftMain.push(food));
+  let contentLeft = [];
+  DataList.filter((food) => food.name.includes('데리야끼치킨')).map((food) => contentLeft.push(food));
+  DataList.filter((food) => food.name.includes('순두부 열라면')).map((food) => contentLeft.push(food));
+
+  let contentRightMain = [];
+  DataList.filter((food) => food.name.includes('카레 토마토솥밥')).map((food) => contentRightMain.push(food));
+  let contentRight = [];
+  DataList.filter((food) => food.name.includes('쿠시아게 카레퐁듀')).map((food) => contentRight.push(food));
+  DataList.filter((food) => food.name.includes('비빔만두')).map((food) => contentRight.push(food));
+
+  // 인기레시피 (8종)
+  let popularRcp = [];
+  DataList.sort((a, b) => b.view - a.view)
+    .filter((food) => DataList.indexOf(food) < 8)
+    .map((food) => popularRcp.push(food));
+
   return (
     <div className={style.main}>
       {/* 메인 슬라이드 */}
@@ -426,7 +452,16 @@ function Main() {
         </div>
       </div>
       {/* 메뉴바 */}
-      <div className={style.menubar}>MenuBarImg</div>
+      <div className={style.menubar}>
+        <div style={{ background: `url(${banner01}) no-repeat`, backgroundSize: 'cover', backgroundPositionX: '-550px', width: '100%', height: '100%' }}>
+          <div>
+            <h2>요리를 더 쉽게</h2>
+            <h2>오뚜기몰의 각종 소스들로 모든 레시피를 보다</h2>
+            <h2>쉽게, 빠르게, 맛있게</h2>
+            <input type="button" value="오뚜기몰 가기" />
+          </div>
+        </div>
+      </div>
       {/* 추천레시피 */}
       <div className={style.recommend}>
         <ul>
@@ -447,11 +482,18 @@ function Main() {
               <li>
                 {/* 왼쪽파트 */}
                 <ul className={style.recommend_content_left}>
-                  <li></li>
+                  {contentLeftMain.map((food) => (
+                    <li key={food.id}>
+                      <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
+                    </li>
+                  ))}
                   <li>
                     <ul className={style.recommend_content_left_bottom}>
-                      <li></li>
-                      <li></li>
+                      {contentLeft.map((food) => (
+                        <li key={food.id}>
+                          <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
+                        </li>
+                      ))}
                     </ul>
                   </li>
                 </ul>
@@ -459,8 +501,24 @@ function Main() {
               <li>
                 {/* 오른쪽파트 */}
                 <ul className={style.recommend_content_right}>
-                  <li></li>
-                  <li></li>
+                  <li>
+                    <ul className={style.recommend_content_right_top}>
+                      {contentRight.map((food) => (
+                        <li key={food.id}>
+                          <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                  <li>
+                    <ul>
+                      {contentRightMain.map((food) => (
+                        <li key={food.id}>
+                          <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -503,21 +561,27 @@ function Main() {
             {/* 사진 */}
             <div className={style.popularRecipe_img}>
               <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
+                {popularRcp.map((food) => (
+                  <li key={food.id}>
+                    <Food id={food.id} src={food.src} hash={food.hash} name={food.name}></Food>
+                  </li>
+                ))}
               </ul>
             </div>
           </li>
         </ul>
       </div>
       {/* 하단메뉴바 */}
-      <div className={style.menubar_bottom}>MenuBarBottomImg</div>
+      <div className={style.menubar_bottom}>
+        <div style={{ background: `url(${banner02})`, backgroundSize: 'cover', backgroundPositionX: '-550px' }}>
+          <div>
+            <h2>향신료의 매력에 푹 빠지고 싶다면?</h2>
+            <h2>허브·스파이스 전문 도서관</h2>
+            <h2>라이브러리 H</h2>
+            <input type="button" value="자세한 이용 방법 보기" />
+          </div>
+        </div>
+      </div>
       <Footer></Footer>
     </div>
   );
