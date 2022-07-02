@@ -1,16 +1,12 @@
-import { useLocation } from 'react-router-dom';
 import style from './recentRecipe.module.css';
 import allDataList from '../data/allDataList';
 import Food from '../component/food/food';
 import Footer from '../footer';
 import item_no from '../img/item_no.gif';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { getRcp } from './recentRcp';
 
 export default function RecentRecipe() {
-  const location = useLocation();
   const history = useHistory();
   const foodArray = [...allDataList];
 
@@ -22,10 +18,12 @@ export default function RecentRecipe() {
 
   const set = new Set(getRcp());
   data = [...set];
+  // 최신 데이터가 맨 앞으로 오게 역순으로 정렬
+  data.reverse();
 
   // 데이터가 겹치지 않기 위해 Set 사용
   // const set = new Set(location.state.array);
-  // data = [...set];
+  // data = [...set]
 
   // 넘겨받은 단어로 데이터를 찾고 recentRecipe 배열에 담습니다
   data.map((name) => foodArray.filter((food) => food.name.includes(name)).map((food) => recentRecipe.push(food)));
@@ -39,11 +37,11 @@ export default function RecentRecipe() {
       <div className={style.recent}>
         {/* 최근 본 레시피*/}
         <div className={style.recent_bar}>
+          <div className={style.now_page}>
+            <Link to="/">홈</Link>
+            <input onClick={onClick} type="button" value="최근 본 레시피" />
+          </div>
           <div>
-            <div className={style.now_page}>
-              <Link to="/">홈</Link>
-              <input onClick={onClick} type="button" value="최근 본 레시피" />
-            </div>
             <h2>최근 본 레시피</h2>
           </div>
         </div>

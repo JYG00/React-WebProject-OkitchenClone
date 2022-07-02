@@ -20,12 +20,12 @@ function Tip() {
       <div className={style.new}>
         {/* 신규레시피 메뉴바 */}
         <div className={style.new_bar}>
+          {/* 홈, 현재 페이지 버튼 */}
+          <div className={style.now_page}>
+            <Link to="/">홈</Link>
+            <Link to="/new">신규 레시피</Link>
+          </div>
           <div>
-            {/* 홈, 현재 페이지 버튼 */}
-            <div className={style.now_page}>
-              <Link to="/">홈</Link>
-              <Link to="/new">신규 레시피</Link>
-            </div>
             <h2>신규레시피</h2>
           </div>
         </div>
