@@ -196,7 +196,7 @@
 .none {
   width: 1350px;
   height: 350px;
-  background-color: #c1c1c1;
+  /* background-color: #c1c1c1; */
   display: flex;
   justify-content: center;
   align-items: flex-start;

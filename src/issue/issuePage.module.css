@@ -1,7 +1,7 @@
 /* 인기레시피 사진, 내용 */
 .issue_content {
   width: 100%;
-  /* min-width: 1350px; */
+  min-width: 1350px;
   height: auto;
   /* background-color: rgb(110, 85, 51); */
   display: flex;
