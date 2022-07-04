@@ -5,7 +5,7 @@ import { Route, Link } from 'react-router-dom';
 // yarn add react-icons;
 import { FaFacebookF } from 'react-icons/fa';
 import { BsInstagram, BsYoutube } from 'react-icons/bs';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 function Footer() {
   const history = useHistory();
 
@@ -16,6 +16,21 @@ function Footer() {
       state: { type: 'chef' },
     });
   };
+
+  // 로고 아이콘 클릭 시
+  const onClickLogo = (e) => {
+    history.push({ pathname: '/none', state: { key: `오키친 ${e.currentTarget.getAttribute('value')} 페이지` } });
+  };
+
+  // select 변경 시
+  const onChange = (e) => {
+    if (e.target.value === 'family') {
+      return;
+    } else {
+      history.push({ pathname: '/none', state: { key: e.target.value } });
+    }
+  };
+
   return (
     <div className={style.footer}>
       <div>
@@ -58,21 +73,21 @@ function Footer() {
                 <ul>
                   {/* 리스트 */}
                   <li className={style.list}>
-                    <select>
-                      <option value="0">FAMILY SITE</option>
-                      <option value="http://www.naver.com">(주)오뚜기</option>
-                      <option value="http://www.google.com">오뚜기몰</option>
-                      <option value="http://www.daum.net">오뚜기함태호재단</option>
+                    <select onChange={onChange}>
+                      <option value="family">FAMILY SITE</option>
+                      <option value="(주)오뚜기">(주)오뚜기</option>
+                      <option value="오뚜기몰">오뚜기몰</option>
+                      <option value="오뚜기함태호재단">오뚜기함태호재단</option>
                     </select>
                   </li>
                   {/* SNS 로고 */}
-                  <li className={style.sns_logo}>
+                  <li className={style.sns_logo} onClick={onClickLogo} value="instagram">
                     <BsInstagram />
                   </li>
-                  <li className={style.sns_logo}>
+                  <li className={style.sns_logo} onClick={onClickLogo} value="facebook">
                     <FaFacebookF></FaFacebookF>
                   </li>
-                  <li className={style.sns_logo}>
+                  <li className={style.sns_logo} onClick={onClickLogo} value="youtube">
                     <BsYoutube />
                   </li>
                 </ul>
