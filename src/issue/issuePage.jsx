@@ -4,6 +4,8 @@ import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import { BsCheck } from 'react-icons/bs';
 import allDataList from '../data/allDataList';
 import Food from '../component/food/food';
+import { useEffect } from 'react';
+import { useRef } from 'react';
 
 function IssuePage() {
   // 최신순, 조회순 버튼에 따라서 해당 내용 출력
@@ -27,6 +29,12 @@ function IssuePage() {
 
   // 페이지 목록 버튼
   const [btn, setBtn] = useState(true);
+
+  // 페이지 번호가 바뀔때마다 상단 포커스
+  const PageRef = useRef();
+  useEffect(() => {
+    PageRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [btn]);
 
   //페이지 목록 버튼을 클릭시 이벤트 발생
   const onClick = (e) => {
@@ -60,7 +68,7 @@ function IssuePage() {
   // console.log(view_order);
 
   return (
-    <div>
+    <div ref={PageRef}>
       {/* 인기레시피 내용,사진 */}
       <div className={style.issue_content}>
         <div className={style.content_in}>

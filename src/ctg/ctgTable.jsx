@@ -5,8 +5,6 @@ import style from './ctgTable.module.css';
 import Ctg_content from './ctg_content';
 
 export default function CtgTable({ type }) {
-  console.log('최종' + type);
-  const location = useLocation();
   // tabel 객체
   const tableRef = useRef();
 
@@ -64,7 +62,6 @@ export default function CtgTable({ type }) {
   const [props, setProps] = useState();
   const onClick = (e) => {
     if (e.currentTarget.innerText === '기타') {
-      console.log(e.currentTarget.value);
       return set(e.currentTarget.value);
     }
     set(e.currentTarget.innerText);
@@ -76,6 +73,7 @@ export default function CtgTable({ type }) {
 
   return (
     <div className={style.container}>
+      {/* ctg -> ctgList -> ctgTable -> ctgContent 구성 */}
       {/* 전체 카테고리 */}
       <table ref={tableRef}>
         <tbody>

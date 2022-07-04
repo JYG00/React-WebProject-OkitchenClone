@@ -14,8 +14,6 @@ export default function CtgList({ type }) {
   // 헤더에서 선택한 카테고리에 active 클래스 부여
   useEffect(() => {
     ref.current.map((ref) => (ref.className = ''));
-
-    console.log('useEffect 실행');
     set(type);
   }, [type]);
 
@@ -23,16 +21,17 @@ export default function CtgList({ type }) {
   const onClick = (e) => {
     set(e.currentTarget.getAttribute('value'));
     history.push({ pathname: '/ctg', state: { type: e.currentTarget.getAttribute('value') } });
+    window.location.reload();
   };
 
+  // 동기적 코드로 처리하기 위함
   const set = (param) => {
     setCtg(param);
   };
 
-  // useEffect는 동기적 코드처럼 처리하기 위함
+  // ctg(카테고리) 항목 변경 시 useEffect 호출!
   useEffect(() => {
     ref.current.map((ref) => (ref.className = ''));
-    console.log('props2:' + ctg);
     // footer '셰프의 팁'
     if (ctg === 'chef') {
       ref.current.filter((ref) => ref.getAttribute('value') === 'theme').map((ref) => (ref.className = `${style.active}`));
@@ -55,6 +54,7 @@ export default function CtgList({ type }) {
 
   return (
     <div className={style.container}>
+      {/* ctg -> ctgList -> ctgTable -> ctgContent 구성 */}
       <div className={style.content}>
         {/* 카테고리 리스트 */}
         <div className={style.ctg_list}>

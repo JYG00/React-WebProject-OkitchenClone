@@ -59,7 +59,6 @@ function Search() {
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .filter((food) => food.hash.toString().includes(props) || food.name.toString().includes(props))
     .map((food) => recently_order.push(food));
-  // console.log(recently_order);
 
   // 조회순으로 검색 단어를 정렬
   let view_order = [];

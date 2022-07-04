@@ -27,6 +27,7 @@ export default function Ctg() {
 
   return (
     <div>
+      {/* ctg -> ctgList -> ctgTable -> ctgContent 구성 */}
       <div className={style.ctg}>
         <div className={style.ctg_bar}>
           <div>
@@ -61,7 +62,6 @@ export default function Ctg() {
           </div>
         </div>
       </div>
-
       <div className={style.ctg_content}>
         <CtgList type={props} />
       </div>

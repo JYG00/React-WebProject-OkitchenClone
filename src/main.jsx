@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import style from './main.module.css';
 import Footer from './footer';
-import { useRef } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 // 메인 슬라이드(carousel) 이미지
 import main01 from './img/main01.jpg';
 import main02 from './img/main02.jpg';
@@ -23,8 +22,6 @@ import { BsArrowLeft } from 'react-icons/bs';
 import { BsArrowRight } from 'react-icons/bs';
 // 배너 '계량 팁' 사진
 import tip_bg from './img/tip_bg.jpg';
-// 최근 본 레시피 getter
-import { getRcp } from './recentRecipe/recentRcp';
 // 배너 사진
 import banner01 from './img/banner01.jpg';
 import banner02 from './img/banner02.jpg';
@@ -39,11 +36,9 @@ function Main() {
   // 메인 슬라이드 객체
   const mainRef = useRef();
   const mainSlideRef = useRef([]);
-  // 메인 슬라이드 페이지 객체
   const pageRef = useRef();
   // 서브 슬라이드 객체
   const miniSlideRef = useRef();
-  // 서브 슬라이드 페이지 객체
   const pageRef_sub = useRef();
   // 배너 슬라이드 객체
   const bannerSlideRef = useRef();
@@ -84,9 +79,12 @@ function Main() {
 
   // 메인 슬라이드 위치 바뀌면 스타일 변경
   useEffect(() => {
+    // mainSlide_on 클래스를 찾은 다음 원래 상태로 되돌립니다.
+    // 페이지에 맞는 인덱스에 mainSlide_on 클래스 부여
     mainSlideRef.current.filter((ref) => ref.className === `${style.mainSlide_on}`).map((ref) => (ref.className = `${style.mainSlide}`));
     mainSlideRef.current[page].className = `${style.mainSlide_on}`;
 
+    // carousel이 끝 페이지나 첫 페이지에 도달했을 경우 페이지 재설정
     if (page === 8) {
       setPageNum(1);
     } else if (page === 0) {
@@ -94,7 +92,7 @@ function Main() {
     }
   }, [page]);
 
-  // 자동 슬라이드
+  // 메인 슬라이드 자동
   useEffect(() => {
     // 자동유무
     if (isRunning) {
@@ -257,14 +255,31 @@ function Main() {
     });
   };
 
+  // 가장 최근 본 레시피
+  const [cookie, setCookie] = useCookies(['RcpCookie']);
+  let arr = cookie.RcpCookie;
+
+  // 페이지에 렌더링되는 마지막 레시피
+  let mostRecent_rcp = null;
+
+  // 쿠키가 있을경우
+  if (cookie.RcpCookie) {
+    mostRecent_rcp = arr[arr.length - 1];
+  }
+
   // 나머지 배너 클릭시
   const onClickBanner = (e) => {
     if (e.currentTarget.getAttribute('value') === '오뚜기몰 가기') {
       history.push({ pathname: '/none', state: { key: '오뚜기몰' } });
     } else if (e.currentTarget.getAttribute('value') === '자세한 이용 방법 보기') {
       history.push({ pathname: '/none', state: { key: '허브·스파이스 전문 도서관 라이브러리 H' } });
+    } else if (e.currentTarget.getAttribute('value') === 'chef') {
+      history.push({
+        pathname: '/ctg',
+        state: { type: 'chef' },
+      });
     } else {
-      history.push({ pathname: `/${e.currentTarget.getAttribute('value')}` });
+      history.push({ pathname: `/${e.currentTarget.getAttribute('value')}`, state: { array: cookie.RcpCookie } });
     }
   };
 
@@ -285,17 +300,8 @@ function Main() {
     setXPosition_ban(param);
   };
 
-  // 가장 최근 본 레시피
-  const [cookie, setCookie] = useCookies(['RcpCookie']);
-  let arr = cookie.RcpCookie;
-
-  let mostRecent_rcp = null;
-
-  if (arr.length > 0) {
-    mostRecent_rcp = arr[arr.length - 1];
-  }
-
-  // 추천 레시피
+  // 추천 레시피 : 한라봉소르베, 데리야끼치킨 ....
+  // 레시피 정보가 담겨있는 allDataList
   const DataList = [...allDataList];
   let contentLeftMain = [];
   DataList.filter((food) => food.name.includes('한라봉소르베')).map((food) => contentLeftMain.push(food));
@@ -311,6 +317,7 @@ function Main() {
 
   // 인기레시피 (8종)
   let popularRcp = [];
+  // 조회순으로 정렬
   DataList.sort((a, b) => b.view - a.view)
     .filter((food) => DataList.indexOf(food) < 8)
     .map((food) => popularRcp.push(food));
@@ -599,6 +606,12 @@ function Main() {
             {/* 오른쪽 화살표 */}
             <div style={{ background: `url(${bannerArrow}) no-repeat`, width: '79px', height: '21px', backgroundPosition: 'right' }} onClick={onClickBannerSlideRight}></div>
           </div>
+          {/* 더보기 버튼 (셰프의 팁 테마로 이동)*/}
+          <div className={style.bannerButton}>
+            <button type="button" value="chef" onClick={onClickBanner}>
+              더보기
+            </button>
+          </div>
           <div className={style.bannerSlideContainer} ref={bannerSlideRef}>
             {/* 배너 슬라이드 이미지 */}
             {/* 이미지2 */}
@@ -682,6 +695,7 @@ function Main() {
   );
 }
 
+// 메인 슬라이드 설명란
 export function MainSlideExp({ keyTop, keyMiddle, keyBottom, hashBtn, mainBtn, color }) {
   // keyBottom의 문자열을 공백으로 분리
   // 문자 덩어리의 갯수에 따라서 렌더링
@@ -842,13 +856,16 @@ export function BannerSlide({ name }) {
 
   return (
     <div onClick={onClick} style={{ cursor: 'pointer' }}>
+      {/* 슬라이드 이미지 */}
       <div style={{ width: '547px', height: '450px', marginRight: '130px' }}>
         <img src={result[0].src} alt="배너 슬라이드 이미지" style={{ width: '100%', height: '100%' }} />
       </div>
       <div style={{ width: '530px', textAlign: 'center', paddingTop: '20px' }}>
+        {/* 레시피 검색태그 */}
         <p style={{ color: '#333', fontSize: '16px' }}>
           {result[0].hash[0]} {result[0].hash[1]} {result[0].hash[2]}
         </p>
+        {/* 레시피 이름 */}
         <h2 style={{ color: '#333', fontSize: '30px' }}>{result[0].name}</h2>
       </div>
     </div>

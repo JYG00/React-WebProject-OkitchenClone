@@ -2,7 +2,6 @@
   width: 100%;
   min-width: 1350px;
   height: auto;
-  /* background-color: chocolate; */
 }
 /* 메인이미지 */
 .mainImg {
@@ -10,7 +9,6 @@
   height: 725px;
   position: relative;
   overflow: hidden;
-  /* background-color: #f8f8f8; */
   z-index: 0;
 }
 /* 메인 슬라이드 화살표 버튼 */
@@ -100,7 +98,7 @@
   justify-content: center;
   align-items: center;
 }
-/* 메인 슬라이드 내용 MainSlideExp*/
+/* 메인 슬라이드 설명 MainSlideExp*/
 .MainSlideExp_container {
   width: 2000px;
   display: flex;
@@ -110,7 +108,6 @@
 .MainSlideExp_container > div {
   width: 1350px;
   height: 450px;
-  /* background-color: bisque; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -119,7 +116,6 @@
 .keyTop {
   width: 1350px;
   height: 50px;
-  /* background-color: pink; */
   display: flex;
   align-items: center;
 }
@@ -138,7 +134,6 @@
   height: 50px;
   display: flex;
   align-items: center;
-  /* background-color: rgb(250, 102, 127); */
 }
 .keyMiddle p {
   padding-left: 5px;
@@ -215,9 +210,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-
   height: 715px;
-  /* background-color: greenyellow; */
 }
 
 .popular > div {
@@ -225,19 +218,16 @@
   justify-content: space-between;
   width: 1350px;
   height: 500px;
-  /* background-color: gold; */
 }
 .popular > div > ul {
   width: 300px;
   height: 500px;
-  /* background-color: aqua; */
-}
-.popular > ul > li > a {
 }
 /* 이건 어때요? 인기 검색어 */
 .popular_sch h2 {
   font-size: 35px;
 }
+/* 제목 밑 작은 밑줄 */
 .popular_sch h2:nth-child(2)::after {
   display: block;
   content: '';
@@ -285,6 +275,7 @@
   background-color: #f64646;
   color: #fff;
 }
+
 /* 키즈 셰프 레시피 */
 .kidsChef {
   width: 100%;
@@ -292,7 +283,6 @@
   overflow: hidden;
   background-color: #ffed93;
 }
-
 .kidsChef > .miniSlide_container {
   display: flex;
   position: absolute;
@@ -405,9 +395,8 @@
   height: 200px;
   /* background-color: red; */
 }
+
 /* 계량 팁 */
-.tip {
-}
 .tip > div {
   width: 100%;
   height: 100%;
@@ -436,7 +425,6 @@
 .menubar {
   letter-spacing: -1.5px;
   width: 100%;
-
   height: 405px;
   /* background-color: rgb(224, 224, 77); */
 }
@@ -535,13 +523,10 @@
 .recommend_content_left {
   width: 650px;
   height: 950px;
-  /* background-color: coral; */
 }
 .recommend_content_left > li:first-child {
   width: 650px;
-  /* height: 565px; */
   height: 590px;
-  /* background-color: yellow; */
 }
 .recommend_content_left > li:first-child > div > div:first-child {
   width: 650px;
@@ -556,11 +541,7 @@
 }
 .recommend_content_left > li:last-child {
   width: 650px;
-  /* height: 435px; */
   height: 360px;
-  /* background-color: antiquewhite; */
-}
-.recommend_content_left_bottom {
 }
 .recommend_content_left_bottom li {
   width: 305px;
@@ -573,7 +554,6 @@
 .recommend_content_right {
   width: 650px;
   height: 950px;
-  /* background-color: gray; */
 }
 .recommend_content_right_top {
   display: flex;
@@ -588,15 +568,11 @@
 }
 .recommend_content_right > li:first-child {
   width: 650px;
-  /* height: 435px; */
   height: 360px;
-  /* background-color: antiquewhite; */
 }
 .recommend_content_right > li:last-child {
   width: 650px;
-  /* height: 565px; */
   height: 590px;
-  /* background-color: yellow; */
 }
 .recommend_content_right > li:last-child div > div:first-child {
   width: 650px;
@@ -615,13 +591,11 @@
 .chef {
   width: 100%;
   height: 800px;
-  /* background-color: aqua; */
 }
 .chef_header {
   text-align: center;
   width: 100%;
   height: 200px;
-  /* background-color: white; */
 }
 .chef_header h2 {
   font-size: 40px;
@@ -649,7 +623,6 @@
   position: relative;
   height: 600px;
   overflow: hidden;
-  /* background-color: lemonchiffon; */
 }
 /* 배너 슬라이드 */
 .bannerSlideContainer {
@@ -660,6 +633,7 @@
 .bannerSlide {
   width: 677px;
 }
+/* 배너 화살표 버튼 */
 .bannerArrow {
   position: absolute;
   display: flex;
@@ -673,26 +647,47 @@
   z-index: 10;
   cursor: pointer;
 }
-/* .bannerSlide > div {
-  background-color: aqua;
-} */
-
+/* 배너 더보기 버튼 */
+.bannerButton {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 30px;
+  top: 92%;
+  overflow: hidden;
+}
+.bannerButton button {
+  background: transparent;
+  z-index: 10;
+  padding: 0px 40px;
+  border-radius: 50px !important;
+  font-size: 20px;
+  color: #333;
+  border: 2px solid #666;
+  cursor: pointer;
+}
+.bannerButton button:hover {
+  color: #000;
+  border: 2px solid #000;
+  transition: all 0.3s ease-in-out;
+}
+.bannerButton button:not(:hover) {
+  transition: all 0.3s ease-in-out;
+}
 /* ///////////////////////////// */
 /* 인기 레시피 */
 .popularRecipe {
   display: flex;
   justify-content: center;
   width: 100%;
-
-  height: 860px;
-  /* background-color: skyblue; */
+  height: 950px;
 }
 .popularRecipe > div {
 }
 .popularRecipe_header {
   width: 1350px;
   height: 200px;
-  /* background-color: blueviolet; */
 }
 .popularRecipe_header h2 {
   font-size: 40px;
@@ -705,7 +700,6 @@
   text-align: center;
   width: 100%;
   height: 200px;
-  /* background-color: white; */
 }
 .popularRecipe_header li {
   padding-bottom: 15px;
@@ -724,7 +718,6 @@
 .popularRecipe_img {
   width: 1350px;
   height: 660px;
-  /* background-color: pink; */
   display: flex;
   justify-content: center;
 }
@@ -735,7 +728,6 @@
   float: left;
   width: 305px;
   height: 310px;
-  /* background-color: tomato; */
   margin: 5px 10px;
   margin-bottom: 20px;
 }
@@ -743,9 +735,7 @@
 .menubar_bottom {
   letter-spacing: -1.5px;
   width: 100%;
-
   height: 300px;
-  /* background-color: rgb(224, 224, 77); */
 }
 .menubar_bottom > div {
   display: flex;

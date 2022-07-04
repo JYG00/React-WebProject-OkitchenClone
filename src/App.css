@@ -65,6 +65,7 @@
   border: 0;
   cursor: pointer;
 }
+/* 검색창 placeholder */
 input::placeholder {
   font-size: 22px;
   font-weight: 500;
@@ -79,7 +80,7 @@ input::placeholder {
   margin-top: -1.5%;
   cursor: pointer;
 }
-
+/* 헤더상단 검색태그 버튼 */
 .header_in_top .search .hash {
   width: 250px;
   height: 105px;
@@ -173,9 +174,6 @@ input::placeholder {
 .header_in_bottom .nav ul li a:hover {
   color: #f64646;
 }
-/* .header_in_bottom .nav > ul > li:first-child {
-  background-color: red;
-} */
 /* 카테고리 마우스 커서 올렸을때 */
 .header_in_bottom .nav > ul > li:first-child:hover > .ctg_hover {
   display: block;
@@ -191,7 +189,7 @@ input::placeholder {
 }
 /* 카테고리 리스트 */
 .ctg_hover {
-  z-index: 100;
+  z-index: 1000;
   letter-spacing: -1.5px;
   position: absolute;
   margin: 14px 0px;
@@ -275,7 +273,7 @@ input::placeholder {
   font-weight: 600;
   color: #777;
 }
-
+/* 헤더 하단 우측 네비 영역 */
 .header_in_bottom .nav2 {
   width: 700px;
   height: 65px;

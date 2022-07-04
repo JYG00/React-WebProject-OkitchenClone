@@ -6,6 +6,7 @@ import Food from '../component/food/food';
 import { BsCheck } from 'react-icons/bs';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export default function Ctg_content({ props }) {
   // 최신순, 조회순 버튼에 따라서 해당 내용 출력
@@ -15,6 +16,9 @@ export default function Ctg_content({ props }) {
   const foodArray = [...allDataList];
   const [dateOrder, setDateOrder] = useState([...foodArray]);
   const [viewOrder, setViewOrder] = useState([...foodArray]);
+
+  // 컨텐츠 갯수
+  const [contentNum, setContentNum] = useState();
 
   // 컨텐츠가 있는 블록
   const contentRef = useRef();
@@ -42,92 +46,123 @@ export default function Ctg_content({ props }) {
   // 하단 버튼 클릭시 setBtn으로 리스트 스타일 변경
   const onClick = (e) => {
     set(e.currentTarget.getAttribute('value'));
+    contentRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // 동기적 코드로 처리하기 위함
   const set = (params) => {
-    console.log('set 실행');
-    console.log('set : ' + params);
+    // 정수형으로 처리하기 위함
     let intParams = 1;
 
+    // 버튼의 값의 따라서 페이지 설정
     switch (params) {
       case 'plus':
-        setBtn(btn + 1);
+        setButton(btn + 1);
         settingIndex(btn + 1);
         break;
       case 'minus':
-        setBtn(btn - 1);
+        setButton(btn - 1);
         settingIndex(btn - 1);
         break;
       default:
         // 정수형으로 처리하기 위함
         intParams *= params;
-        setBtn(intParams);
+        setButton(intParams);
         settingIndex(intParams);
+        intParams = 1;
         break;
     }
   };
-  // useEffect는 동기적 코드처럼 작동하기 위함
-  useEffect(() => {
-    console.log('effect 실행!!');
-    console.log(btn);
-    listRef.current.map((ref) => (ref.className = ''));
-    listRef.current.filter((ref) => ref.getAttribute('value') === `${btn}`).map((ref) => (ref.className = `${style.on}`));
-    switch (btn) {
+
+  // 페이지번호에 따라 해당 인덱스 범위로 렌더링
+  const settingIndex = (key) => {
+    switch (key) {
       case 1:
-        listRef.current[0].style = 'display:none';
-        listRef.current[5].style = 'display:inlineBlock';
+        setIndex([-1, 20]);
         break;
       case 2:
-        listRef.current[0].style = 'display:inlineBlock';
-        listRef.current[5].style = 'display:inlineBlock';
+        setIndex([19, 40]);
         break;
       case 3:
-        listRef.current[0].style = 'display:inlineBlock';
-        listRef.current[5].style = 'display:inlineBlock';
+        setIndex([39, 60]);
         break;
+      case 4:
+        setIndex([59, 80]);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const setContent = (param) => {
+    setContentNum(param);
+  };
+
+  const setButton = (param) => {
+    setBtn(param);
+  };
+
+  useEffect(() => {
+    listRef.current.map((ref) => (ref.className = ''));
+    // listRef.current.map((ref) => (ref.style = 'display:inlineBlock'));
+    listRef.current.filter((ref) => ref.getAttribute('value') === `${btn}`).map((ref) => (ref.className = `${style.on}`));
+    switch (btn) {
+      // 페이지가 첫 페이지일 경우
+      // 왼쪽 화살표버튼 X
+      case 1:
+        if (contentNum < 21) {
+          listRef.current[5].style = 'display:none';
+        } else {
+          listRef.current[0].style = 'display:none';
+          listRef.current[5].style = 'display:inlineBlock';
+        }
+        break;
+      case 2:
+        if (contentNum < 41) {
+          listRef.current[0].style = 'display:inlineBlock';
+          listRef.current[5].style = 'display:none';
+        } else {
+          listRef.current[0].style = 'display:inlineBlock';
+          listRef.current[5].style = 'display:inlineBlock';
+        }
+        break;
+      case 3:
+        if (contentNum < 61) {
+          listRef.current[0].style = 'display:inlineBlock';
+          listRef.current[5].style = 'display:none';
+        } else {
+          listRef.current[0].style = 'display:inlineBlock';
+          listRef.current[5].style = 'display:inlineBlock';
+        }
+
+        break;
+      // 페이지가 끝 페이지일 경우
+      // 오른쪽 화살표버튼 X
       case 4:
         listRef.current[0].style = 'display:inlineBlock';
         listRef.current[5].style = 'display:none';
         break;
       default:
-        console.log('error');
+        listRef.current[5].style = 'display:none';
         break;
     }
   }, [btn]);
 
-  const settingIndex = (key) => {
-    switch (key) {
-      case 1:
-        setIndex([-1, 20]);
-        console.log(index);
-        break;
-      case 2:
-        setIndex([19, 40]);
-        console.log(index);
-        break;
-      case 3:
-        setIndex([39, 60]);
-        console.log(index);
-        break;
-      case 4:
-        setIndex([59, 80]);
-        console.log(index);
-        break;
-      default:
-        break;
-    }
-  };
+  const location = useLocation();
 
   // 처음 렌더링 될때는 모든 배열을 렌더링
   useEffect(() => {
     setArray();
-  }, []);
+  }, [location]);
 
   // props를 넘겨받은 경우라면 조건에 따라서 렌더링
   useEffect(() => {
-    setArray();
     if (typeof props !== 'undefined') {
       contentRef.current.scrollIntoView({ behavior: 'smooth' });
+      setArray();
+      set(1);
+    } else {
+      console.log('hello');
     }
   }, [props]);
 
@@ -149,20 +184,23 @@ export default function Ctg_content({ props }) {
         .map((food) => arr2.push(food));
       setViewOrder(arr2);
 
+      // 컨텐츠 갯수를 저장
+      setContent(arr.length);
+
       // props 의 해당되는 내용의 갯수에 따라서 페이지 버튼 스타일 적용
+      listRef.current.map((ref) => (ref.style = 'display:inlineBlock'));
+
+      // 해당 항목의 전체 갯수에 따라서 다른 스타일 적용
       switch (Math.ceil(arr.length / 20)) {
         case 1:
-          listRef.current.map((ref) => (ref.style = 'display:inlineBlock'));
           listRef.current.map((ref) => (ref.style = 'display:none'));
           break;
         case 2:
-          listRef.current.map((ref) => (ref.style = 'display:inlineBlock'));
           listRef.current[0].style = 'display:none';
           listRef.current[3].style = 'display:none';
           listRef.current[4].style = 'display:none';
           break;
         case 3:
-          listRef.current.map((ref) => (ref.style = 'display:inlineBlock'));
           listRef.current[4].style = 'display:none';
           break;
         case 4:

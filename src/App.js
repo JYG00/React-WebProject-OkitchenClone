@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Route, Link, useHistory, useLocation } from 'react-router-dom';
 // yarn add react-router-dom@5
+// 라우트
 import './App.css';
 import Main from './main';
 import Tip from './tip/tip';
@@ -11,44 +12,51 @@ import Ctg from './ctg/ctg';
 import Detail from './detail/detail';
 import RecentRecipe from './recentRecipe/recentRecipe';
 import None from './none/none';
+// 네비 아이콘
 import { RiShoppingBasket2Line, RiFileCopyFill } from 'react-icons/ri';
-import logo from './img/logo.png';
-import top_sch from './img/top_sch.png';
 import { HiPlusCircle } from 'react-icons/hi';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { setRcp } from './recentRecipe/recentRcp';
-import { getRcp } from './recentRecipe/recentRcp';
+// 로고
+import logo from './img/logo.png';
+// 검색창 아이콘
+import top_sch from './img/top_sch.png';
+import { setRcp, getRcp } from './recentRecipe/recentRcp';
 import { useCookies } from 'react-cookie';
 
 function App() {
   // input 객체 (검색창)
   const inputRef = useRef();
+  // hooks
   const history = useHistory();
   const location = useLocation();
   const headerRef = useRef();
-  const [recentlyArray, setRecentlyArray] = useState([]);
 
   // 최근 본 레시피를 쿠키에 저장
   const [cookies, setCookie, removeCookie] = useCookies(['RcpCookie']);
 
-  // 다른 path로 이동시 헤드에 포커스
+  // location 값이 바뀔때마다 useEffect호출
   useEffect(() => {
     if (location.pathname === '/') {
       return;
     }
+    // 다른 path로 이동시 헤드에 포커스
     headerRef.current.scrollIntoView();
+    // '/detail' (레시피)로 이동할 경우
     if (location.pathname === '/detail') {
+      // 레시피 배열
       let RcpArr = [];
       // path가 /detail 이면 '최근 본 레시피'에 저장
+      // 쿠키가 있을 경우
       if (cookies.RcpCookie) {
         cookies.RcpCookie.map((rcp) => RcpArr.push(rcp));
       }
       RcpArr.push(location.state.name);
       console.log(RcpArr);
       setRcp(RcpArr);
+      // 기존에 있던 쿠키 삭제
       removeCookie('RcpCookie');
       // 최근 본 레시피를 쿠키에 저장
-      setCookie('RcpCookie', getRcp().reverse(), { path: '/' });
+      setCookie('RcpCookie', getRcp().reverse(), { path: '/', maxAge: 100000 });
     }
   }, [location]);
 
@@ -62,13 +70,14 @@ function App() {
     history.push({ pathname: '/recentRecipe', state: { array: cookies.RcpCookie } });
   };
 
-  // form 태그 내용을 받아서 state 에 저장
+  // form 태그 내용을 받아서 /search 로 보냅니다
   const onSubmit = (e) => {
     e.preventDefault();
     history.push({
       pathname: '/search',
       state: { props: inputRef.current.value },
     });
+    // 값을 보내면 원래 상태로
     inputRef.current.value = '';
   };
 
@@ -97,7 +106,6 @@ function App() {
 
   // 카테고리 리스트 클릭시
   const onClickCtg = (e) => {
-    console.log(e.currentTarget.id);
     const type = e.currentTarget.id;
     history.push({
       pathname: '/ctg',
@@ -109,6 +117,7 @@ function App() {
     <div>
       {/* 헤더*/}
       <div className="header" ref={headerRef}>
+        {/* 헤더 상단 */}
         <div className="header_in">
           <div className="header_in_top">
             {/* 로고 */}
@@ -143,6 +152,7 @@ function App() {
             </div>
           </div>
         </div>
+        {/* 헤더 하단 */}
         <div className="header_b">
           <div className="header_in_bottom">
             {/* 네브 왼쪽 영역*/}
@@ -159,6 +169,7 @@ function App() {
                   <div className="ctg_hover">
                     <div className="ctg_list">
                       <ul className="theme">
+                        {/* 항목 */}
                         <li onClick={onClickCtg} id="kind">
                           종류
                         </li>
@@ -179,6 +190,7 @@ function App() {
                         </li>
                       </ul>
                       <ul className="hash_sch">
+                        {/* 검색태그 버튼 */}
                         <li onClick={onClick} value="카레">
                           #카레
                         </li>
@@ -260,7 +272,7 @@ function App() {
           </div>
         </div>
       </div>
-
+      {/* 라우트 */}
       <div style={{ width: '100%', height: 'auto', background: '#fff' }}>
         <Route path="/" exact={true} component={Main}></Route>
         <Route path="/issue" component={Issue}></Route>
