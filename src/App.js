@@ -17,6 +17,8 @@ import top_sch from './img/top_sch.png';
 import { HiPlusCircle } from 'react-icons/hi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { setRcp } from './recentRecipe/recentRcp';
+import { getRcp } from './recentRecipe/recentRcp';
+import { useCookies } from 'react-cookie';
 
 function App() {
   // input 객체 (검색창)
@@ -26,6 +28,9 @@ function App() {
   const headerRef = useRef();
   const [recentlyArray, setRecentlyArray] = useState([]);
 
+  // 최근 본 레시피를 쿠키에 저장
+  const [cookies, setCookie, removeCookie] = useCookies(['RcpCookie']);
+
   // 다른 path로 이동시 헤드에 포커스
   useEffect(() => {
     if (location.pathname === '/') {
@@ -33,15 +38,19 @@ function App() {
     }
     headerRef.current.scrollIntoView();
     if (location.pathname === '/detail') {
+      let RcpArr = [];
       // path가 /detail 이면 '최근 본 레시피'에 저장
-      setRcp(location.state.name);
-      setRecentlyRecipe(location.state.name);
+      if (cookies.RcpCookie) {
+        cookies.RcpCookie.map((rcp) => RcpArr.push(rcp));
+      }
+      RcpArr.push(location.state.name);
+      console.log(RcpArr);
+      setRcp(RcpArr);
+      removeCookie('RcpCookie');
+      // 최근 본 레시피를 쿠키에 저장
+      setCookie('RcpCookie', getRcp().reverse(), { path: '/' });
     }
   }, [location]);
-
-  const setRecentlyRecipe = (param) => {
-    setRecentlyArray([param, ...recentlyArray]);
-  };
 
   // "오뚜기몰" 클릭 시
   const onClickMall = () => {
@@ -50,10 +59,8 @@ function App() {
 
   // "최근 본 레시피" 클릭 시
   const onClickRecipe = () => {
-    history.push({ pathname: '/recentRecipe', state: { array: recentlyArray } });
+    history.push({ pathname: '/recentRecipe', state: { array: cookies.RcpCookie } });
   };
-
-  // const memo = useMemo(setRecentlyRecipe, [recentlyArray]);
 
   // form 태그 내용을 받아서 state 에 저장
   const onSubmit = (e) => {

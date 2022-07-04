@@ -33,6 +33,7 @@ import banner03 from './img/banner03.jpg';
 import bannerArrow from './img/banner_arrow.png';
 import allDataList from './data/allDataList';
 import Food from './component/food/food';
+import { useCookies } from 'react-cookie';
 
 function Main() {
   // 메인 슬라이드 객체
@@ -285,8 +286,14 @@ function Main() {
   };
 
   // 가장 최근 본 레시피
-  let arr = getRcp();
-  const mostRecent_rcp = arr[arr.length - 1];
+  const [cookie, setCookie] = useCookies(['RcpCookie']);
+  let arr = cookie.RcpCookie;
+
+  let mostRecent_rcp = null;
+
+  if (arr.length > 0) {
+    mostRecent_rcp = arr[arr.length - 1];
+  }
 
   // 추천 레시피
   const DataList = [...allDataList];
