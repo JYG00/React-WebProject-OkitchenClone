@@ -21,7 +21,6 @@ export default function CtgList({ type }) {
   const onClick = (e) => {
     set(e.currentTarget.getAttribute('value'));
     history.push({ pathname: '/ctg', state: { type: e.currentTarget.getAttribute('value') } });
-    window.location.reload();
   };
 
   // 동기적 코드로 처리하기 위함
