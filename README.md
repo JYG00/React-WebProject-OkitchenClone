@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# 리액트 웹 프로젝트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+오뚜기 브랜드의 '오키친' 웹사이트를 리액트로 클론 코딩했습니다.
 
-## Available Scripts
+## 웹사이트 구성
 
-In the project directory, you can run:
+웹 사이트는 크게 다음과 같이 구성되었습니다.
 
-### `yarn start`
+메인 - 카테코리 - 인기 레시피 - 신규 레시피 - 계량 팁 - 최근 본 레시피 - 검색 - 디테일 레시피 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `메인` 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+메인 파트는 처음 사이트를 이용하는 사용자가 원하는 데이터를 찾기 쉽기 위함입니다.
+사이트가 어떤 구성으로 이루어졌는지 모르는 사용자 입장에서 큰 이미지와 버튼으로
+사이트에 있는 기능들을 골고루 사용할 수 있게 됩니다.
 
-### `yarn test`
+### `카테고리`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+어떤 키워드를 입력해서 레시피를 검색할 수 있지만
+키워드가 잘 생각이 나지 않을 때 카테고리 항목을 통해서
+사용자가 원하는 데이터를 찾을 수 있도록 도와줍니다.
 
-### `yarn build`
+### `인기 레시피`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+인기 레시피는 사용자들의 조회수 데이터를 기반으로 구성하였습니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `신규 레시피`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+신규 레시피는 입력된 레시피의 최신 날짜순으로 정렬해서 사용자에게 보여줍니다.
 
-### `yarn eject`
+### `최근 본 레시피`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+사용자가 레시피 사진을 클릭해서 디테일 레시피로 이동하게 되면
+react-cookie를 이용해서 사용자가 사이트에서 나가도 
+cookie의 유효기간은 레시피 데이터가 유지됩니다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `검색`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+사용자가 태그 버튼을 눌러서 검색 페이지로 이동하거나
+직접 키워드를 쳐서 검색 페이지로 이동할 수 있습니다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+javaScript의 map 함수와 filter 함수를 통해 더미 데이터에 접근해서
+사용자가 검색한 키워드와 일치하는 데이터를 반환합니다.
 
-## Learn More
+### `디테일 레시피`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+사용자가 레시피 사진을 클릭하면 디테일 레시피로 이동합니다.
+디테일 레시피는 3단계로 구성되어있으며, 이미지는 구현하지 않았습니다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
