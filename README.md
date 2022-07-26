@@ -2,6 +2,8 @@
 
 오뚜기 브랜드의 '오키친' 웹사이트를 리액트로 클론 코딩했습니다.
 
+사이트 링크
+https://jyg00.github.io/React-WebProject-OkitchenClone/
 
 
 ## 웹사이트 구성
